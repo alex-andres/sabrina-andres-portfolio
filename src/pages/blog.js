@@ -4,7 +4,9 @@ import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
 import styles from './blog.module.css'
 import Layout from '../components/layout'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import ArticlePreview from '../components/article-preview'
+import { css } from '@emotion/core';
 
 class BlogIndex extends React.Component {
   render() {
@@ -18,7 +20,9 @@ class BlogIndex extends React.Component {
           <div className={styles.hero}>Blog</div>
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
+            <ul css={css`
+              list-style: none;
+            `}className="article-list">
               {posts.map(({ node }) => {
                 return (
                   <li key={node.slug}>
@@ -51,9 +55,7 @@ export const pageQuery = graphql`
             }
           }
           description {
-            childMarkdownRemark {
-              html
-            }
+            json
           }
         }
       }

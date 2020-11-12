@@ -1,50 +1,94 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import get from 'lodash/get'
-import Img from 'gatsby-image'
-import Layout from '../components/layout'
+import React from "react";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
+import Layout from "../components/layout";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+import { SRLWrapper } from "simple-react-lightbox";
+import { css } from "@emotion/core";
+import heroStyles from "../components/hero.module.css";
+import GalleryImage from "../components/GalleryImage";
 
-import heroStyles from '../components/hero.module.css'
+const options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      const alt = node.data.target.fields.title["en-US"];
+      const url = node.data.target.fields.file["en-US"].url;
+      return <img alt={alt} src={url} />;
+    },
+  },
+};
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-
-    return (
-      <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
-          <div className={heroStyles.hero}>
-            <Img
-              className={heroStyles.heroImage}
-              alt={post.title}
-              fluid={post.heroImage.fluid}
-            />
-          </div>
-          <div className="wrapper">
+const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
+  return (
+    <Layout>
+      <div
+        css={css`
+          background: #fff;
+        `}
+      >
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+          `}
+        >
+          <div
+            className="wrapper"
+            css={css`
+              width: 100%;
+              @media (min-width: 800px) {
+              width: 60%;
+              }
+              img {
+                width: 100%;
+              }
+            `}
+          >
             <h1 className="section-headline">{post.title}</h1>
             <p
               style={{
-                display: 'block',
+                display: "block",
               }}
             >
               {post.publishDate}
             </p>
+            {documentToReactComponents(post.body.json, options)}
+            <div />
             <div
-              dangerouslySetInnerHTML={{
-                __html: post.body.childMarkdownRemark.html,
-              }}
-            />
+            css={css`
+              margin: 0 auto;
+            `}
+            >
+            <h2 css={css`margin: 2rem 0;`}>
+              Gallery
+            </h2>
+              <SRLWrapper>
+                <div
+                  css={css`
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                    grid-gap: 0 10px; 
+                    grid-auto-rows: 10px;
+                    justify-items: center;
+                  `}
+                >
+                  {post.gallery.map((image) => (
+                    <GalleryImage image={image} key={image.id} />
+                  ))}
+                </div>
+              </SRLWrapper>
+            </div>
           </div>
         </div>
-      </Layout>
-    )
-  }
-}
+      </div>
+    </Layout>
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -57,10 +101,15 @@ export const pageQuery = graphql`
         }
       }
       body {
-        childMarkdownRemark {
-          html
+        json
+      }
+      gallery {
+        fluid(background: "rgb:000000") {
+          ...GatsbyContentfulFluid
         }
+        description
+        id
       }
     }
   }
-`
+`;

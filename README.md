@@ -1,6 +1,6 @@
-# Contentful Gatsby Starter Blog
+# Sabrina Andres Art Advisory Website
 
-Create a [Gatsby](http://gatsbyjs.com/) blog powered by [Contentful](https://www.contentful.com). This is a simplified version of the [Gatsby Contentful Starter](https://github.com/contentful-userland/gatsby-contentful-starter) which is maintained by our Community.
+This is the repo for [sabrinaandres.com](http://sabrinaandres.com/) blog powered by [Contentful](https://www.contentful.com). This is a simplified version of the [Gatsby Contentful Starter](https://github.com/contentful-userland/gatsby-contentful-starter) which is maintained by our Community.
 
 ![The index page of the starter blog](https://rawgit.com/contentful-userland/gatsby-contentful-starter/master/screenshot.jpg "The index page of the starter blog")
 
@@ -21,7 +21,7 @@ See our [official Contentful getting started guide](https://www.contentful.com/d
 ### Get the source code and install dependencies.
 
 ```
-$ git clone https://github.com/contentful/starter-gatsby-blog.git
+$ git clone https://github.com/alex-andres/
 $ npm install
 ```
 
