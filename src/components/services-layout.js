@@ -1,60 +1,82 @@
-import React from 'react';
-import { css } from '@emotion/core'; 
-import Img from 'gatsby-image';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'; 
+import React from "react";
+import { css } from "@emotion/core";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { motion } from "framer-motion";
 
-const ServicesLayout = ({ content }) =>(
-  <div
-    css={css`
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      grid-template-areas:
-        'heading main'
-        'heading img';
-      grid-gap: 30px;
-      @media (max-width: 800px) {
-        grid-template-areas: 'heading' 'main' 'img';
-        grid-template-columns: 1fr;
+const ServicesLayout = ({ content }) => {
+  const imageVariants = {
+    hidden: {
+      x: 800,
+    },
+    visible: {
+      x: 0,
+      transition: {
+        duration: 1.5,
+        ease: "easeInOut",
+      },
+    },
+  };
+  const textVariants = {
+    hidden: {
+      x: -800,
+    },
+    visible: {
+      x: 0,
+      transition: {
+        duration: 1.5,
+        ease: "easeInOut",
+      },
+    },
+  };
+  return (
+    <div
+      css={css`
+        width: 100%;
+        margin: 5rem auto;
+        padding: 0 3vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "heading main";
         grid-gap: 30px;
-      }
-    `}
-  >
-    <div
-      className="heading"
-      css={css`
-        grid-area: heading;
+        @media (max-width: 800px) {
+          grid-template-areas: "heading" "main";
+          grid-template-columns: 1fr;
+          grid-gap: 30px;
+        }
       `}
     >
-      <h1>{content.heading}</h1>
-      <div css={css`
-        margin-top: 1rem;
-      `}>
-      {documentToReactComponents(content.description)}
-      </div>
-    </div>
-    <div
-      className="main"
-      css={css`
-        grid-area: main;
-        margin-bottom: 3rem;
-      `}
-    >
-      {documentToReactComponents(content.services)}
-    </div>
-    <div
-      css={css`
-        grid-area: img;
-      `}
-    >
-      <Img
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={textVariants}
+        className="heading"
         css={css`
-          margin-bottom: 1rem;
+          grid-area: heading;
         `}
-        fluid={content.image}
-        alt={content.alt}
-      />
+      >
+        <h1>{content.heading}</h1>
+        <div
+          css={css`
+            margin-top: 1rem;
+          `}
+        >
+          {documentToReactComponents(content.description)}
+        </div>
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={imageVariants}
+        className="main"
+        css={css`
+          grid-area: main;
+          margin-bottom: 3rem;
+        `}
+      >
+        {documentToReactComponents(content.services)}
+      </motion.div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ServicesLayout;

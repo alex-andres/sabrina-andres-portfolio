@@ -1,13 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
-import Layout from "../components/layout";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+import { BLOCKS } from "@contentful/rich-text-types";
 import { SRLWrapper } from "simple-react-lightbox";
 import { css } from "@emotion/core";
-import heroStyles from "../components/hero.module.css";
-import GalleryImage from "../components/GalleryImage";
+import GalleryGrid from "../components/GalleryGrid";
 
 const options = {
   renderNode: {
@@ -21,70 +18,72 @@ const options = {
 
 const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
   return (
-    <Layout>
+    <div
+      css={css`
+        background: #fff;
+      `}
+    >
       <div
         css={css`
-          background: #fff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 2rem;
         `}
       >
         <div
+          className="wrapper"
           css={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 2rem;
+            width: 90vw;
+            @media and screen (min-width: 768px) {
+              width: 60%;
+            }
+            img {
+              width: 100%;
+            }
           `}
         >
-          <div
-            className="wrapper"
-            css={css`
-              width: 100%;
-              @media (min-width: 800px) {
-              width: 60%;
-              }
-              img {
-                width: 100%;
-              }
-            `}
+          <h1 className="section-headline">{post.title}</h1>
+          <p
+            style={{
+              display: "block",
+            }}
           >
-            <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: "block",
-              }}
-            >
-              {post.publishDate}
-            </p>
-            {documentToReactComponents(post.body.json, options)}
-            <div />
-            <div
+            {post.publishDate}
+          </p>
+          {documentToReactComponents(post.body.json, options)}
+          <div />
+          <div
             css={css`
               margin: 0 auto;
             `}
+          >
+            <h2
+              css={css`
+                margin: 2rem 0;
+              `}
             >
-            <h2 css={css`margin: 2rem 0;`}>
               Gallery
             </h2>
-              <SRLWrapper>
-                <div
-                  css={css`
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                    grid-gap: 0 10px; 
-                    grid-auto-rows: 10px;
-                    justify-items: center;
-                  `}
-                >
-                  {post.gallery.map((image) => (
-                    <GalleryImage image={image} key={image.id} />
-                  ))}
-                </div>
-              </SRLWrapper>
-            </div>
+            <SRLWrapper>
+              <div
+                css={css`
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                  grid-gap: 0 10px;
+                  grid-auto-rows: 10px;
+                  justify-items: center;
+                `}
+              >
+                {post.gallery.map((image) => (
+                  <GalleryGrid image={image} key={image.id} />
+                ))}
+              </div>
+            </SRLWrapper>
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

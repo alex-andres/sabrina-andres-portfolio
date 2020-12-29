@@ -1,23 +1,26 @@
-import React from 'react';
-import { css } from '@emotion/core';
-import Img from 'gatsby-image';
+import React from "react";
+import { css } from "@emotion/core";
+import Img from "gatsby-image";
 
 const Teaser = ({ teaser }) => (
   <div
     css={css`
       display: grid;
-      grid-template-areas: 'background teaser';
+      grid-template-areas: "background teaser";
+      width: 90vw;
+      max-width: 1560px;
+      margin: 0 auto;
     `}
   >
     <div
       css={css`
         grid-area: background;
-        background: url();
       `}
     >
       <Img
         css={css`
           height: 250px;
+          width: auto;
         `}
         fluid={teaser.image}
         alt={teaser.alt}
@@ -26,6 +29,7 @@ const Teaser = ({ teaser }) => (
     <div
       css={css`
         grid-area: teaser;
+        margin-left: 2rem;
       `}
     >
       <h3>{teaser.heading}</h3>

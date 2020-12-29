@@ -1,24 +1,24 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import Layout from '../components/layout';
-import Hero from '../components/hero';
-import NumbersSection from '../components/numbers-section';
-import useProjects from '../hooks/use-projects';
-import ProjectPreview from '../components/project-preview';
-import ContactForm from '../components/ContactForm';
-import TeaserSection from '../components/teaser-section';
+import React from "react";
+import Hero from "../components/hero";
+import NumbersSection from "../components/numbers-section";
+import TeaserSection1 from "../components/TeaserSection1";
+import ProjectSection from "../components/project-section";
+import TeaserSection2 from "../components/TeaserSection2";
+import InstagramSection from "../components/InstagramSection";
+import SEO from "../components/SEO/SEO";
+// import LoadAnimation from "../components/LoadAnimation";
 
 export default () => {
-  const projects = useProjects();
   return (
-    <Layout>
+    <>
+      <SEO title="Homepage Title" description="test description" />
+      {/* <LoadAnimation /> */}
       <Hero />
       <NumbersSection />
-      {projects.map(project => (
-        <ProjectPreview key={project.slug} project={project} />
-      ))}
-      <TeaserSection />
-      <ContactForm />
-    </Layout>
+      <TeaserSection1 />
+      <ProjectSection />
+      <TeaserSection2 />
+      <InstagramSection />
+    </>
   );
 };

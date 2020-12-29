@@ -1,19 +1,21 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import styles from './article-preview.module.css'
+import React from "react";
+import { Link } from "gatsby";
+import Img from "gatsby-image";
+import { css } from "@emotion/core";
 
 export default ({ article }) => (
-  <div className={styles.preview}>
-    <Img alt="" fluid={article.heroImage.fluid} />
-    <h3 className={styles.previewTitle}>
-      <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-    </h3>
-    <small>{article.publishDate}</small>
-    <p>
-      {documentToReactComponents(article.description.raw)}
-    </p>
-
-  </div>
-)
+  <Link to={`/blog/${article.slug}`}>
+    <div>
+      <Img
+        css={css`
+          margin-bottom: 1rem;
+        `}
+        alt=""
+        fluid={article.heroImage.fluid}
+      />
+      <h2>{article.title}</h2>
+      <p>{article.publishDate}</p>
+      <p>{article.description.description}</p>
+    </div>
+  </Link>
+);

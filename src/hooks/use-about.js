@@ -1,26 +1,26 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from "gatsby";
 
 const useAbout = () => {
   const data = useStaticQuery(graphql`
-  query  {
-    allContentfulAboutPage {
-      nodes {
-        heading
-        bodyText {
-          json
-        }
-        image {
-          fluid {
-            base64 
-            aspectRatio 
-            src 
-            srcSet 
-            sizes 
+    query {
+      allContentfulAboutPage {
+        nodes {
+          heading
+          bodyText {
+            json
+          }
+          image {
+            fluid(maxWidth: 665, quality: 100) {
+              base64
+              aspectRatio
+              src
+              srcSet
+              sizes
+            }
           }
         }
       }
     }
-  }
   `);
   return {
     heading: data.allContentfulAboutPage.nodes[0].heading,
@@ -28,7 +28,6 @@ const useAbout = () => {
     image: data.allContentfulAboutPage.nodes[0].image.fluid,
     alt: data.allContentfulAboutPage.nodes[0].image.description,
   };
-
 };
 
 export default useAbout;

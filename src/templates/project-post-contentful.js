@@ -1,11 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
 import { css } from "@emotion/core";
 import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types";
-import { SRLWrapper } from 'simple-react-lightbox';
+import { BLOCKS } from "@contentful/rich-text-types";
+import { SRLWrapper } from "simple-react-lightbox";
 
 const options = {
   renderNode: {
@@ -18,9 +17,21 @@ const options = {
 };
 
 const ProjectTemplate = ({ data }) => {
-  
   return (
-    <Layout>
+    <div
+      className="project-wrapper"
+      css={css`
+        max-width: 90vw;
+        margin: 0 auto;
+        @media and screen (min-width: 768px) {
+          width: 60%;
+        }
+        img {
+          width: 100%;
+        }
+      `}
+      s
+    >
       <h1>{data.contentfulProject.title}</h1>
       <div>
         {documentToReactComponents(
@@ -34,15 +45,15 @@ const ProjectTemplate = ({ data }) => {
         />
       </div>
       <SRLWrapper>
-      {data.contentfulProject.gallery.map((image) => (
-        <Img
-          fluid={image.fluid}
-          alt={data.contentfulProject.image.description}
-          key={data.contentfulProject.image.id}
-        />
-      ))}
+        {data.contentfulProject.gallery.map((image) => (
+          <Img
+            fluid={image.fluid}
+            alt={data.contentfulProject.image.description}
+            key={data.contentfulProject.image.id}
+          />
+        ))}
       </SRLWrapper>
-    </Layout>
+    </div>
   );
 };
 export default ProjectTemplate;

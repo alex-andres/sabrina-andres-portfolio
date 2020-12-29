@@ -1,10 +1,14 @@
-import React from 'react';
-import Layout from '../components/layout';
-
+import React from "react";
+import { css } from "@emotion/core";
 export default () => (
-  <Layout>
+  <div
+    css={css`
+      max-width: 90vw;
+      margin: 0 auto;
+    `}
+  >
     <h1>Privacy policy</h1>
-    <h4>Privacy Policy - Effective Date: April 18, 2016</h4>
+    <h4>Privacy Policy - Effective Date: April 18, 2020</h4>
     <p>
       Sabrina Andres Art Consulting ("we", "our") respect your privacy and are
       committed to using responsible practices in the collection, maintenance
@@ -107,7 +111,7 @@ export default () => (
       Federal Trade Commission home page at
       <a
         href="http://www.ftc.gov"
-        rel="nofollow"
+        rel="noreferrer"
         target="_blank"
         title="ftc.gov"
       >
@@ -157,5 +161,5 @@ export default () => (
       data, or wish to change the use to which any such data can be put, please
       let us know by Emailing us.
     </p>
-  </Layout>
+  </div>
 );

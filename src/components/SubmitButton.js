@@ -1,11 +1,10 @@
-import styled from '@emotion/styled';
-import { colors } from '../components/theme';
+import styled from "@emotion/styled";
 
 const Button = styled("button")`
-  background-color: ${colors.black};
+  background-color: var(--black);
   color: white;
   padding: 1rem 1.5rem;
-  font-size: 1rem;
+  font-size: 1.8rem;
   font-weight: normal;
   line-height: 1.8em;
   text-decoration: none;
@@ -15,11 +14,12 @@ const Button = styled("button")`
   border: none;
 
   &:hover {
-    background-color: ${colors.lightGray};
+    background-color: var(--white);
     color: black;
     transition: 0.5s;
+    border: var(--black) 1px solid;
   }
-  &:focus{
+  &:focus {
     outline: 1px black solid;
   }
 `;

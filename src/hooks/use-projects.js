@@ -1,13 +1,10 @@
-
-
-
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from "gatsby";
 
 const useProjects = () => {
   const data = useStaticQuery(graphql`
     query ProjectIndexQuery {
       allContentfulProject(sort: { fields: [date], order: DESC }) {
-        edges{
+        edges {
           node {
             title
             subtitle
@@ -15,10 +12,7 @@ const useProjects = () => {
             slug
             image {
               fluid {
-                srcWebp
-                srcSetWebp
-                src
-                srcSet
+                ...GatsbyContentfulFluid
               }
               description
             }
@@ -28,7 +22,7 @@ const useProjects = () => {
       }
     }
   `);
-  return data.allContentfulProject.edges.map(({node}) => ({
+  return data.allContentfulProject.edges.map(({ node }) => ({
     title: node.title,
     subtitle: node.subtitle,
     slug: node.slug,

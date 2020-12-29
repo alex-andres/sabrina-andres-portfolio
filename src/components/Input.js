@@ -1,9 +1,8 @@
-import styled from '@emotion/styled';
-import { colors } from '../components/theme';
+import styled from "@emotion/styled";
 
 const Input = styled("input")`
   height: 45px;
-  background-color: ${colors.lightGray};
+  background-color: var(--lightGray);
   border-radius: 5px;
   border: #eaeaea 1px solid;
   padding: 8px;

@@ -1,58 +1,90 @@
-import React from 'react';
-import { css } from '@emotion/core';
-import { colors } from "../components/theme";
-import Layout from '../components/layout';
-import ContactForm from '../components/ContactForm';
+import React from "react";
+import { css } from "@emotion/core";
+import styled from "@emotion/styled";
+import ContactForm from "../components/ContactForm";
+import { motion } from "framer-motion";
 
-export default () => (
-  <Layout>
-  <div
-      css={css`
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-          "contact-info form";
-        grid-gap: 30px;
-        @media (max-width: 800px) {
-          grid-template-areas:
-            "contact-info"
-            "form";
-          grid-gap: 30px;
+export default () => {
+  const ContactContainer = styled.div`
+    display: grid;
+    max-width: 90vw;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "contact-info form";
+    grid-gap: 30px;
+    @media (max-width: 800px) {
+      grid-template-areas:
+        "contact-info"
+        "form";
+      grid-gap: 30px;
+    }
+    .contact-info {
+      grid-area: contact-info;
+    }
+    .heading {
+      margin-bottom: 2rem;
+    }
+    .contact-text {
+      margin-bottom: 1rem;
+    }
+    .instagram-link {
+      margin-top: 1rem;
+    }
+    svg {
+      height: 29px;
+      width: 29px;
+      transition: 0.5s;
+      .section {
+        fill: var(--black);
+      }
+      &:hover {
+        .section {
+          fill: var(--midGray);
         }
-      `}
-    >
-      <div css={css`
-            grid-area: contact-info;
-          `}>
-        <div
-          className="heading"
-          css={css`
-            margin-bottom: 2rem;
-          `}
-        >
+        transition: 0.5s;
+      }
+    }
+    ContactForm {
+      grid-area: form;
+    }
+  `;
+  const leftVariants = {
+    hidden: {
+      x: -800,
+    },
+    visible: {
+      x: 0,
+      transition: {
+        duration: 1.5,
+        ease: "easeInOut",
+      },
+    },
+  };
+  return (
+    <ContactContainer>
+      <motion.div
+        className="contact-info"
+        initial="hidden"
+        animate="visible"
+        variants={leftVariants}
+      >
+        <div className="heading" css={css``}>
           <h1>Contact</h1>
         </div>
-        <div
-          className="heading"
-          
-        >
-          <p
-            css={css`
-              margin-bottom: 1rem;
-            `}
-          >
-            If you have any inquiries or comments, please contact me via email or
-            phone, or send me a message using the contact form.
+        <div className="heading">
+          <p className="contact-text">
+            If you have any inquiries or comments, please contact me via email
+            or phone, or send me a message using the contact form.
           </p>
           <p>
             <strong>Email</strong>
           </p>
           <p>
             <a
-              href="mailto:sabrina@andresadvisory.com"
-              title="Send an email using your default browser"
+              href="mailto:sabrina@sbrinaandres.com"
+              title="Send an email using your default mail client"
             >
-              sabrina@andresadvisory.com
+              sabrina@sabrinaandres.com
             </a>
           </p>
           <p>
@@ -70,9 +102,7 @@ export default () => (
           <p>
             <a
               href="https://www.instagram.com/sab_rina_n/"
-              css={css`
-                margin-top: 1rem;
-              `}
+              className="instagram-link"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,19 +110,8 @@ export default () => (
                 title="Instagram Logo"
                 alt="Instagram Logo"
                 css={css`
-                  height: 29px;
-                  width: 29px;
-                  transition: 0.5s;
-                  .section {
-                    fill: ${colors.black};
-                  }
-                  &:hover {
-                    .section {
-                      fill: ${colors.midGray};
-                    }
-                    transition: 0.5s;
-                  }
-                `}
+                h
+              `}
               >
                 <path
                   className="section"
@@ -107,10 +126,8 @@ export default () => (
             </a>
           </p>
         </div>
-      </div>
-    <ContactForm css={css`
-        grid-area: form;
-      `} />
-    </div>
-  </Layout>
-);
+      </motion.div>
+      <ContactForm />
+    </ContactContainer>
+  );
+};
