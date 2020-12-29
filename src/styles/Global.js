@@ -21,7 +21,7 @@ const GlobalStyles = () => {
         scroll-behavior: smooth;
         font-size: 10px;
         width: 100vw;
-        overflow-x: hidden;
+
       }
       html, 
       body {
@@ -33,7 +33,6 @@ const GlobalStyles = () => {
         display:flex;
         flex-direction: column;
         height: 100%;
-        overflow-x: hidden;
         max-width: 100%;
         /* remove margin-top for main div that gatsby mounts into */
         > div {
@@ -42,10 +41,9 @@ const GlobalStyles = () => {
       }
       body{
         font-size: 1.8rem;
-        position: relative;
+        overflow-x: hidden;
       }
       main{
-        overflow: hidden;
         margin: 6rem auto 5rem;
           @media (min-width: 768px) {
             margin: 14rem auto 7.2rem;

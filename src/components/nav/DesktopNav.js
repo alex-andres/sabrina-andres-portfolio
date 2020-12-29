@@ -38,6 +38,7 @@ const DesktopNav = styled.nav`
   top: 0;
   left: 0;
   height: 12.5rem;
+  max-width: 100vw;
   width: 100%;
   max-width: inherit;
   z-index: 2;

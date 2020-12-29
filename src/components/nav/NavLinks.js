@@ -40,11 +40,13 @@ const NavLinks = () => {
 export default NavLinks;
 
 const NavLinksWrapper = styled.ul`
+  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style: none;
   padding-inline-start: 0;
+  max-width: 60%;
   button {
     background: transparent;
     outline: none;
