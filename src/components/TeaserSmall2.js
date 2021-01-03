@@ -8,7 +8,7 @@ const TeaserSmall2 = ({ className }) => {
   const data = useStaticQuery(
     graphql`
       query {
-        image: file(relativePath: { eq: "small-teaser-2-dark.jpg" }) {
+        image: file(relativePath: { eq: "small-teaser-2.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1000) {
               ...GatsbyImageSharpFluid_withWebp

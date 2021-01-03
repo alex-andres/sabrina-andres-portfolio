@@ -30,7 +30,7 @@ const LogoLink = () => {
 export default LogoLink;
 
 const StyledLogo = styled(Link)`
-  width: 125px;
+  min-width: 125px;
   @media screen and (max-width: 768px) {
     svg {
       width: 10rem;

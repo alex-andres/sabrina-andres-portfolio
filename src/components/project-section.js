@@ -18,7 +18,7 @@ export default () => {
     },
   };
   const controls = useAnimation();
-  const [ref5, inView5] = useInView({ threshold: 0.25 });
+  const [ref5, inView5] = useInView({ threshold: 0.4 });
   useEffect(() => {
     if (inView5) {
       controls.start("visible");

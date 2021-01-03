@@ -99,7 +99,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: path.join(__dirname, "static", "images"),
+        path: path.join(__dirname, "src", "images"),
       },
     },
     {
@@ -122,13 +122,6 @@ module.exports = {
         disable: !process.env.ANALYZE_BUNDLE_SIZE,
         generateStatsFile: true,
         analyzerMode: "static",
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `backgrounds`,
-        path: path.join(__dirname, "static", "images", "header"), // wherever background images are stored
       },
     },
     {

@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import BackgroundImage from "gatsby-background-image";
 import { motion, useAnimation } from "framer-motion";
 
-const UnstyledTeaserLarge = ({ className, backgroundImage, claimText }) => {
+const TeaserLarge = ({ className, backgroundImage, claimText }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -40,27 +40,14 @@ const UnstyledTeaserLarge = ({ className, backgroundImage, claimText }) => {
       initial="hidden"
       variants={containerVariants}
     >
-      <BackgroundImage
+      <StyledBackgroundImage
         Tag="section"
         className={className}
         fluid={backgroundImage}
         backgroundColor={`#fff`}
+        style={{ backgroundPostion: "", backgroundSize: "" }}
       >
-        <div
-          css={css`
-            width: calc(100% - 40px * 2);
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 25%;
-            @media (min-width: 768px) {
-              width: 75%;
-              height: 75%;
-              justify-content: flex-start;
-            }
-          `}
-        >
+        <div className="text-container">
           <motion.h2
             ref={ref2}
             animate={controls}
@@ -76,28 +63,43 @@ const UnstyledTeaserLarge = ({ className, backgroundImage, claimText }) => {
             {claimText}
           </motion.h2>
         </div>
-      </BackgroundImage>
+      </StyledBackgroundImage>
     </motion.div>
   );
 };
 
-const TeaserLarge = styled(UnstyledTeaserLarge)`
-  width: 100%;
-  background-position: center;
-  min-height: 500px;
-  height: auto;
-  padding-bottom: 65%;
-  max-height: 823px;
-  background-size: 100%;
-  ${"" /* @media screen and (min-width: 530px) {
-    height: 120vh;
-    background-position: bottom right;
-    margin-bottom: 7rem;
-    background-repeat: no-repeat;
-    background-size: cover;
+const StyledBackgroundImage = styled(BackgroundImage)`
+  background-size: cover;
+  background-position: top center;
+  padding-bottom: 161%;
+  min-width: 100%;
+  min-height: 100%;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 95.9%;
   }
-  @media screen and (min-width: 1032px) {
-    background-size: cover;
-  } */}
+  &:before,
+  &:after {
+    background-position: top center;
+    background-size: contain;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  .text-container {
+    margin: 10% auto 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    @media (min-width: 768px) {
+      left: 25%;
+      width: 50%;
+      height: 75%;
+      justify-content: flex-start;
+    }
+  }
 `;
 export default TeaserLarge;

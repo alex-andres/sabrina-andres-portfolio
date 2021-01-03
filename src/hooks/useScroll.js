@@ -7,8 +7,6 @@ export const useScroll = () => {
     const scrollTop = window !== undefined ? window.pageYOffset : 0;
 
     setIsScrolled(scrollTop > 0);
-
-    console.log("scrolling");
   };
 
   useEffect(() => {

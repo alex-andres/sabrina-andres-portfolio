@@ -46,7 +46,7 @@ const NavLinksWrapper = styled.ul`
   align-items: center;
   list-style: none;
   padding-inline-start: 0;
-  max-width: 60%;
+  max-width: 800px;
   button {
     background: transparent;
     outline: none;
@@ -105,7 +105,10 @@ const NavLink = styled(Link)`
   text-decoration: none;
   font-weight: 300;
   padding: 0.5em;
-  margin: 0 1.8rem;
+  margin: 0 0.5rem;
+  @media screen and (min-width: 845px) {
+    margin: 0 1.8rem;
+  }
   transition: color;
   &.current-page {
     border-bottom: 2px solid var(--black);

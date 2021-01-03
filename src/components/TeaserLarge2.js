@@ -3,12 +3,47 @@ import { graphql, useStaticQuery } from "gatsby";
 import TeaserLarge from "./TeaserLarge";
 
 const TeaserLarge2 = ({ className }) => {
-  const data = useStaticQuery(
+  const {
+    mobileImage,
+    eigtheenEighty,
+    twentyOneThirtyEight,
+    desktopImage,
+  } = useStaticQuery(
     graphql`
       query {
-        image: file(relativePath: { eq: "large-teaser-2.jpg" }) {
+        mobileImage: file(
+          relativePath: { eq: "large-teaser-2/large-teaser-2-mobile.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1069) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+        eigtheenEighty: file(
+          relativePath: { eq: "large-teaser-2/large-teaser-2-1880.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1690) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+        twentyOneThirtyEight: file(
+          relativePath: { eq: "large-teaser-2/large-teaser-2-2138.jpg" }
+        ) {
           childImageSharp {
             fluid(quality: 90, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+
+        desktopImage: file(
+          relativePath: { eq: "large-teaser-2/large-teaser-2.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 2560) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -17,16 +52,26 @@ const TeaserLarge2 = ({ className }) => {
     `
   );
 
-  const imageData = data.image.childImageSharp.fluid;
-  const backgroundImage = [
-    `linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0) 50%)`,
-    imageData,
+  const sources = [
+    mobileImage.childImageSharp.fluid,
+    {
+      ...eigtheenEighty.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+    {
+      ...twentyOneThirtyEight.childImageSharp.fluid,
+      media: `(min-width: 1520px)`,
+    },
+    {
+      ...desktopImage.childImageSharp.fluid,
+      media: `(min-width: 1920px)`,
+    },
   ];
   return (
     <TeaserLarge
-      backgroundImage={backgroundImage}
+      backgroundImage={sources}
       claimText={"Here is a claim"}
-      className={"teaserLarge2"}
+      className={"teaserLarge1"}
     />
   );
 };

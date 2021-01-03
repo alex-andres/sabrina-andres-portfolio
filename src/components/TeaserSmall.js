@@ -57,11 +57,13 @@ const TeaserSmall = ({ className }) => {
       initial="hidden"
       variants={containerVariants}
       css={css`
+        margin-top: 7rem;
         display: grid;
         margin-bottom: 7rem;
         grid-temlate-columns: 1fr;
         grid-template-areas: "text" "image";
         @media (min-width: 767px) {
+          margin-top: 12rem;
           grid-template-columns: 1fr 1fr;
           grid-template-areas: "image text";
           grid-gap: 40px;
