@@ -9,7 +9,7 @@ const InstaCard = ({ post }) => {
       css={css`
         width: 280px;
         height: 280px;
-        @media screen and(min-width: 350px) {
+        @media screen and (min-width: 350px) {
           width: 300px;
           height: 300px;
         }
@@ -30,7 +30,7 @@ const InstaCard = ({ post }) => {
             align-items: center;
             width: 280px;
             height: 280px;
-            @media screen and(min-width: 350px) {
+            @media screen and (min-width: 350px) {
               width: 300px;
               height: 300px;
             }
@@ -53,7 +53,7 @@ const InstaCard = ({ post }) => {
               align-items: center;
               width: 280px;
               height: 280px;
-              @media screen and(min-width: 350px) {
+              @media screen and (min-width: 350px) {
                 width: 300px;
                 height: 300px;
               }

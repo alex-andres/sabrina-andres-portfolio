@@ -35,7 +35,7 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
           className="wrapper"
           css={css`
             width: 90vw;
-            @media and screen (min-width: 768px) {
+            @media screen and (min-width: 768px) {
               width: 60%;
             }
             img {
@@ -69,9 +69,9 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
               <div
                 css={css`
                   display: grid;
-                  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                  grid-gap: 0 10px;
-                  grid-auto-rows: 10px;
+                  grid-template-columns: repeat(auto-fit, minmax(31%, 1fr));
+                  grid-gap: 0 1%;
+                  grid-auto-rows: 10.2px;
                   justify-items: center;
                 `}
               >

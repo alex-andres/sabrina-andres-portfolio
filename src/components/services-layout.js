@@ -37,7 +37,7 @@ const ServicesLayout = ({ content }) => {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "heading main";
-        grid-gap: 30px;
+        grid-gap: 150px;
         @media (max-width: 800px) {
           grid-template-areas: "heading" "main";
           grid-template-columns: 1fr;

@@ -11,7 +11,7 @@ export default () => {
     margin: 0 auto;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "contact-info form";
-    grid-gap: 30px;
+    grid-gap: 75px;
     @media (max-width: 800px) {
       grid-template-areas:
         "contact-info"
@@ -78,9 +78,10 @@ export default () => {
           </p>
           <p>
             <strong>Email</strong>
-          </p>
-          <p>
             <a
+              css={css`
+                margin-left: 2rem;
+              `}
               href="mailto:sabrina@sbrinaandres.com"
               title="Send an email using your default mail client"
             >
@@ -89,9 +90,10 @@ export default () => {
           </p>
           <p>
             <strong>Phone</strong>
-          </p>
-          <p>
             <a
+              css={css`
+                margin-left: 2rem;
+              `}
               href="tel:16263659609"
               title="Give Sabrina a Phone Call"
               aria-label=" Call Sabrina Andres at 6 2 6. 3 6 5. 9 6 0 9."

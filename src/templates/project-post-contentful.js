@@ -5,6 +5,7 @@ import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { SRLWrapper } from "simple-react-lightbox";
+import GalleryGrid from "../components/GalleryGrid";
 
 const options = {
   renderNode: {
@@ -21,38 +22,58 @@ const ProjectTemplate = ({ data }) => {
     <div
       className="project-wrapper"
       css={css`
-        max-width: 90vw;
-        margin: 0 auto;
-        @media and screen (min-width: 768px) {
-          width: 60%;
-        }
-        img {
-          width: 100%;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
       `}
-      s
     >
-      <h1>{data.contentfulProject.title}</h1>
-      <div>
-        {documentToReactComponents(
-          data.contentfulProject.content.json,
-          options
-        )}
-        <Img
-          fluid={data.contentfulProject.image.fluid}
-          alt={data.contentfulProject.image.description}
-          key={data.contentfulProject.image.id}
-        />
-      </div>
-      <SRLWrapper>
-        {data.contentfulProject.gallery.map((image) => (
+      <div
+        css={css`
+          width: 90vw;
+          @media screen and (min-width: 768px) {
+            width: 60%;
+          }
+          img {
+            width: 100%;
+          }
+        `}
+      >
+        <h1>{data.contentfulProject.title}</h1>
+        <div>
+          {documentToReactComponents(
+            data.contentfulProject.content.json,
+            options
+          )}
           <Img
-            fluid={image.fluid}
+            fluid={data.contentfulProject.image.fluid}
             alt={data.contentfulProject.image.description}
             key={data.contentfulProject.image.id}
           />
-        ))}
-      </SRLWrapper>
+        </div>
+        <h2
+          css={css`
+            margin: 2rem 0;
+          `}
+        >
+          Gallery
+        </h2>
+        <SRLWrapper>
+          <div
+            css={css`
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(31%, 1fr));
+              grid-gap: 0 1%;
+              grid-auto-rows: 10.2px;
+              justify-items: center;
+            `}
+          >
+            {data.contentfulProject.gallery.map((image) => (
+              <GalleryGrid image={image} key={image.id} />
+            ))}
+          </div>
+        </SRLWrapper>
+      </div>
     </div>
   );
 };
