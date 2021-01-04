@@ -52,7 +52,7 @@ class BlogIndex extends React.Component {
           <div
             css={css`
               display: grid;
-              @media (max-width: 600px) {
+              @media screen and (max-width: 600px) {
                 grid-template-columns: 1fr;
               }
               grid-template-columns: repeat(3, 1fr);
@@ -64,7 +64,7 @@ class BlogIndex extends React.Component {
                 return (
                   <div
                     css={css`
-                      @media (max-width: 600px) {
+                      @media screen and (max-width: 600px) {
                         grid-column: span 1;
                         grid-template-columns: 1fr;
                       }
@@ -84,7 +84,7 @@ class BlogIndex extends React.Component {
                         flex-direction: column;
                         justify-content: center;
                         align-items: flex-start;
-                        @media (max-width: 600px) {
+                        @media screen and (max-width: 600px) {
                           grid-row-start: 2;
                         }
                       `}

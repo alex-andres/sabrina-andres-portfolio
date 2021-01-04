@@ -61,7 +61,7 @@ const TeaserSmall2 = ({ className }) => {
         margin-bottom: 7rem;
         grid-temlate-columns: 1fr;
         grid-template-areas: "text" "image";
-        @media (min-width: 767px) {
+        @media screen and (min-width: 767px) {
           grid-template-columns: 1fr 1fr;
           grid-template-areas: "image text";
           grid-gap: 40px;

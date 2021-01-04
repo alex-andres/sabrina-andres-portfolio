@@ -55,7 +55,7 @@ const TeaserLarge = ({ className, backgroundImage, claimText }) => {
             variants={textVariants}
             css={css`
               width: 100%;
-              @media (min-width: 768px) {
+              @media screen and (min-width: 768px) {
                 width: 75%;
               }
             `}
@@ -94,7 +94,7 @@ const StyledBackgroundImage = styled(BackgroundImage)`
     justify-content: center;
     align-items: center;
     height: 25%;
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       left: 25%;
       width: 50%;
       height: 75%;

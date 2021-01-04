@@ -36,7 +36,7 @@ const NumbersSection = () => {
       css={css`
         margin: 6rem auto;
         width: 90%;
-        @media (min-width: 1024px) {
+        @media screen and (min-width: 1024px) {
           margin: 10rem 10rem 15rem;
         }
       `}

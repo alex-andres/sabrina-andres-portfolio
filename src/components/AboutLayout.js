@@ -42,7 +42,7 @@ const AboutLayout = ({ content }) => {
           "heading main"
           "heading img";
         grid-gap: 30px;
-        @media (max-width: 800px) {
+        @media screen and (max-width: 800px) {
           grid-template-columns: 1fr;
           grid-template-areas: "heading" "main" "img";
           padding: 0 3rem;

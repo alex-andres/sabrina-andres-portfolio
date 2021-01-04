@@ -39,7 +39,7 @@ export default () => {
       <h2
         css={css`
           margin: 0 0 5rem;
-          @media (min-width: 768px) {
+          @media screen and (min-width: 768px) {
             width: 65%;
           }
         `}

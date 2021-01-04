@@ -45,7 +45,7 @@ const GlobalStyles = () => {
       }
       main{
         margin: 6rem auto 5rem;
-          @media (min-width: 768px) {
+          @media screen and (min-width: 768px) {
             margin: 14rem auto 7.2rem;
           }
           width: 100%;

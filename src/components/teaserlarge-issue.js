@@ -55,7 +55,7 @@ const UnstyledTeaserLarge = ({ className, backgroundImage, claimText }) => {
             justify-content: center;
             align-items: center;
             height: 25%;
-            @media (min-width: 768px) {
+            @media screen and (min-width: 768px) {
               width: 75%;
               height: 75%;
               justify-content: flex-start;
@@ -69,7 +69,7 @@ const UnstyledTeaserLarge = ({ className, backgroundImage, claimText }) => {
             variants={textVariants}
             css={css`
               width: 100%;
-              @media (min-width: 768px) {
+              @media screen and (min-width: 768px) {
                 width: 75%;
               }
             `}

@@ -19,7 +19,7 @@ const ProjectPreview = ({ project }) => {
           padding-top: 100%;
           overflow: hidden;
           position: relative;
-          @media (max-width: 800px) {
+          @media screen and (max-width: 800px) {
             padding-top: 75%;
           }
         `}

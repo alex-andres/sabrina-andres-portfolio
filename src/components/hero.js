@@ -43,11 +43,11 @@ const Hero = () => {
         grid-template-areas: "claim" "slider";
         gap: 1rem;
 
-        @media (min-width: 768px) {
+        @media screen and (min-width: 768px) {
           grid-template-areas: "slider claim";
           grid-template-columns: repeat(2, 1fr);
         }
-        @media (min-width: 1024px) {
+        @media screen and (min-width: 1024px) {
           gap: 6rem;
           grid-template-areas: "slider slider slider claim claim claim claim";
           grid-template-columns: repeat(7, 1fr);
@@ -85,7 +85,7 @@ const Hero = () => {
           align-items: flex-start;
           margin: 2rem auto 3rem;
           width: calc(100% - 40px * 2);
-          @media (min-width: 768px) {
+          @media screen and (min-width: 768px) {
             margin: 0 3rem;
             justify-content: flex-start;
           }
@@ -106,7 +106,7 @@ const Hero = () => {
           className="hero-sub-heading"
           css={css`
             margin-bottom: 2rem;
-            @media (min-width: 1024px) {
+            @media screen and (min-width: 1024px) {
               font-size: 2.4rem;
               margin-bottom: 3rem;
             }

@@ -12,7 +12,7 @@ export default () => {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "contact-info form";
     grid-gap: 75px;
-    @media (max-width: 800px) {
+    @media screen and (max-width: 800px) {
       grid-template-areas:
         "contact-info"
         "form";
