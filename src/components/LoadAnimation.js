@@ -37,7 +37,7 @@ const LoadAnimation = () => {
     },
   };
   return (
-    <div
+    <StyledLoad
       css={css`
         position: absolute;
         width: 100vw;
@@ -45,11 +45,13 @@ const LoadAnimation = () => {
         z-index: 1001;
         background: rgb(255, 255, 255);
         overflow: hidden;
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         z-index: 5;
+        margin-top: -14rem;
       `}
+      className="loader"
     >
       <div
         css={css`
@@ -140,11 +142,20 @@ const LoadAnimation = () => {
           />
         </AnimatedSVG>
       </div>
-    </div>
+    </StyledLoad>
   );
 };
 
 export default LoadAnimation;
+
+const StyledLoad = styled.div`
+  animation: fadeOut 1s linear forwards 6.5s;
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+`;
 
 const AnimatedSVG = styled(motion.svg)`
   .first-a {

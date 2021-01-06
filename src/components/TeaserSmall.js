@@ -78,6 +78,11 @@ const TeaserSmall = ({ className }) => {
         `}
         fluid={imageData}
         className={className}
+        alt="Emil Klein Untitled Painting, White Canvas with Abstract Black fluid lines, painting hung in Living Room setting"
+        title="Emil Michael Klein
+Untitled, 2014-2015
+Oil on canvas
+191 x 110 x 3 cm (75 1/4 x 43 1/4 x 1 1/8 in)"
       />
       <motion.div
         variants={textVariants}

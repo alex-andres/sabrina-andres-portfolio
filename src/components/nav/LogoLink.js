@@ -42,8 +42,10 @@ const StyledLogo = styled(Link)`
   & + [aria-expanded="true"] {
     display: none;
   }
+  opacity: 0;
   animation-name: slidedown;
   animation-duration: 0.75s;
+  animation-delay: 7.85s;
   animation-fill-mode: forwards;
 
   @keyframes slidedown {

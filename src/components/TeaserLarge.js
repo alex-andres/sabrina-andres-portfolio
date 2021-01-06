@@ -5,7 +5,12 @@ import { useInView } from "react-intersection-observer";
 import BackgroundImage from "gatsby-background-image";
 import { motion, useAnimation } from "framer-motion";
 
-const TeaserLarge = ({ className, backgroundImage, claimText }) => {
+const TeaserLarge = ({
+  className,
+  backgroundImage,
+  claimText,
+  backgroundTitle,
+}) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,6 +51,7 @@ const TeaserLarge = ({ className, backgroundImage, claimText }) => {
         fluid={backgroundImage}
         backgroundColor={`#fff`}
         style={{ backgroundPostion: "", backgroundSize: "" }}
+        title={backgroundTitle}
       >
         <div className="text-container">
           <motion.h2

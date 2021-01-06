@@ -6,13 +6,13 @@ import ProjectSection from "../components/project-section";
 import TeaserSection2 from "../components/TeaserSection2";
 import InstagramSection from "../components/InstagramSection";
 import SEO from "../components/SEO/SEO";
-// import LoadAnimation from "../components/LoadAnimation";
+import LoadAnimation from "../components/LoadAnimation";
 
 export default () => {
   return (
     <>
       <SEO title="Homepage Title" description="test description" />
-      {/* <LoadAnimation /> */}
+      <LoadAnimation />
       <Hero />
       <NumbersSection />
       <TeaserSection1 />

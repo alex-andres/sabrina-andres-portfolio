@@ -72,6 +72,10 @@ const TeaserLarge2 = ({ className }) => {
       backgroundImage={sources}
       claimText={"Here is a claim"}
       className={"teaserLarge1"}
+      backgroundTitle={`Ser Serpas
+Untitled, 2019
+Acrylic on paper
+29 x 19 cm (11 3/8 x 7 1/2 in)`}
     />
   );
 };

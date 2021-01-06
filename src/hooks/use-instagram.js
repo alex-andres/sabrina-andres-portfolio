@@ -9,6 +9,7 @@ const useInstagram = () => {
             id
             comments
             likes
+            caption
             localFile {
               childImageSharp {
                 fixed(height: 300) {

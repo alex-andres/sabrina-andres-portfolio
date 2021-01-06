@@ -27,7 +27,7 @@ const Hero = () => {
     onScreen: {
       x: 0,
       transition: {
-        delay: 0.6,
+        delay: 9.65,
         duration: 1.5,
         ease: "easeInOut",
       },
@@ -75,7 +75,7 @@ const Hero = () => {
       <motion.div
         initial={{ x: 800 }}
         animate={{ x: 0 }}
-        transition={{ delay: 0.6, duration: 1.5, ease: "easeInOut" }}
+        transition={{ delay: 9.65, duration: 1.5, ease: "easeInOut" }}
         className="claim-cta-wrapper"
         css={css`
           grid-area: claim;

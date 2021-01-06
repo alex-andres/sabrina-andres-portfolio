@@ -34,7 +34,7 @@ const InstaCard = ({ post }) => {
               width: 300px;
               height: 300px;
             }
-            z-index: 5;
+            z-index: 2;
             width: 100%;
             height: 100%;
             p {

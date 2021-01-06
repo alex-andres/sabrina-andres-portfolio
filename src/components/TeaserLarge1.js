@@ -72,6 +72,10 @@ const TeaserLarge1 = ({ className }) => {
       backgroundImage={sources}
       claimText={"Here is a claim"}
       className={"teaserLarge1"}
+      backgroundTitle={`Alex Becerra
+Faces Faces Expansion, 2020
+Oil on linen
+61 x 45.7 cm (24 x 18 in)`}
     />
   );
 };

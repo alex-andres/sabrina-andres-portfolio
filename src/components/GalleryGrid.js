@@ -14,7 +14,6 @@ class GalleryGrid extends React.Component {
       "load",
       this.setSpans
     );
-    console.log(this.cellRef);
   }
   setSpans = () => {
     const height = this.cellRef.current.imageRef.current.clientHeight;

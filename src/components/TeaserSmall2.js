@@ -76,6 +76,12 @@ const TeaserSmall2 = ({ className }) => {
         `}
         fluid={imageData}
         className={className}
+        alt="Dominique Teufen's Einfalt, A framed photograph in a dark living room setting"
+        title="Dominique Teufen
+Einfalt, 2014
+Hahnemühle photo rag mounted on aluminum, UV-glass
+70 x 105 cm (27 1/2 x 41 3/8 in)
+Edition of 5, plus 2 AP's"
       />
       <motion.div
         variants={textVariants}

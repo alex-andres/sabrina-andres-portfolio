@@ -66,25 +66,26 @@ const NavLinksWrapper = styled.ul`
 const AnimatedLi = styled.li`
   animation-name: slidedown;
   animation-duration: 0.75s;
+  animation-delay: 8s;
   animation-fill-mode: forwards;
   opacity: 0;
   &:nth-of-type(1) {
-    animation-delay: 0.15s;
+    animation-delay: 8.15;
   }
   &:nth-of-type(2) {
-    animation-delay: 0.3s;
+    animation-delay: 8.3s;
   }
   &:nth-of-type(3) {
-    animation-delay: 0.45s;
+    animation-delay: 8.45s;
   }
   &:nth-of-type(4) {
-    animation-delay: 0.6s;
+    animation-delay: 8.6s;
   }
   &:nth-of-type(5) {
-    animation-delay: 0.75s;
+    animation-delay: 8.75s;
   }
   &:nth-of-type(6) {
-    animation-delay: 0.9s;
+    animation-delay: 8.9s;
   }
   @keyframes slidedown {
     from {
@@ -109,7 +110,7 @@ const NavLink = styled(Link)`
   @media screen and (min-width: 845px) {
     margin: 0 1.8rem;
   }
-  transition: color;
+  transition: color 0.5s;
   &.current-page {
     border-bottom: 2px solid var(--black);
     margin-top: 6.5px;

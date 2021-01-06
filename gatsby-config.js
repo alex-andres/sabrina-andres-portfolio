@@ -35,10 +35,10 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Contentful starter",
+    title: "Sabrina Andres Art Advisory",
     description:
       "Sabrina Andres offers Art Consulting services in the Los Angeles and Pasadena area, contact her today to find up and coming artists",
-    titleTemplate: "Sabrinaandres.com - %s",
+    titleTemplate: "%s - Sabrina Andres Art Advisory",
     siteUrl: "https://sabrinaandres.com",
     image: "./static/images/logo-1024.png",
     banner: "./static/images/logo-1024.png",
@@ -90,7 +90,7 @@ module.exports = {
         start_url: "/",
         background_color: "#FFF",
         theme_color: "#f1f1ef",
-        display: "standalone",
+        display: "minimal-ui",
         icon: "src/favicon.png",
       },
     },

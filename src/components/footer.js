@@ -14,10 +14,9 @@ const Footer = () => {
     }
   }, [controls, inView7]);
   const igVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
         duration: 1.75,
         staggerChildren: 0.5,
@@ -114,15 +113,15 @@ const Footer = () => {
           css={css`
             height: 29px;
             width: 29px;
-            transition: 0.5s;
+            transition: fill 0.5s;
             .section {
               fill: var(--black);
             }
             &:hover {
               .section {
                 fill: var(--midGray);
+                transition: fill 0.5s;
               }
-              transition: 0.5s;
             }
           `}
         >
@@ -176,7 +175,13 @@ const StyledFooter = styled(motion.footer)`
   a {
     color: var(--black);
     display: inline-block;
+    transition: color 0.5s;
+    &:hover {
+      transition: color 0.5s;
+      color: var(--midGray);
+    }
   }
+
   .instagram-link-medium {
     display: none;
   }
