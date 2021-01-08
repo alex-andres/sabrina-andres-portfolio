@@ -75,7 +75,8 @@ const TeaserLarge2 = ({ className }) => {
       backgroundTitle={`Ser Serpas
 Untitled, 2019
 Acrylic on paper
-29 x 19 cm (11 3/8 x 7 1/2 in)`}
+29 x 19 cm (11 3/8 x 7 1/2 in)
+Private Collection, Zurich, CH`}
     />
   );
 };

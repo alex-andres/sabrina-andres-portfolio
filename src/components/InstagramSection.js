@@ -50,7 +50,7 @@ export default () => {
       <div
         css={css`
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 1.8rem;
           max-width: 954px;
           margin: 0 auto;

@@ -8,8 +8,11 @@ import SimpleReactLightbox from "simple-react-lightbox";
 import { MenuProvider } from "../state/Menu";
 import Navbar from "./nav/";
 
+// export const UserStateContext = createContext(null);
+
 const Layout = ({ children }) => {
   const { title, description } = useSiteMetadata();
+  // const [user, setUser] = useLocalStorage('noFirstVisit', 0);
 
   return (
     <>

@@ -46,7 +46,7 @@ const NavLinksWrapper = styled.ul`
   align-items: center;
   list-style: none;
   padding-inline-start: 0;
-  max-width: 800px;
+  max-width: 66rem;
   button {
     background: transparent;
     outline: none;

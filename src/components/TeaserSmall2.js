@@ -81,7 +81,8 @@ const TeaserSmall2 = ({ className }) => {
 Einfalt, 2014
 Hahnemühle photo rag mounted on aluminum, UV-glass
 70 x 105 cm (27 1/2 x 41 3/8 in)
-Edition of 5, plus 2 AP's"
+Edition of 5, plus 2 AP's
+Private Collection, Copenhagen, DK"
       />
       <motion.div
         variants={textVariants}

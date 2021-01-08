@@ -70,12 +70,13 @@ const TeaserLarge1 = ({ className }) => {
   return (
     <TeaserLarge
       backgroundImage={sources}
-      claimText={"Here is a claim"}
+      claimText={"Facilitating investment in passion"}
       className={"teaserLarge1"}
       backgroundTitle={`Alex Becerra
 Faces Faces Expansion, 2020
 Oil on linen
-61 x 45.7 cm (24 x 18 in)`}
+61 x 45.7 cm (24 x 18 in)
+Private Collection, Nevada, US`}
     />
   );
 };

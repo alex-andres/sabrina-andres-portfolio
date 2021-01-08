@@ -82,7 +82,8 @@ const TeaserSmall = ({ className }) => {
         title="Emil Michael Klein
 Untitled, 2014-2015
 Oil on canvas
-191 x 110 x 3 cm (75 1/4 x 43 1/4 x 1 1/8 in)"
+191 x 110 x 3 cm (75 1/4 x 43 1/4 x 1 1/8 in)
+Private Collection, Copenhagen, DK"
       />
       <motion.div
         variants={textVariants}
@@ -97,18 +98,16 @@ Oil on canvas
           grid-area: text;
         `}
       >
-        <h2
+        <p
           css={css`
-            margin-bottom: 2rem;
+            line-height: 2;
+            font-size: 2rem;
           `}
         >
-          Teaser Small
-        </h2>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non quis
-          tenetur porro rem nobis quo repellat sequi pariatur eveniet
-          voluptatum, repellendus tempora harum dolorum, dignissimos
-          perferendis. Natus quidem iste ullam?
+          Sabrina fosters meaningful and long lasting professional relationships
+          by prioritizing her client’s needs while leveraging her international
+          network through her refreshingly approachable communication skills and
+          her emphasis on accountability.
         </p>
       </motion.div>
     </motion.div>

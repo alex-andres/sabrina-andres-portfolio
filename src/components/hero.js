@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import { css } from "@emotion/core";
 import { motion } from "framer-motion";
 import Img from "gatsby-image";
-import Button from "./Button";
 
 const Hero = () => {
   const data = useStaticQuery(
@@ -68,8 +67,12 @@ const Hero = () => {
       >
         <Img
           fluid={data.image.childImageSharp.fluid}
-          alt="Connor Addison"
-          title="Connor Addison - Name of Work - 2018"
+          alt="Connor Addison's The Eventual End Painting Mounted, installation setting"
+          title="Connor Addison
+The Eventual End (Salk Institute), 2020
+Oil on linen
+194 x 194 cm (76 1/3 x 76 1/3 in)
+Private Collection, Nevada, US"
         />
       </motion.div>
       <motion.div
@@ -107,15 +110,18 @@ const Hero = () => {
           css={css`
             margin-bottom: 2rem;
             @media screen and (min-width: 1024px) {
-              font-size: 2.4rem;
+              font-size: 2.2rem;
               margin-bottom: 3rem;
+              line-height: 1.75;
             }
           `}
         >
-          Sabrina takes the hard work out of finding emerging and established
-          artists
+          Sabrina Andres offers art advisory services internationally with a
+          focus on contemporary art, ranging from early career to established
+          artists. Sabrina creates a personalized experience for private
+          collectors and corporations with a clearly defined, independent stance
+          in the art field.
         </p>
-        <Button to="/projects">View Projects</Button>
       </motion.div>
     </div>
   );
