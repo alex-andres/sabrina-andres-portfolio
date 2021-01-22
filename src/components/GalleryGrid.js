@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
-import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 
 class GalleryGrid extends React.Component {
   constructor(props) {
@@ -27,17 +27,14 @@ class GalleryGrid extends React.Component {
     const { description, fluid } = this.props.image;
     return (
       <div style={{ gridRowEnd: `span ${this.state.spans}` }}>
-        <Img
-          ref={this.cellRef}
-          fluid={fluid}
-          alt={description}
-          css={css`
-            width: 250px;
-          `}
-        />
+        <Image ref={this.cellRef} fluid={fluid} alt={description} />
       </div>
     );
   }
 }
 
 export default GalleryGrid;
+
+const Image = styled(Img)`
+  width: 250px;
+`;

@@ -1,7 +1,7 @@
 import React from "react";
-import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
+
 const LoadAnimation = () => {
   const sPathVariants = {
     hidden: {
@@ -36,28 +36,10 @@ const LoadAnimation = () => {
       transition: { duration: 0.75, ease: "linear", delay: 4.75 },
     },
   };
+
   return (
-    <StyledLoad
-      css={css`
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        z-index: 1001;
-        background: rgb(255, 255, 255);
-        overflow: hidden;
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 5;
-        margin-top: -14rem;
-      `}
-      className="loader"
-    >
-      <div
-        css={css`
-          width: 50%;
-        `}
-      >
+    <StyledLoad className="loader">
+      <div>
         <AnimatedSVG
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 369.38 218.51"
@@ -149,10 +131,27 @@ const LoadAnimation = () => {
 export default LoadAnimation;
 
 const StyledLoad = styled.div`
-  animation: fadeOut 1s linear forwards 6.5s;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1001;
+  background: rgb(255, 255, 255);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  margin-top: -14rem;
+  animation: fadeOut 1s linear forwards 7.5s;
   @keyframes fadeOut {
     to {
       opacity: 0;
+    }
+  }
+  div {
+    width: 90vw;
+    @media screen and (min-width: 768px) {
+      width: 50%;
     }
   }
 `;

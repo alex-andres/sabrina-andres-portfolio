@@ -133,5 +133,13 @@ module.exports = {
         instagram_id: 17841401975085766,
       },
     },
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint:
+          "https://sabrinaandres.us7.list-manage.com/subscribe/post?u=dd4744223b51981325ecb4cc9&amp;id=ff51c0cb23",
+        timeout: 3500,
+      },
+    },
   ],
 };

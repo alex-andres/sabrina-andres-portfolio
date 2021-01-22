@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import { useMenuContext } from "../../state/Menu";
+import { VisitedContext } from "../../contexts/VisitedContext";
 
 const LogoLink = () => {
+  const [visited] = useContext(VisitedContext);
   const { closeMenu } = useMenuContext();
   return (
-    <StyledLogo to="/" onClick={closeMenu}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 368.88 163.08">
+    <StyledLogo
+      title="Home"
+      to="/"
+      onClick={closeMenu}
+      className={visited ? "visited" : ""}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 368.88 163.08"
+        alt="Home Link"
+      >
         <path
           d="M227.38,161.18a50.17,50.17,0,0,1-11.18,1c-18.17,0-28.65-6.29-44-25.85-21.66,21.66-30.74,26.2-48.91,26.2C95,162.58,74,144.06,74,118.91c0-21.32,12.93-34.25,40.18-39.84l33.89-6.63c10.84-2.1,12.93-2.8,21.32-5.94V34.24c0-16.91-12.68-26.78-35.23-26.78-17.26,0-29.59,6.34-29.59,15.15,0,7.75,7.4,13.39,7.4,21.49,0,7.75-8.46,14.8-16.56,14.8-8.81,0-15.5-7.75-15.5-18.68,0-22.54,25-39.45,58.83-39.45,35.58,0,61.65,21.49,61.65,51.08v76.67c0,20.42,5.88,26.65,27,27.34Zm-97.9-79c-18.91,3.85-25.56,14-25.56,38.5,0,21,10.15,34.31,25.91,34.31,19.95,0,39.55-21,39.55-41.66V72.36C147,78.31,139.28,80.06,129.48,82.16Z"
           style={{ stroke: "#000", strokeMiterLimit: 10 }}
@@ -47,6 +58,9 @@ const StyledLogo = styled(Link)`
   animation-duration: 0.75s;
   animation-delay: 7.85s;
   animation-fill-mode: forwards;
+  &.visited{
+    animation-delay: 0s;
+  }
 
   @keyframes slidedown {
     from {

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
 import { useInView } from "react-intersection-observer";
 import BackgroundImage from "gatsby-background-image";
 import { motion, useAnimation } from "framer-motion";
@@ -8,7 +7,8 @@ import { motion, useAnimation } from "framer-motion";
 const TeaserLarge = ({
   className,
   backgroundImage,
-  claimText,
+  claimHeading,
+  claimBody,
   backgroundTitle,
 }) => {
   const containerVariants = {
@@ -53,22 +53,16 @@ const TeaserLarge = ({
         style={{ backgroundPostion: "", backgroundSize: "" }}
         title={backgroundTitle}
       >
-        <div className="text-container">
-          <motion.h2
-            ref={ref2}
-            animate={controls}
-            initial="hidden"
-            variants={textVariants}
-            css={css`
-              width: 100%;
-              @media screen and (min-width: 768px) {
-                width: 75%;
-              }
-            `}
-          >
-            {claimText}
-          </motion.h2>
-        </div>
+        <motion.div
+          className="text-container"
+          ref={ref2}
+          animate={controls}
+          initial="hidden"
+          variants={textVariants}
+        >
+          <h2>{claimHeading}</h2>
+          <p>{claimBody}</p>
+        </motion.div>
       </StyledBackgroundImage>
     </motion.div>
   );
@@ -96,15 +90,22 @@ const StyledBackgroundImage = styled(BackgroundImage)`
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    text-align: center;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 25%;
     @media screen and (min-width: 768px) {
-      left: 25%;
+      left: 0;
       width: 50%;
       height: 75%;
-      justify-content: flex-start;
+      h2 {
+        font-size: 4rem;
+        width: 43rem;
+        margin-bottom: 1.5rem;
+      }
+      p {
+        width: 43rem;
+      }
     }
   }
 `;

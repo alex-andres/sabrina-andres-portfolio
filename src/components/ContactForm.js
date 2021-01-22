@@ -1,9 +1,8 @@
 import React from "react";
-import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 import { useForm } from "react-hook-form";
 import SubmitButton from "./SubmitButton";
 import Input from "./Input";
-import styles from "./contactform.module.scss";
 import {
   useNetlifyForm,
   NetlifyFormProvider,
@@ -39,13 +38,12 @@ const ContactForm = () => {
     },
   };
   return (
-    <motion.div initial="hidden" animate="visible" variants={rightVariants}>
-      <NetlifyFormProvider
-        css={css`
-          grid-area: form;
-        `}
-        {...netlify}
-      >
+    <ContactContainer
+      initial="hidden"
+      animate="visible"
+      variants={rightVariants}
+    >
+      <NetlifyFormProvider className="netlify-form-provider" {...netlify}>
         <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
           <Honeypot />
           <Recaptcha siteKey={RECAPTCHA_KEY} invisible />
@@ -56,21 +54,9 @@ const ContactForm = () => {
               Netlify, our GitHub demo does not provide a response.
             </p>
           )}
-          <div
-            css={css`
-              display: flex;
-              flex-direction: column;
-            `}
-          >
-            <div className={styles.inputWrapper}>
-              <label
-                htmlFor="firstName"
-                css={css`
-                  width: 30%;
-                `}
-              >
-                First Name:
-              </label>
+          <div className="flex-container">
+            <div className="inputWrapper">
+              <label htmlFor="firstName">First Name:</label>
               <Input
                 style={{ border: errors.firstName && "red 2px solid" }}
                 type="text"
@@ -81,7 +67,7 @@ const ContactForm = () => {
                 })}
               />
             </div>
-            <div className={styles.inputWrapper}>
+            <div className="inputWrapper">
               <label htmlFor="lastName">Last Name</label>
               <Input
                 style={{ border: errors.lastName && "red 2px solid" }}
@@ -93,7 +79,7 @@ const ContactForm = () => {
                 })}
               />
             </div>
-            <div className={styles.inputWrapper}>
+            <div className="inputWrapper">
               <label htmlFor="email">Email:</label>
               <Input
                 style={{ border: errors.email && "red 2px solid" }}
@@ -110,7 +96,7 @@ const ContactForm = () => {
               />
             </div>
             {errors.email && <div>{errors.email.message}</div>}
-            <div className={styles.inputWrapper}>
+            <div className="inputWrapper">
               <label htmlFor="phone">Phone:</label>
               <Input
                 type="tel"
@@ -119,39 +105,58 @@ const ContactForm = () => {
               />
             </div>
             {errors.phone && <span>Phone is Required</span>}
-            <div className={styles.inputWrapper}>
+            <div className="inputWrapper">
               <label htmlFor="Message">Message:</label>
               <textarea
-                css={css`
-                  resize: vertical;
-                  max-height: 300px;
-                  min-height: 180px;
-                  background-color: var(--lightGray);
-                  border-radius: 5px;
-                  border: #eaeaea 1px solid;
-                  padding: 8px;
-                  font-size: 18px;
-                  line-height: 22px;
-                  font-family: Raleway;
-                `}
                 name="Message"
                 ref={register({ required: "Message is Required" })}
               />
             </div>
           </div>
-          <div
-            css={css`
-              width: 100%;
-              display: flex;
-              justify-content: flex-end;
-            `}
-          >
+          <div className="button-container">
             <SubmitButton type="submit">Submit</SubmitButton>
           </div>
         </NetlifyFormComponent>
       </NetlifyFormProvider>
-    </motion.div>
+    </ContactContainer>
   );
 };
 
 export default ContactForm;
+
+const ContactContainer = styled(motion.div)`
+  .netlify-form-provider {
+    grid-area: form;
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      .inputWrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        label {
+          width: 30%;
+        }
+        input,
+        textarea {
+          width: 70%;
+          resize: vertical;
+          max-height: 300px;
+          min-height: 180px;
+          background-color: var(--lightGray);
+          border-radius: 5px;
+          border: #eaeaea 1px solid;
+          padding: 8px;
+          font-size: 18px;
+          line-height: 22px;
+          font-family: Raleway;
+        }
+      }
+      .button-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+`;

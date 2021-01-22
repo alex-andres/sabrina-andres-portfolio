@@ -70,7 +70,12 @@ const TeaserLarge2 = ({ className }) => {
   return (
     <TeaserLarge
       backgroundImage={sources}
-      claimText={"Here is a claim"}
+      claimHeading={
+        "Expanding knowledge of contemporary art through continued research"
+      }
+      claimBody={
+        "Sabrina leverages her international network which allows for constant discovery of new markets, and provides her clients with the freshest insights in the artworld. "
+      }
       className={"teaserLarge1"}
       backgroundTitle={`Ser Serpas
 Untitled, 2019

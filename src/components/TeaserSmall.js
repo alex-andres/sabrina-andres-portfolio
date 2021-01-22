@@ -105,9 +105,8 @@ Private Collection, Copenhagen, DK"
           `}
         >
           Sabrina fosters meaningful and long lasting professional relationships
-          by prioritizing her client’s needs while leveraging her international
-          network through her refreshingly approachable communication skills and
-          her emphasis on accountability.
+          by prioritizing her client’s needs through her refreshingly
+          approachable communication skills and her emphasis on accountability.
         </p>
       </motion.div>
     </motion.div>

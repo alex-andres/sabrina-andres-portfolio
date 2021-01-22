@@ -1,10 +1,10 @@
 import React from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
+import { Spiral as Hamburger } from "hamburger-react";
 import { useMenuContext } from "../../state/Menu";
 import NavLinks from "./NavLinks";
 import { useScroll } from "../../hooks/useScroll";
-import { Spiral as Hamburger } from "hamburger-react";
 import LogoLink from "./LogoLink.js";
 
 const DesktopNavbar = () => {
@@ -19,6 +19,7 @@ const DesktopNavbar = () => {
         toggle={toggleMenu}
         duration={0}
         className="hamburger-react"
+        aria-label="hamburger menu"
       />
     </DesktopNav>
   );

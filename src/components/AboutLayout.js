@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { motion } from "framer-motion";
@@ -31,32 +31,9 @@ const AboutLayout = ({ content }) => {
   };
 
   return (
-    <div
-      css={css`
-        display: grid;
-        width: 100%;
-        margin: 5rem auto;
-        padding: 0 3vw;
-        grid-template-columns: 3fr 4fr;
-        grid-template-areas:
-          "heading main"
-          "heading img";
-        grid-gap: 30px;
-        @media screen and (max-width: 800px) {
-          grid-template-columns: 1fr;
-          grid-template-areas: "heading" "main" "img";
-          padding: 0 3rem;
-          grid-gap: 30px;
-          width: 100%;
-          margin: 5rem auto;
-        }
-      `}
-    >
+    <ContainerDiv>
       <motion.div
         className="heading"
-        css={css`
-          grid-area: heading;
-        `}
         initial="hidden"
         animate="visible"
         variants={textVariants}
@@ -65,10 +42,6 @@ const AboutLayout = ({ content }) => {
       </motion.div>
       <motion.div
         className="main"
-        css={css`
-          grid-area: main;
-          margin-bottom: 3rem;
-        `}
         initial="hidden"
         animate="visible"
         variants={imageVariants}
@@ -76,24 +49,49 @@ const AboutLayout = ({ content }) => {
         {documentToReactComponents(content.body)}
       </motion.div>
       <motion.div
-        css={css`
-          grid-area: img;
-        `}
+        className="image-container"
         initial="hidden"
         animate="visible"
         variants={imageVariants}
       >
-        <Img
-          css={css`
-            margin-bottom: 1rem;
-            max-width: 50rem !important;
-          `}
-          fluid={content.image}
-          alt={content.alt}
-        />
+        <Img className="image" fluid={content.image} alt={content.alt} />
       </motion.div>
-    </div>
+    </ContainerDiv>
   );
 };
 
 export default AboutLayout;
+
+const ContainerDiv = styled.div`
+  display: grid;
+  width: 100%;
+  margin: 5rem auto;
+  padding: 0 3vw;
+  grid-template-columns: 3fr 4fr;
+  grid-template-areas:
+    "heading main"
+    "heading img";
+  grid-gap: 30px;
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "heading" "main" "img";
+    padding: 0 3rem;
+    grid-gap: 30px;
+    width: 100%;
+    margin: 5rem auto;
+  }
+  .heading {
+    grid-area: heading;
+  }
+  .main {
+    grid-area: main;
+    margin-bottom: 3rem;
+  }
+  .image-container {
+    grid-area: img;
+    .image {
+      margin-bottom: 1rem;
+      max-width: 50rem !important;
+    }
+  }
+`;

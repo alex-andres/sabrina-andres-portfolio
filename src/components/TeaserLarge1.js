@@ -70,7 +70,8 @@ const TeaserLarge1 = ({ className }) => {
   return (
     <TeaserLarge
       backgroundImage={sources}
-      claimText={"Facilitating investment in passion"}
+      claimHeading="Facilitating investment in passion"
+      claimBody="Sabrina creates a personalized experience for private collectors and corporations with a clearly defined, independent stance in the art field."
       className={"teaserLarge1"}
       backgroundTitle={`Alex Becerra
 Faces Faces Expansion, 2020

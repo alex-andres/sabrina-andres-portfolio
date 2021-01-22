@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import Button from "./SubmitButton";
@@ -61,20 +60,6 @@ const Footer = () => {
             viewBox="0 0 503.84 503.84"
             title="Instagram Logo"
             alt="Instagram Logo"
-            css={css`
-              height: 29px;
-              width: 29px;
-              transition: 0.5s;
-              .section {
-                fill: var(--black);
-              }
-              &:hover {
-                .section {
-                  fill: var(--midGray);
-                }
-                transition: 0.5s;
-              }
-            `}
           >
             <path
               className="section"
@@ -88,7 +73,13 @@ const Footer = () => {
           </svg>
         </a>
       </div>
-      <form className="sign-up-form" action="">
+      <form
+        className="sign-up-form"
+        // action={(e) => {
+        //   e.preventDefault();
+        //   addToMailChimp(email);
+        // }}
+      >
         <label htmlFor="emailSignUp" className="sign-up-heading">
           <strong>Sign up for Email Updates</strong>
         </label>
@@ -110,20 +101,6 @@ const Footer = () => {
           viewBox="0 0 503.84 503.84"
           title="Instagram Logo"
           alt="Instagram Logo"
-          css={css`
-            height: 29px;
-            width: 29px;
-            transition: fill 0.5s;
-            .section {
-              fill: var(--black);
-            }
-            &:hover {
-              .section {
-                fill: var(--midGray);
-                transition: fill 0.5s;
-              }
-            }
-          `}
         >
           <path
             className="section"
@@ -139,7 +116,7 @@ const Footer = () => {
 
       <small className="copyright">© 2020 Sabrina Andres Art Advisory </small>
       <small className="credits">
-        Crafted with Love by{" "}
+        Crafted with Love by
         <a
           href="https://aandres.dev"
           title="View Alex Andres' Web Development Portfolio"
@@ -181,7 +158,22 @@ const StyledFooter = styled(motion.footer)`
       color: var(--midGray);
     }
   }
-
+  .instagram-link {
+    svg {
+      height: 29px;
+      width: 29px;
+      transition: fill 0.5s;
+      .section {
+        fill: var(--black);
+      }
+      &:hover {
+        .section {
+          fill: var(--midGray);
+          transition: fill 0.5s;
+        }
+      }
+    }
+  }
   .instagram-link-medium {
     display: none;
   }
@@ -239,6 +231,20 @@ const StyledFooter = styled(motion.footer)`
       align-items: center;
       .email {
         margin-right: 1.2rem;
+      }
+      svg {
+        height: 29px;
+        width: 29px;
+        transition: 0.5s;
+        .section {
+          fill: var(--black);
+        }
+        &:hover {
+          .section {
+            fill: var(--midGray);
+          }
+          transition: 0.5s;
+        }
       }
     }
     .instagram-link {

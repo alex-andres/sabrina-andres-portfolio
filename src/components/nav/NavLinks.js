@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useMenuContext } from "../../state/Menu";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { Link } from "gatsby";
+import { VisitedContext } from "../../contexts/VisitedContext";
 
 const NavLinks = () => {
-  const returnIndexSeconds = (index) => {
-    return `.${index}s`;
-  };
+  const [visited] = useContext(VisitedContext);
   const { closeMenu } = useMenuContext();
   const pageLinks = [
     "home",
@@ -20,14 +19,14 @@ const NavLinks = () => {
   return (
     <NavLinksWrapper className="nav-links">
       {pageLinks.map((pageLink, index) => (
-        <AnimatedLi key={pageLink}>
+        <AnimatedLi key={pageLink} className={visited ? "visited" : ""}>
           <NavLink
             to={`/${pageLink === "home" ? "" : pageLink}`}
             onClick={closeMenu}
             className={`${pageLink}-link`}
-            css={css`
-              animation-delay: ${returnIndexSeconds(index)};
-            `}
+            // css={css`
+            //   animation-delay: ${returnIndexSeconds(index)};
+            // `}
           >
             {pageLink.replace(/^\w/, (c) => c.toUpperCase())}
           </NavLink>
@@ -38,6 +37,22 @@ const NavLinks = () => {
 };
 
 export default NavLinks;
+
+const createDelayChain = () => {
+  let styles = "";
+
+  for (let i = 1; i < 7; i++) {
+    styles += `
+       :nth-of-type(${i}) {
+         animation-delay: ${i * 0.15}s;
+       }
+     `;
+  }
+
+  return css`
+    ${styles}
+  `;
+};
 
 const NavLinksWrapper = styled.ul`
   flex: 1;
@@ -96,6 +111,10 @@ const AnimatedLi = styled.li`
       opacity: 1;
       transform: translateY(0px);
     }
+  }
+  &.visited {
+    animation-delay: 0;
+    ${createDelayChain()}
   }
 `;
 const NavLink = styled(Link)`

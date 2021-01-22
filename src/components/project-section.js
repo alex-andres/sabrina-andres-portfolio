@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import ProjectPreview from "./project-preview";
 import useProjects from "../hooks/use-projects";
-import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -25,38 +25,35 @@ export default () => {
     }
   }, [controls, inView5]);
   return (
-    <motion.div
+    <ProjectContainer
       ref={ref5}
       animate={controls}
       initial="hidden"
       variants={projectVariants}
-      css={css`
-        width: 90vw;
-        margin: 7rem auto;
-        padding: 4rem 0;
-      `}
     >
-      <h2
-        css={css`
-          margin: 0 0 5rem;
-          @media screen and (min-width: 768px) {
-            width: 65%;
-          }
-        `}
-      >
-        Interested in seeing some of Sabrina's Past work?
-      </h2>
-      <div
-        css={css`
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-          grid-gap: 2rem;
-        `}
-      >
+      <h2>Interested in seeing some of Sabrina's curatorial projects?</h2>
+      <div className="grid-container">
         {projects.map((project) => (
           <ProjectPreview key={project.slug} project={project} />
         ))}
       </div>
-    </motion.div>
+    </ProjectContainer>
   );
 };
+
+const ProjectContainer = styled(motion.div)`
+  width: 90vw;
+  margin: 7rem auto;
+  padding: 4rem 0;
+  h2 {
+    margin: 0 0 5rem;
+    @media screen and (min-width: 768px) {
+      width: 65%;
+    }
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-gap: 2rem;
+  }
+`;

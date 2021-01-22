@@ -97,18 +97,15 @@ Private Collection, Copenhagen, DK"
           grid-area: text;
         `}
       >
-        <h2
+        <p
           css={css`
-            margin-bottom: 2rem;
+            font-size: 2rem;
           `}
         >
-          Teaser Small
-        </h2>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non quis
-          tenetur porro rem nobis quo repellat sequi pariatur eveniet
-          voluptatum, repellendus tempora harum dolorum, dignissimos
-          perferendis. Natus quidem iste ullam?
+          Particularly during this unprecedented time and with limited in-person
+          interaction, Sabrina excels in quick adaptation, judgment, and
+          creative action. She strives to offer her clients a highly flexible
+          means of advising.
         </p>
       </motion.div>
     </motion.div>
