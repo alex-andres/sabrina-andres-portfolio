@@ -10,7 +10,7 @@ const TeaserSmall2 = ({ className }) => {
       query {
         image: file(relativePath: { eq: "small-teaser-2.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 1000) {
+            fluid(maxWidth: 1500) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -32,21 +32,28 @@ const TeaserSmall2 = ({ className }) => {
   };
   const textVariants = {
     hidden: {
-      x: 800,
+      y: 20,
+      opacity: 0,
     },
     visible: {
-      x: 0,
+      y: 0,
+      opacity: 1,
       transition: {
-        duration: 1.5,
-        ease: "easeInOut",
+        duration: 0.75,
+        ease: "easeOut",
       },
     },
   };
   const controls = useAnimation();
-  const [ref3, inView3] = useInView({ threshold: 0.15 });
+  const [ref3, inView3] = useInView({
+    triggerOnce: true,
+    rootMargin: "-100px 0px",
+  });
   useEffect(() => {
     if (inView3) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [controls, inView3]);
 
@@ -58,10 +65,12 @@ const TeaserSmall2 = ({ className }) => {
       variants={containerVariants}
       css={css`
         display: grid;
+        margin-top: 2rem;
         margin-bottom: 7rem;
         grid-temlate-columns: 1fr;
         grid-template-areas: "text" "image";
         @media screen and (min-width: 767px) {
+          margin-top: 12rem;
           grid-template-columns: 1fr 1fr;
           grid-template-areas: "image text";
           grid-gap: 40px;
@@ -76,13 +85,13 @@ const TeaserSmall2 = ({ className }) => {
         `}
         fluid={imageData}
         className={className}
-        alt="Dominique Teufen's Einfalt, A framed photograph in a dark living room setting"
-        title="Dominique Teufen
-Einfalt, 2014
-Hahnemühle photo rag mounted on aluminum, UV-glass
-70 x 105 cm (27 1/2 x 41 3/8 in)
-Edition of 5, plus 2 AP's
-Private Collection, Copenhagen, DK"
+        alt="Stephanie Temma Hier's Re-group and Re-grout (Fukushima Daisy III), 2019 mounted on white wall"
+        title="Stephanie Temma Hier
+Re-group and Re-grout (Fukushima Daisy III), 2019
+Oil on canvas with glazed stoneware frame
+23 x 36 x 5 cm (9 x 14 x 2 in)
+Courtesy of the artist and Bradley Ertaskiran
+Private Collection, Los Angeles, CA, US"
       />
       <motion.div
         variants={textVariants}
@@ -92,14 +101,23 @@ Private Collection, Copenhagen, DK"
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          margin: 0 auto 6rem;
+          margin: 4rem auto 6rem;
           width: calc(100% - 40px * 2);
           grid-area: text;
+          @media screen and (min-width: 768px) {
+            margin: 0 auto;
+          }
         `}
       >
         <p
           css={css`
-            font-size: 2rem;
+            font-size: 1.6rem;
+            @media screen and (min-width: 500px) {
+              font-size: 1.8rem;
+            }
+            @media screen and (min-width: 1000px) {
+              font-size: 2rem;
+            }
           `}
         >
           Particularly during this unprecedented time and with limited in-person

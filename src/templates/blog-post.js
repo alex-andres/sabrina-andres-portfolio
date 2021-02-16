@@ -5,7 +5,7 @@ import { BLOCKS } from "@contentful/rich-text-types";
 import { SRLWrapper } from "simple-react-lightbox";
 import { css } from "@emotion/core";
 import GalleryGrid from "../components/GalleryGrid";
-import SEO from "../components/SEO/SEO";
+import SEO from "../components/SEO";
 
 const options = {
   renderNode: {
@@ -22,7 +22,8 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
     <>
       <SEO
         title={post.title}
-        image={post.heroImage.fluid.src}
+        image={post?.heroImage?.fluid?.src}
+        ogImage={post?.seoFbtwitterImage?.fixed?.src}
         description={post.seoDescription}
       />
       <div
@@ -42,6 +43,7 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
             className="wrapper"
             css={css`
               width: 90vw;
+              margin: 5rem 0;
               @media screen and (min-width: 768px) {
                 width: 60%;
               }
@@ -106,6 +108,11 @@ export const pageQuery = graphql`
       heroImage {
         fluid(maxWidth: 1180, background: "rgb:000000") {
           ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+      seoFbtwitterImage {
+        fixed(width: 990, height: 500) {
+          ...GatsbyContentfulFixed
         }
       }
       body {

@@ -41,7 +41,6 @@ const DesktopNav = styled.nav`
   height: 12.5rem;
   max-width: 100vw;
   width: 100%;
-  max-width: inherit;
   z-index: 3;
   padding: 0 3vw;
   margin: 0 auto;
@@ -56,7 +55,7 @@ const DesktopNav = styled.nav`
   @media screen and (max-width: 768px) {
     justify-content: space-between;
     padding: 0 30px;
-    height: 6rem;
+    height: 7rem;
   }
   .nav-links {
     @media screen and (max-width: 768px) {

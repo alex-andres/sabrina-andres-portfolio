@@ -3,23 +3,36 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import ContactForm from "../components/ContactForm";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 export default () => {
-  const ContactContainer = styled.div`
+  const ContactTextContainer = styled.div`
     display: grid;
     max-width: 90vw;
-    margin: 0 auto;
+    margin: 5rem auto;
     grid-template-columns: 1fr 1fr;
+    .contact-info {
+      grid-area: contact-info;
+    }
+
     grid-template-areas: "contact-info form";
     grid-gap: 75px;
     @media screen and (max-width: 800px) {
+      margin: 8rem auto 5rem;
       grid-template-areas:
-        "contact-info"
-        "form";
+        "contact-info contact-info"
+        "form form";
       grid-gap: 30px;
     }
     .contact-info {
-      grid-area: contact-info;
+      a {
+        color: var(--black);
+        transition: color 0.5s ease-out;
+        &:hover {
+          color: var(--midGray);
+          transition: color 0.5s ease-out;
+        }
+      }
     }
     .heading {
       margin-bottom: 2rem;
@@ -40,8 +53,9 @@ export default () => {
       &:hover {
         .section {
           fill: var(--midGray);
+          transition: 0.5s color ease-out;
         }
-        transition: 0.5s;
+        transition: 0.5s color ease-out;
       }
     }
     ContactForm {
@@ -61,14 +75,18 @@ export default () => {
     },
   };
   return (
-    <ContactContainer>
+    <ContactTextContainer>
+      <SEO
+        title="Contact Sabrina for Art Advisory in Los Angeles & Zurich"
+        description="Get in touch with Sabrina through email: sabrina@sabrinaandres.com , sign up for her mailing list to receive news and updates."
+      />
       <motion.div
         className="contact-info"
         initial="hidden"
         animate="visible"
         variants={leftVariants}
       >
-        <div className="heading" css={css``}>
+        <div className="heading">
           <h1>Contact</h1>
         </div>
         <div className="heading">
@@ -98,7 +116,7 @@ export default () => {
               title="Give Sabrina a Phone Call"
               aria-label=" Call Sabrina Andres at 6 2 6. 3 6 5. 9 6 0 9."
             >
-              (626) 372-0911
+              (626) 365-9609
             </a>
           </p>
           <p>
@@ -129,7 +147,7 @@ export default () => {
           </p>
         </div>
       </motion.div>
-      <ContactForm />
-    </ContactContainer>
+      <ContactForm className="form" />
+    </ContactTextContainer>
   );
 };

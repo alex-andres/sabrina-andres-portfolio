@@ -32,21 +32,28 @@ const TeaserSmall = ({ className }) => {
   };
   const textVariants = {
     hidden: {
-      x: 800,
+      y: 20,
+      opacity: 0,
     },
     visible: {
-      x: 0,
+      y: 0,
+      opacity: 1,
       transition: {
-        duration: 1.5,
-        ease: "easeInOut",
+        duration: 0.75,
+        ease: "easeOut",
       },
     },
   };
   const controls = useAnimation();
-  const [ref3, inView3] = useInView({ threshold: 0.15 });
+  const [ref3, inView3] = useInView({
+    triggerOnce: true,
+    rootMargin: "-100px 0px",
+  });
   useEffect(() => {
     if (inView3) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [controls, inView3]);
 
@@ -57,7 +64,7 @@ const TeaserSmall = ({ className }) => {
       initial="hidden"
       variants={containerVariants}
       css={css`
-        margin-top: 7rem;
+        margin-top: 3rem;
         display: grid;
         margin-bottom: 7rem;
         grid-temlate-columns: 1fr;
@@ -83,6 +90,7 @@ const TeaserSmall = ({ className }) => {
 Untitled, 2014-2015
 Oil on canvas
 191 x 110 x 3 cm (75 1/4 x 43 1/4 x 1 1/8 in)
+Courtesy of the artist and Galerie Francesca Pia
 Private Collection, Copenhagen, DK"
       />
       <motion.div
@@ -93,15 +101,23 @@ Private Collection, Copenhagen, DK"
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          margin: 0 auto 6rem;
+          margin: 4rem auto 6rem;
           width: calc(100% - 40px * 2);
           grid-area: text;
+          @media screen and (min-width: 768px) {
+            margin: 0 auto;
+          }
         `}
       >
         <p
           css={css`
-            line-height: 2;
-            font-size: 2rem;
+            font-size: 1.6rem;
+            @media screen and (min-width: 500px) {
+              font-size: 1.8rem;
+            }
+            @media screen and (min-width: 1000px) {
+              font-size: 2rem;
+            }
           `}
         >
           Sabrina fosters meaningful and long lasting professional relationships

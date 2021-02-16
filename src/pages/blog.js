@@ -1,7 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import get from "lodash/get";
 import { Helmet } from "react-helmet";
 import ArticlePreview from "../components/article-preview";
 import { css } from "@emotion/core";
@@ -10,7 +9,6 @@ import { motion } from "framer-motion";
 
 class BlogIndex extends React.Component {
   render() {
-    const siteTitle = get(this, "props.data.site.siteMetadata.title");
     const posts = this.props.data.allContentfulBlogPost.edges;
 
     const imageVariants = {
@@ -40,7 +38,10 @@ class BlogIndex extends React.Component {
 
     return (
       <>
-        <Helmet title={siteTitle} />
+        <Helmet
+          title="Artist Interviews, Artist Picks and Blog Posts"
+          description="Stay up to date with Sabrina’s artist picks, personal highlights, interviews and other stories from the art world."
+        />
         <div
           css={css`
             background: white;

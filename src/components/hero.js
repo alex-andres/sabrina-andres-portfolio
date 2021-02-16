@@ -8,8 +8,8 @@ const Hero = () => {
   const [visited, setVisited] = useContext(VisitedContext);
   const toggle = React.useCallback(() => {
     if (!visited) {
-      setVisited(visited === true);
       localStorage.setItem("visited", "true");
+      setVisited(true);
     }
   }, [visited, setVisited]);
   const data = useStaticQuery(
@@ -39,6 +39,7 @@ const Hero = () => {
 The Eventual End (Salk Institute), 2020
 Oil on linen
 194 x 194 cm (76 1/3 x 76 1/3 in)
+Courtesy of the artist
 Private Collection, Nevada, US"
         />
       </div>
@@ -46,11 +47,20 @@ Private Collection, Nevada, US"
         className={visited ? "claim-cta-wrapper visited" : "claim-cta-wrapper"}
         onAnimationEnd={onAnimationEnd}
       >
-        <h1 className="hero-h1">What art will you discover today?</h1>
+        <h1 className="hero-h1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360.25 123.91">
+            <text
+              transform="translate(0 93.67)"
+              fontSize="110"
+              fontFamily="LTCBodoni175Pro,'LTC Bodoni 175 Pro'"
+            >
+              Sabrina Andres Art Advisory
+            </text>
+          </svg>
+        </h1>
         <p className="hero-sub-heading">
-          Sabrina Andres offers art advisory services internationally with a
-          focus on contemporary art, ranging from early career to established
-          artists.
+          Personalized art consulting with a focus on contemporary art, ranging
+          from early career to established international artists.
         </p>
       </div>
     </HeroContainer>
@@ -102,10 +112,10 @@ const HeroContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     margin: 2rem auto 3rem;
     opacity: 0;
-    width: calc(100% - 40px * 2);
+    width: calc(100% - 30px * 2);
     animation-name: leftToRight;
     animation-duration: 1.5s;
     animation-delay: 9.5s;
@@ -123,8 +133,8 @@ const HeroContainer = styled.div`
         ttransform: translateX(0);
       }
     }
-    @media screen and (min-width: 768px) {
-      margin: 0 3rem;
+    @media screen and (max-width: 768px) {
+      margin: 6rem auto 3rem;
       justify-content: flex-start;
     }
     @media screen and (min-width: 1200px) {
@@ -132,7 +142,19 @@ const HeroContainer = styled.div`
     }
   }
   .hero-h1 {
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 10%;
     margin-bottom: 2.2rem;
+    svg {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
   }
   .hero-sub-heading {
     margin-bottom: 2rem;

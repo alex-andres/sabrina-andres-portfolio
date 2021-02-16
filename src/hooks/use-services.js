@@ -12,6 +12,16 @@ const useServices = () => {
           services {
             json
           }
+          image {
+            fluid(maxWidth: 1000, quality: 100) {
+              base64
+              aspectRatio
+              src
+              srcSet
+              sizes
+            }
+            description
+          }
         }
       }
     }
@@ -20,6 +30,7 @@ const useServices = () => {
     heading: data.allContentfulServicesPage.nodes[0].heading,
     description: data.allContentfulServicesPage.nodes[0].description.json,
     services: data.allContentfulServicesPage.nodes[0].services.json,
+    image: data.allContentfulServicesPage.nodes[0].image,
   };
 };
 

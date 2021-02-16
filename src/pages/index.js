@@ -5,20 +5,23 @@ import TeaserSection1 from "../components/TeaserSection1";
 import ProjectSection from "../components/project-section";
 import TeaserSection2 from "../components/TeaserSection2";
 import InstagramSection from "../components/InstagramSection";
-import SEO from "../components/SEO/SEO";
+import SEO from "../components/SEO";
 import LoadAnimation from "../components/LoadAnimation";
 import { VisitedContext } from "../contexts/VisitedContext";
 
 export default () => {
-  const [visited, setVisited] = useContext(VisitedContext);
-  if (localStorage.getItem("visited") === "true") {
-    setVisited(true);
-  }
+  const [visited] = useContext(VisitedContext);
+  // if (localStorage.getItem("visited") === "true") {
+  //   setVisited(true);
+  // }
 
   if (visited === true) {
     return (
       <>
-        <SEO title="Homepage Title" description="test description" />
+        <SEO
+          title="Art Advisory in Los Angeles & Zurich - SAAA"
+          description="Sabrina Andres offers exceptional art advisory services in Los Angeles with a focus on contemporary art, ranging from early career to blue chip artists."
+        />
         <Hero />
         <TeaserSection1 />
         <ServicesSection />
@@ -30,7 +33,10 @@ export default () => {
   } else {
     return (
       <>
-        <SEO title="Homepage Title" description="test description" />
+        <SEO
+          title="Art Advisory in Los Angeles & Zurich - SAAA"
+          description="Sabrina Andres offers exceptional art advisory services in Los Angeles with a focus on contemporary art, ranging from early career to blue chip artists."
+        />
         <LoadAnimation />
         <Hero />
         <TeaserSection1 />

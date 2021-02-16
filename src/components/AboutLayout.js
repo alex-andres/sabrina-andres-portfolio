@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { motion } from "framer-motion";
+import SEO from "./SEO";
 
 const AboutLayout = ({ content }) => {
   const imageVariants = {
@@ -32,6 +33,10 @@ const AboutLayout = ({ content }) => {
 
   return (
     <ContainerDiv>
+      <SEO
+        title="About Sabrina Andres, Los Angeles & Zurich based Art Advisor"
+        description="Sabrina has a background in Curatorial Studies and an international network of collectors, galleries and artists to provide access to a wide range of artworks."
+      />
       <motion.div
         className="heading"
         initial="hidden"
@@ -65,20 +70,17 @@ export default AboutLayout;
 const ContainerDiv = styled.div`
   display: grid;
   width: 100%;
-  margin: 5rem auto;
+  margin: 8rem auto;
   padding: 0 3vw;
-  grid-template-columns: 3fr 4fr;
-  grid-template-areas:
-    "heading main"
-    "heading img";
+  grid-template-columns: 1fr;
+  grid-template-areas: "heading" "main" "img";
   grid-gap: 30px;
-  @media screen and (max-width: 800px) {
-    grid-template-columns: 1fr;
-    grid-template-areas: "heading" "main" "img";
+  @media screen and (min-width: 800px) {
+    grid-template-columns: 3fr 4fr;
+    grid-template-areas:
+      "heading heading"
+      "img main";
     padding: 0 3rem;
-    grid-gap: 30px;
-    width: 100%;
-    margin: 5rem auto;
   }
   .heading {
     grid-area: heading;

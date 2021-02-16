@@ -1,5 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
+import SEO from "../components/SEO";
 export default () => (
   <div
     css={css`
@@ -7,6 +8,7 @@ export default () => (
       margin: 0 auto;
     `}
   >
+    <SEO title="Privacy Policy for Sabrinaandres.com" />
     <h1>Privacy policy</h1>
     <h4>Privacy Policy - Effective Date: April 18, 2020</h4>
     <p>

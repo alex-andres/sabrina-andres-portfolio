@@ -5,10 +5,11 @@ const GlobalStyles = () => {
     <Global
       styles={css`
       :root{
-        --black: #2E2E2E;
+        --black: #1C1C1C;
         --white: #fff;
         --lightGray: #f1f1ef;
         --midGray: #8e8e8e;
+        --darkGray: #2E2E2E;
       }
 
       * {
@@ -29,7 +30,7 @@ const GlobalStyles = () => {
         color: var(--black);
         font-family: "Raleway", sans-serif;
         font-weight: 400;
-        line-height: 1.4;
+        line-height: 1.7;
         display:flex;
         flex-direction: column;
         height: 100%;
@@ -61,7 +62,7 @@ const GlobalStyles = () => {
       h6 {
         font-family: "ltc-bodoni-175", serif;;
         color: var(--black); 
-        line-height 1.1;
+        line-height: 1.1;
         font-weight: 500;
       }
       h1{

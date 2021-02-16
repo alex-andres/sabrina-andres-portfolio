@@ -9,20 +9,25 @@ export default () => {
   const posts = useInstagram();
 
   const controls = useAnimation();
-  const [ref6, inView6] = useInView({ threshold: 0.1 });
+  const [ref6, inView6] = useInView({
+    triggerOnce: true,
+    rootMargin: "-100px 0px",
+  });
   useEffect(() => {
     if (inView6) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [controls, inView6]);
   const igVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1.75,
-        staggerChildren: 0.5,
+        ease: "easeOut",
+        duration: 0.75,
       },
     },
   };

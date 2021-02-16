@@ -37,16 +37,17 @@ module.exports = {
   siteMetadata: {
     title: "Sabrina Andres Art Advisory",
     description:
-      "Sabrina Andres offers Art Consulting services in the Los Angeles and Pasadena area, contact her today to find up and coming artists",
+      "Sabrina Andres offers exceptional art advisory services in Los Angeles with a focus on contemporary art, ranging from early career to blue chip artists.",
     titleTemplate: "%s - Sabrina Andres Art Advisory",
     siteUrl: "https://sabrinaandres.com",
-    image: "./static/images/logo-1024.png",
-    banner: "./static/images/logo-1024.png",
+    ogImage: "./static/logos/og-logo.jpg",
+    image: "./static/logos/logo-1024.png",
+    banner: "./static/logos/logo-1024.png",
     headline: "test headline",
     siteLanguage: "en",
     ogLanguage: "en",
     author: "Alex Andres",
-    twitterUsername: "sabrina_andres_art_advisory",
+    twitter: "sabrina_andres_art_advisory",
     facebook: "sabrina_andres_art_advisory",
   },
   pathPrefix: "/gatsby-contentful-starter",
@@ -80,21 +81,21 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        name: "Sabrina Andres - Los Angeles Art Consultant",
-        short_name: "Sabrina Andres Art Consultant",
-        description:
-          "Sabrina Andres offers Art Consulting services in the Los Angeles and Pasadena area, contact her today to find up and coming artists",
-        start_url: "/",
-        background_color: "#FFF",
-        theme_color: "#f1f1ef",
-        display: "minimal-ui",
-        icon: "src/favicon.png",
-      },
-    },
-    "gatsby-plugin-offline",
+    // {
+    //   resolve: "gatsby-plugin-manifest",
+    //   options: {
+    //     name: "Sabrina Andres - Los Angeles Art Consultant",
+    //     short_name: "Sabrina Andres Art Consultant",
+    //     description:
+    //       "Sabrina Andres offers Art Consulting services in the Los Angeles and Pasadena area, contact her today to find up and coming artists",
+    //     start_url: "/",
+    //     background_color: "#FFF",
+    //     theme_color: "#f1f1ef",
+    //     display: "minimal-ui",
+    //     icon: "src/favicon.png",
+    //   },
+    // },
+    // "gatsby-plugin-offline",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -129,7 +130,7 @@ module.exports = {
       options: {
         username: "sab_rina_n",
         access_token:
-          "EAABZBGabZCEcwBACSmehsPgo3k3yMFq1MvxEMfHGMSp9JmG97tkJCfPklzrTG9AS7u3FpsJRFawKBxVLuflnVKkZALogZCmwbnPRll8ZAQT6xcxmPiDnGuDjRIiSdKWc4Lj0TUVwExxUYo4YuxriqTY4IZBDSEW3RIqt9hx4PmTAZDZD",
+          "EAABZBGabZCEcwBALkKQWmi8hFQpf5YYOqZA2RdaiLiWZBgJImfb2dZB0FFAFsEef7kC3mqJRBZBvXsBCj8BuKnvQSfJE6UoYxcKhPffTinSHxASWhF30i07Hqy0C9gf55BfDKJS2HV33vvH26InWYFGZB43SYM12yKBskZBq49XDjgZDZD",
         instagram_id: 17841401975085766,
       },
     },

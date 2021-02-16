@@ -61,6 +61,8 @@ const ProjectPreview = ({ project }) => {
               h2 {
                 color: white;
                 transition: color 0.4s ease-in;
+                text-align: center;
+                margin: 0;
               }
             }
           }

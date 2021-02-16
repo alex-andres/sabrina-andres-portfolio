@@ -7,6 +7,9 @@ import { VisitedContext } from "../../contexts/VisitedContext";
 
 const NavLinks = () => {
   const [visited] = useContext(VisitedContext);
+  // if (localStorage.getItem("visited") === "true") {
+  //   setVisited(true);
+  // }
   const { closeMenu } = useMenuContext();
   const pageLinks = [
     "home",
@@ -24,9 +27,6 @@ const NavLinks = () => {
             to={`/${pageLink === "home" ? "" : pageLink}`}
             onClick={closeMenu}
             className={`${pageLink}-link`}
-            // css={css`
-            //   animation-delay: ${returnIndexSeconds(index)};
-            // `}
           >
             {pageLink.replace(/^\w/, (c) => c.toUpperCase())}
           </NavLink>
@@ -57,33 +57,40 @@ const createDelayChain = () => {
 const NavLinksWrapper = styled.ul`
   flex: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
   list-style: none;
   padding-inline-start: 0;
   max-width: 66rem;
+  li {
+    padding: 3rem;
+  }
   button {
     background: transparent;
     outline: none;
     border: none;
     cursor: pointer;
   }
-  @media screen and (max-width: 768px) {
-    justify-content: center;
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     li {
-      padding: 12px;
-      margin: 0 !important;
+      padding: 0;
     }
   }
 `;
 const AnimatedLi = styled.li`
-  animation-name: slidedown;
+  animation-name: slideUp;
   animation-duration: 0.75s;
   animation-delay: 8s;
   animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
   opacity: 0;
+  @media screen and (min-width: 768px) {
+    animation-name: slideDown;
+  }
   &:nth-of-type(1) {
     animation-delay: 8.15;
   }
@@ -102,7 +109,17 @@ const AnimatedLi = styled.li`
   &:nth-of-type(6) {
     animation-delay: 8.9s;
   }
-  @keyframes slidedown {
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  @keyframes slideDown {
     from {
       opacity: 0;
       transform: translateY(-100px);
@@ -119,17 +136,18 @@ const AnimatedLi = styled.li`
 `;
 const NavLink = styled(Link)`
   color: var(--black);
-  font-size: 1.8rem;
+  font-size: 3rem;
   font-weight: normal;
-  line-height: 2rem;
+  line-height: 3.2rem;
   text-decoration: none;
   font-weight: 300;
-  padding: 0.5em;
   margin: 0 0.5rem;
-  @media screen and (min-width: 845px) {
-    margin: 0 1.8rem;
-  }
   transition: color 0.5s;
+  @media screen and (min-width: 768px) {
+    font-size: 1.8rem;
+    font-weight: 2rem;
+    padding: 0.5rem;
+  }
   &.current-page {
     border-bottom: 2px solid var(--black);
     margin-top: 6.5px;
@@ -146,8 +164,7 @@ const NavLink = styled(Link)`
     transition: color 0.5s;
     margin-right: 0;
     &:hover {
-      background-color: var(--lightGray);
-      color: var(--black);
+      background-color: var(--midGray);
       transition: 0.5s;
     }
   }

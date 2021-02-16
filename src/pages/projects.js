@@ -3,6 +3,7 @@ import useProjects from "../hooks/use-projects";
 import ProjectPreview from "../components/project-preview";
 import { css } from "@emotion/core";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 export default () => {
   const projects = useProjects();
@@ -18,10 +19,14 @@ export default () => {
   };
   return (
     <motion.div animate="visible" initial="hidden" variants={projectVariants}>
+      <SEO
+        title="Art Exhibition Curation and Events in Los Angeles & Zurich"
+        description="Sabrina’s past involvement in the conception and realization of exhibitions and educational programs in cultural and commercial settings."
+      />
       <div
         css={css`
           max-width: 90vw;
-          margin: 0 auto;
+          margin: 9rem auto;
         `}
       >
         <h1

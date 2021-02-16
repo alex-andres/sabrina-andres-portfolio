@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { useForm } from "react-hook-form";
 import SubmitButton from "./SubmitButton";
 import Input from "./Input";
+// import addToMailchimp from "gatsby-plugin-mailchimp";
 import {
   useNetlifyForm,
   NetlifyFormProvider,
@@ -12,7 +13,7 @@ import {
 } from "react-netlify-forms";
 import { motion } from "framer-motion";
 
-const ContactForm = () => {
+const ContactForm = ({ className }) => {
   const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
   const netlify = useNetlifyForm({
@@ -42,6 +43,7 @@ const ContactForm = () => {
       initial="hidden"
       animate="visible"
       variants={rightVariants}
+      className={className}
     >
       <NetlifyFormProvider className="netlify-form-provider" {...netlify}>
         <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
@@ -55,8 +57,10 @@ const ContactForm = () => {
             </p>
           )}
           <div className="flex-container">
-            <div className="inputWrapper">
-              <label htmlFor="firstName">First Name:</label>
+            <div className="input-wrapper">
+              <label className="label" htmlFor="firstName">
+                First Name:
+              </label>
               <Input
                 style={{ border: errors.firstName && "red 2px solid" }}
                 type="text"
@@ -67,8 +71,10 @@ const ContactForm = () => {
                 })}
               />
             </div>
-            <div className="inputWrapper">
-              <label htmlFor="lastName">Last Name</label>
+            <div className="input-wrapper">
+              <label className="label" htmlFor="lastName">
+                Last Name:
+              </label>
               <Input
                 style={{ border: errors.lastName && "red 2px solid" }}
                 type="text"
@@ -79,8 +85,10 @@ const ContactForm = () => {
                 })}
               />
             </div>
-            <div className="inputWrapper">
-              <label htmlFor="email">Email:</label>
+            <div className="input-wrapper">
+              <label className="label" htmlFor="email">
+                Email:
+              </label>
               <Input
                 style={{ border: errors.email && "red 2px solid" }}
                 type="email"
@@ -96,8 +104,10 @@ const ContactForm = () => {
               />
             </div>
             {errors.email && <div>{errors.email.message}</div>}
-            <div className="inputWrapper">
-              <label htmlFor="phone">Phone:</label>
+            <div className="input-wrapper">
+              <label className="label" htmlFor="phone">
+                Phone:
+              </label>
               <Input
                 type="tel"
                 name="phone"
@@ -105,16 +115,31 @@ const ContactForm = () => {
               />
             </div>
             {errors.phone && <span>Phone is Required</span>}
-            <div className="inputWrapper">
-              <label htmlFor="Message">Message:</label>
+            <div className="input-wrapper">
+              <label className="label" htmlFor="Message">
+                Message:
+              </label>
               <textarea
                 name="Message"
                 ref={register({ required: "Message is Required" })}
               />
             </div>
           </div>
+
           <div className="button-container">
-            <SubmitButton type="submit">Submit</SubmitButton>
+            <div className="mailing-list-section-wrapper">
+              {/* <div className="input-wrapper">
+                <label className="mailing-list-label" for="sign-up">
+                  Join SAAA mailing list?
+                </label>
+                <input
+                  type="checkbox"
+                  name="sign-up"
+                  ref={register({ required: "Select one option" })}
+                />
+              </div> */}
+              <SubmitButton type="submit">Send</SubmitButton>
+            </div>
           </div>
         </NetlifyFormComponent>
       </NetlifyFormProvider>
@@ -125,24 +150,22 @@ const ContactForm = () => {
 export default ContactForm;
 
 const ContactContainer = styled(motion.div)`
-  .netlify-form-provider {
     grid-area: form;
     .flex-container {
       display: flex;
       flex-direction: column;
-      .inputWrapper {
+      .input-wrapper {
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        label {
+        .label {
           width: 30%;
         }
         input,
         textarea {
           width: 70%;
           resize: vertical;
-          max-height: 300px;
-          min-height: 180px;
           background-color: var(--lightGray);
           border-radius: 5px;
           border: #eaeaea 1px solid;
@@ -151,11 +174,28 @@ const ContactContainer = styled(motion.div)`
           line-height: 22px;
           font-family: Raleway;
         }
+        textarea{
+          max-height: 300px;
+          min-height: 180px;
+        }
       }
-      .button-wrapper {
-        width: 100%;
-        display: flex;
+      
+    }
+    .button-container{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      .mailing-list-section-wrapper{
+        width: 70%;
+        display: flex; 
         justify-content: flex-end;
+        align-items: center;
+        .mailing-list-label{
+          padding-right: 1rem;
+        }
+        .input-wrapper{
+          margin-bottom: 1rem;
+        }
       }
     }
   }

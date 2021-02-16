@@ -11,7 +11,7 @@ const Button = styled("button")`
   font-family: Raleway;
   font-weight: 300;
   transition: 0.5s;
-  border: none;
+  border: rgba(0, 0, 0, 0) 1px solid;
 
   &:hover {
     background-color: var(--white);

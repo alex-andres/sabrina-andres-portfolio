@@ -31,4 +31,7 @@ const MobileNav = styled.nav`
   justify-content: center;
   align-items: center;
   z-index: 1;
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
 `;

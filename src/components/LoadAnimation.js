@@ -140,8 +140,11 @@ const StyledLoad = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -6rem;
+  @media screen and (min-width: 768px) {
+    margin-top: -14rem;
+  }
   z-index: 5;
-  margin-top: -14rem;
   animation: fadeOut 1s linear forwards 7.5s;
   @keyframes fadeOut {
     to {

@@ -5,6 +5,7 @@ import TeaserLarge from "./TeaserLarge";
 const TeaserLarge2 = ({ className }) => {
   const {
     mobileImage,
+    tabletImage,
     eigtheenEighty,
     twentyOneThirtyEight,
     desktopImage,
@@ -13,6 +14,15 @@ const TeaserLarge2 = ({ className }) => {
       query {
         mobileImage: file(
           relativePath: { eq: "large-teaser-2/large-teaser-2-mobile.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1069) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+        tabletImage: file(
+          relativePath: { eq: "large-teaser-2/large-teaser-2-tablet.jpg" }
         ) {
           childImageSharp {
             fluid(quality: 90, maxWidth: 1069) {
@@ -55,6 +65,10 @@ const TeaserLarge2 = ({ className }) => {
   const sources = [
     mobileImage.childImageSharp.fluid,
     {
+      ...tabletImage.childImageSharp.fluid,
+      media: `(min-width: 500px)`,
+    },
+    {
       ...eigtheenEighty.childImageSharp.fluid,
       media: `(min-width: 768px)`,
     },
@@ -70,17 +84,16 @@ const TeaserLarge2 = ({ className }) => {
   return (
     <TeaserLarge
       backgroundImage={sources}
-      claimHeading={
-        "Expanding knowledge of contemporary art through continued research"
-      }
+      claimHeading={"Expansive Knowledge and Network"}
       claimBody={
-        "Sabrina leverages her international network which allows for constant discovery of new markets, and provides her clients with the freshest insights in the artworld. "
+        "Sabrina leverages her international network which enables constant discovery of new markets, and provides her clients with the freshest insights in the artworld. "
       }
       className={"teaserLarge1"}
       backgroundTitle={`Ser Serpas
 Untitled, 2019
 Acrylic on paper
 29 x 19 cm (11 3/8 x 7 1/2 in)
+Courtesy of the artist and Karma International
 Private Collection, Zurich, CH`}
     />
   );

@@ -5,6 +5,7 @@ import TeaserLarge from "./TeaserLarge";
 const TeaserLarge1 = ({ className }) => {
   const {
     mobileImage,
+    tabletImage,
     eigtheenEighty,
     twentyOneThirtyEight,
     desktopImage,
@@ -13,6 +14,15 @@ const TeaserLarge1 = ({ className }) => {
       query {
         mobileImage: file(
           relativePath: { eq: "large-teaser-1/large-teaser-1-mobile.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1069) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+        tabletImage: file(
+          relativePath: { eq: "large-teaser-1/large-teaser-1-tablet.jpg" }
         ) {
           childImageSharp {
             fluid(quality: 90, maxWidth: 1069) {
@@ -55,6 +65,10 @@ const TeaserLarge1 = ({ className }) => {
   const sources = [
     mobileImage.childImageSharp.fluid,
     {
+      ...tabletImage.childImageSharp.fluid,
+      media: `(min-width: 500px)`,
+    },
+    {
       ...eigtheenEighty.childImageSharp.fluid,
       media: `(min-width: 768px)`,
     },
@@ -71,12 +85,13 @@ const TeaserLarge1 = ({ className }) => {
     <TeaserLarge
       backgroundImage={sources}
       claimHeading="Facilitating investment in passion"
-      claimBody="Sabrina creates a personalized experience for private collectors and corporations with a clearly defined, independent stance in the art field."
+      claimBody="With a clearly defined, independent stance in the art field, Sabrina Andres Art Advisory creates tailored experiences for private collectors and corporations while adding tangible value to their collection."
       className={"teaserLarge1"}
       backgroundTitle={`Alex Becerra
 Faces Faces Expansion, 2020
 Oil on linen
 61 x 45.7 cm (24 x 18 in)
+Courtesy of the artist and Karma International
 Private Collection, Nevada, US`}
     />
   );

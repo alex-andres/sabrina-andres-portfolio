@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import GlobalStyles from "../styles/Global";
 import Helmet from "react-helmet";
 import useSiteMetadata from "../hooks/use-sitemetadata";
@@ -11,16 +11,15 @@ import { VisitedContext } from "../contexts/VisitedContext";
 const Layout = ({ children }) => {
   const [visited, setVisited] = useContext(VisitedContext);
   const { title, description } = useSiteMetadata();
-  const toggle = React.useCallback(() => {
-    if (!visited) {
-      setVisited(visited === true);
-      localStorage.setItem("visited", "true");
+  // const toggle = React.useCallback(() => {
+  //   setVisited(visited === true);
+  //   localStorage.setItem("visited", "true");
+  // }, [visited, setVisited]);
+  useEffect(() => {
+    if (localStorage.getItem("visited") === "true") {
+      setVisited(true);
     }
-  }, [visited, setVisited]);
-
-  if (localStorage.getItem("visited") === "true") {
-    toggle();
-  }
+  });
   return (
     <>
       <Helmet>

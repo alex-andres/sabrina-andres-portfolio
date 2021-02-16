@@ -58,14 +58,14 @@ const StyledLogo = styled(Link)`
   animation-duration: 0.75s;
   animation-delay: 7.85s;
   animation-fill-mode: forwards;
-  &.visited{
+  &.visited {
     animation-delay: 0s;
   }
 
   @keyframes slidedown {
     from {
       opacity: 0;
-      transform: translateY(-15rem;
+      transform: translateY(-15rem);
     }
     to {
       opacity: 1;
