@@ -32,17 +32,7 @@ const TeaserLarge = ({
       transition: {
         ease: "easeOut",
         duration: 0.75,
-        delay: 5.25,
-      },
-    },
-    delay: {
-      opacity: 1,
-      y: 0,
-      x: "-50%",
-      transition: {
-        ease: "easeOut",
-        duration: 0.75,
-        delay: 5.25,
+        delay: 0.25,
       },
     },
   };
@@ -52,10 +42,9 @@ const TeaserLarge = ({
     threshold: 0.2,
   });
   useEffect(() => {
-    // if (inView2 && visited) {
-    //   controls.start("visible");
-    // } else {
-    controls.start("visible");
+    if (inView2 && visited) {
+      controls.start("visible");
+    }
   }, [controls, inView2, visited]);
   return (
     <motion.div
