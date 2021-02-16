@@ -14,7 +14,6 @@ import {
 import { motion } from "framer-motion";
 
 const ContactForm = ({ className }) => {
-  const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
   const netlify = useNetlifyForm({
     name: "react-hook-form",
@@ -48,7 +47,7 @@ const ContactForm = ({ className }) => {
       <NetlifyFormProvider className="netlify-form-provider" {...netlify}>
         <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
           <Honeypot />
-          <Recaptcha siteKey={RECAPTCHA_KEY} invisible />
+          <Recaptcha siteKey={`${process.env.SITE_RECAPTCHA_KEY}`} invisible />
           {netlify.success && <p>Thanks for contacting us!</p>}
           {netlify.error && (
             <p>
