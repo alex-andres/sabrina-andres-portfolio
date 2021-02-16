@@ -129,16 +129,14 @@ module.exports = {
       resolve: `gatsby-source-instagram`,
       options: {
         username: "sab_rina_n",
-        access_token:
-          "EAABZBGabZCEcwBALkKQWmi8hFQpf5YYOqZA2RdaiLiWZBgJImfb2dZB0FFAFsEef7kC3mqJRBZBvXsBCj8BuKnvQSfJE6UoYxcKhPffTinSHxASWhF30i07Hqy0C9gf55BfDKJS2HV33vvH26InWYFGZB43SYM12yKBskZBq49XDjgZDZD",
-        instagram_id: 17841401975085766,
+        access_token: process.env.INSTAGRAM_API_KEY,
+        instagram_id: process.env.INSTAGRAM_API_ID,
       },
     },
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
-        endpoint:
-          "https://sabrinaandres.us7.list-manage.com/subscribe/post?u=dd4744223b51981325ecb4cc9&amp;id=ff51c0cb23",
+        endpoint: process.env.MAIL_CHIMP_ENDPOINT,
         timeout: 3500,
       },
     },
