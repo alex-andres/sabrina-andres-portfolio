@@ -101,10 +101,8 @@ const GlobalStyles = () => {
       li {
         margin-top: .25rem;
       }
-      main{
-         * + * {
-        margin-bottom: 1rem;
-      }
+      ${'' /* main{
+         */}
       }
       a{
         text-decoration: none;

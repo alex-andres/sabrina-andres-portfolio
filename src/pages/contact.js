@@ -33,6 +33,9 @@ export default () => {
           transition: color 0.5s ease-out;
         }
       }
+      * + * {
+        margin-top: 1rem;
+      } 
     }
     .heading {
       margin-bottom: 2rem;
@@ -62,15 +65,26 @@ export default () => {
       grid-area: form;
     }
   `;
-  const leftVariants = {
-    hidden: {
-      x: -800,
-    },
+  const slideUp = {
+    hidden: { y: 20, opacity: 0 },
     visible: {
-      x: 0,
+      y: 0,
+      opacity: 1,
       transition: {
-        duration: 1.5,
-        ease: "easeInOut",
+        ease: "easeOut",
+        duration: 0.75,
+      },
+    },
+  };
+  const slideUpDelay = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: .2,
+        ease: "easeOut",
+        duration: 0.75,
       },
     },
   };
@@ -80,16 +94,21 @@ export default () => {
         title="Contact Sabrina for Art Advisory in Los Angeles & Zurich"
         description="Get in touch with Sabrina through email: sabrina@sabrinaandres.com , sign up for her mailing list to receive news and updates."
       />
-      <motion.div
+      <div
         className="contact-info"
+
+      >
+        <motion.div 
+        className="heading" 
         initial="hidden"
         animate="visible"
-        variants={leftVariants}
-      >
-        <div className="heading">
+        variants={slideUp}>
           <h1>Contact</h1>
-        </div>
-        <div className="heading">
+        </motion.div>
+        <motion.div className="contact-body"    
+        initial="hidden"
+        animate="visible"
+        variants={slideUpDelay}>
           <p className="contact-text">
             If you have any inquiries or comments, please contact me via email
             or phone, or send me a message using the contact form.
@@ -145,8 +164,8 @@ export default () => {
               </svg>
             </a>
           </p>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
       <ContactForm className="form" />
     </ContactTextContainer>
   );

@@ -4,6 +4,7 @@ import { css } from "@emotion/core";
 import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
+import { motion } from "framer-motion";
 import { SRLWrapper } from "simple-react-lightbox";
 import GalleryGrid from "../components/GalleryGrid";
 import SEO from "../components/SEO";
@@ -14,6 +15,42 @@ const options = {
       const alt = node.data.target.fields.title["en-US"];
       const url = node.data.target.fields.file["en-US"].url;
       return <img alt={alt} src={url} />;
+    },
+  },
+};
+
+const slideUp = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      ease: "easeOut",
+      duration: 0.75,
+    },
+  },
+};
+const slideUpDelay = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: .2,
+      ease: "easeOut",
+      duration: 0.75,
+    },
+  },
+};
+const slideUpDelay2 = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: .4,
+      ease: "easeOut",
+      duration: 0.75,
     },
   },
 };
@@ -39,6 +76,9 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
           <div
             css={css`
               width: 90vw;
+              * + * {
+                margin-top: 1rem;
+              } 
               @media screen and (min-width: 768px) {
                 width: 60%;
               }
@@ -47,13 +87,16 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
               }
             `}
           >
-            <h1
+            <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={slideUp}
               css={css`
                 margin: 2rem 0;
               `}
             >
               {project.title}
-            </h1>
+            </motion.h1>
             <div>
               {documentToReactComponents(project.content.json, options)}
               <Img
@@ -108,6 +151,9 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
           <div
             css={css`
               width: 90vw;
+              * + * {
+                margin-top: 1rem;
+              } 
               @media screen and (min-width: 768px) {
                 width: 60%;
               }
@@ -116,20 +162,35 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
               }
             `}
           >
-            <h1
+            <motion.h1
+              initial="hidden"
+            animate="visible"
+            variants={slideUp}
               css={css`
                 margin-bottom: 2rem;
               `}
             >
               {project.title}
-            </h1>
+            </motion.h1>
             <div>
+              <motion.div
+                initial="hidden"
+            animate="visible"
+            variants={slideUpDelay}
+              >
               {documentToReactComponents(project.content.json, options)}
-              <Img
-                fluid={project.image.fluid}
-                alt={project.image.description}
-                key={project.image.id}
-              />
+              </motion.div>
+              <motion.div
+              initial="hidden"
+            animate="visible"
+            variants={slideUpDelay2}
+            >
+                <Img
+                  fluid={project.image.fluid}
+                  alt={project.image.description}
+                  key={project.image.id}
+                />
+              </motion.div>
             </div>
           </div>
         </div>

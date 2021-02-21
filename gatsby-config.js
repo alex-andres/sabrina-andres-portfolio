@@ -81,21 +81,21 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-manifest",
-    //   options: {
-    //     name: "Sabrina Andres - Los Angeles Art Consultant",
-    //     short_name: "Sabrina Andres Art Consultant",
-    //     description:
-    //       "Sabrina Andres offers Art Consulting services in the Los Angeles and Pasadena area, contact her today to find up and coming artists",
-    //     start_url: "/",
-    //     background_color: "#FFF",
-    //     theme_color: "#f1f1ef",
-    //     display: "minimal-ui",
-    //     icon: "src/favicon.png",
-    //   },
-    // },
-    // "gatsby-plugin-offline",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: "Sabrina Andres - Los Angeles Art Consultant",
+        short_name: "Sabrina Andres Art Consultant",
+        description:
+          "Sabrina Andres offers Art Consulting services in the Los Angeles and Pasadena area, contact her today to find up and coming artists",
+        start_url: "/",
+        background_color: "#FFF",
+        theme_color: "#f1f1ef",
+        display: "minimal-ui",
+        icon: "src/favicon.png",
+      },
+    },
+    "gatsby-plugin-offline",
     {
       resolve: "gatsby-source-filesystem",
       options: {

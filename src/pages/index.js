@@ -11,9 +11,6 @@ import { VisitedContext } from "../contexts/VisitedContext";
 
 export default () => {
   const [visited] = useContext(VisitedContext);
-  // if (localStorage.getItem("visited") === "true") {
-  //   setVisited(true);
-  // }
 
   if (visited === true) {
     return (

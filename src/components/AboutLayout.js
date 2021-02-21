@@ -6,27 +6,38 @@ import { motion } from "framer-motion";
 import SEO from "./SEO";
 
 const AboutLayout = ({ content }) => {
-  const imageVariants = {
-    hidden: {
-      x: 800,
-    },
+  const slideUp = {
+    hidden: { y: 20, opacity: 0 },
     visible: {
-      x: 0,
+      y: 0,
+      opacity: 1,
       transition: {
-        duration: 1.5,
-        ease: "easeInOut",
+        ease: "easeOut",
+        duration: 0.75,
       },
     },
   };
-  const textVariants = {
-    hidden: {
-      x: -800,
-    },
+  const slideUpDelay = {
+    hidden: { y: 20, opacity: 0 },
     visible: {
-      x: 0,
+      y: 0,
+      opacity: 1,
       transition: {
-        duration: 1.5,
-        ease: "easeInOut",
+        delay: .2,
+        ease: "easeOut",
+        duration: 0.75,
+      },
+    },
+  };
+  const slideUpDelay2 = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: .4,
+        ease: "easeOut",
+        duration: 0.75,
       },
     },
   };
@@ -41,7 +52,7 @@ const AboutLayout = ({ content }) => {
         className="heading"
         initial="hidden"
         animate="visible"
-        variants={textVariants}
+        variants={slideUp}
       >
         <h1>{content.heading}</h1>
       </motion.div>
@@ -49,7 +60,7 @@ const AboutLayout = ({ content }) => {
         className="main"
         initial="hidden"
         animate="visible"
-        variants={imageVariants}
+        variants={slideUpDelay2}
       >
         {documentToReactComponents(content.body)}
       </motion.div>
@@ -57,7 +68,7 @@ const AboutLayout = ({ content }) => {
         className="image-container"
         initial="hidden"
         animate="visible"
-        variants={imageVariants}
+        variants={slideUpDelay}
       >
         <Img className="image" fluid={content.image} alt={content.alt} />
       </motion.div>

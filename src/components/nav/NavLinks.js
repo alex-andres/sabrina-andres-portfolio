@@ -64,7 +64,7 @@ const NavLinksWrapper = styled.ul`
   padding-inline-start: 0;
   max-width: 66rem;
   li {
-    padding: 3rem;
+    padding: 1.5rem;
   }
   button {
     background: transparent;

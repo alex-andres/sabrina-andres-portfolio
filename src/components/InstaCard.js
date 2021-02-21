@@ -1,11 +1,13 @@
 import React from "react";
 import { css } from "@emotion/core";
 import Img from "gatsby-image";
+import { motion } from "framer-motion";
 
-const InstaCard = ({ post }) => {
+const InstaCard = ({ post, variants }) => {
   const url = `https://www.instagram.com/p/${post.id}`;
   return (
-    <div
+    <motion.div
+      variants={variants}
       css={css`
         width: 280px;
         height: 280px;
@@ -83,7 +85,7 @@ const InstaCard = ({ post }) => {
           </div>
         </div>
       </a>
-    </div>
+    </motion.div>
   );
 };
 

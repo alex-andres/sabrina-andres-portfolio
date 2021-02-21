@@ -13,45 +13,52 @@ const TeaserLarge = ({
   backgroundTitle,
 }) => {
   const [visited] = useContext(VisitedContext);
-  const containerVariants = {
-    hidden: { opacity: 0 },
+  const slideUp = {
+    hidden: { y: 20, opacity: 0 },
     visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.75,
-        staggerChildren: 1,
-      },
-    },
-  };
-  const textVariants = {
-    hidden: { opacity: 0, y: 25, x: "-50%" },
-    visible: {
-      opacity: 1,
       y: 0,
-      x: "-50%",
+      opacity: 1,
       transition: {
         ease: "easeOut",
         duration: 0.75,
-        delay: 0.25,
       },
     },
   };
+
   const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+  useEffect(() => {
+    if (inView && visited) {
+      controls.start("visible");
+    }
+  }, [controls, inView, visited]);
   const [ref2, inView2] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.5,
   });
   useEffect(() => {
     if (inView2 && visited) {
       controls.start("visible");
     }
   }, [controls, inView2, visited]);
+  const [ref3, inView3] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+  useEffect(() => {
+    if (inView3 && visited) {
+      controls.start("visible");
+    }
+  }, [controls, inView3, visited]);
   return (
     <motion.div
-      ref={ref2}
+      ref={ref}
       animate={controls}
       initial="hidden"
-      variants={containerVariants}
+      variants={slideUp}
     >
       <StyledBackgroundImage
         Tag="section"
@@ -61,16 +68,14 @@ const TeaserLarge = ({
         style={{ backgroundPostion: "", backgroundSize: "" }}
         title={backgroundTitle}
       >
-        <motion.div
+        <div
           className="text-container"
-          ref={ref2}
-          animate={controls}
-          initial="hidden"
-          variants={textVariants}
         >
-          <h2>{claimHeading}</h2>
-          <p>{claimBody}</p>
-        </motion.div>
+          <motion.h2 ref={ref2} animate={controls}
+      initial="hidden" variants={slideUp}>{claimHeading}</motion.h2>
+          <motion.p ref={ref3} animate={controls}
+      initial="hidden" variants={slideUp}>{claimBody}</motion.p>
+        </div>
       </StyledBackgroundImage>
     </motion.div>
   );

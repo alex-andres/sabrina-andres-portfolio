@@ -10,28 +10,39 @@ import { motion } from "framer-motion";
 class BlogIndex extends React.Component {
   render() {
     const posts = this.props.data.allContentfulBlogPost.edges;
-
-    const imageVariants = {
-      hidden: {
-        x: 800,
-      },
+    const slideUp = {
+      hidden: { y: 20, opacity: 0 },
       visible: {
-        x: 0,
+        y: 0,
+        opacity: 1,
         transition: {
-          duration: 1.5,
-          ease: "easeInOut",
+          ease: "easeOut",
+          duration: 0.75,
         },
       },
     };
-    const textVariants = {
-      hidden: {
-        x: -800,
-      },
+    const slideUpDelayedChildren = {
+      hidden: { y: 20, opacity: 0 },
       visible: {
-        x: 0,
+        y: 0,
+        opacity: 1,
         transition: {
-          duration: 1.5,
-          ease: "easeInOut",
+          delayChildren: 0.1,
+          staggerChildren: 0.2,
+          ease: "easeOut",
+          duration: 0.75,
+        },
+      },
+    };
+    const slideUpDelay = {
+      hidden: { y: 20, opacity: 0 },
+      visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+          delay: .8,
+          ease: "easeOut",
+          duration: 0.75,
         },
       },
     };
@@ -47,9 +58,19 @@ class BlogIndex extends React.Component {
             background: white;
             max-width: 1560px;
             width: 90vw;
-            margin: 0 auto;
+            margin: 9rem auto;
           `}
         >
+          <motion.h1
+          initial="hidden"
+          animate="visible"
+          variants={slideUp}
+            css={css`
+              margin-bottom: 1.5rem;
+            `}
+          >
+            Blog
+          </motion.h1>
           <div
             css={css`
               display: grid;
@@ -78,33 +99,36 @@ class BlogIndex extends React.Component {
                     <motion.div
                       initial="hidden"
                       animate="visible"
-                      variants={textVariants}
+                      variants={slideUpDelayedChildren}
                       css={css`
                         display: flex;
                         justify-self: center;
                         flex-direction: column;
                         justify-content: center;
                         align-items: flex-start;
+                        * + *{
+                          margin-top: 1rem;
+                        }
                         @media screen and (max-width: 600px) {
                           grid-row-start: 2;
                         }
                       `}
                     >
-                      <h1
+                      <motion.h1 variants={slideUp}
                         css={css`
                           margin-bottom: 1.5rem;
                         `}
                       >
                         {node.title}
-                      </h1>
-                      <p>{node.publishDate}</p>
-                      <p>{node.description.description}</p>
-                      <Button to={node.slug}> Read More </Button>
+                      </motion.h1>
+                      <motion.p variants={slideUp}>{node.publishDate}</motion.p>
+                      <motion.p variants={slideUp}>{node.description.description}</motion.p>
+                      <motion.div variants={slideUp}><Button to={node.slug}> Read More </Button></motion.div>
                     </motion.div>
                     <motion.div
                       initial="hidden"
                       animate="visible"
-                      variants={imageVariants}
+                      variants={slideUpDelay}
                     >
                       <Img
                         alt={node.heroImage.description}

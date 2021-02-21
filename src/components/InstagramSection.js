@@ -20,12 +20,25 @@ export default () => {
       controls.start("hidden");
     }
   }, [controls, inView6]);
-  const igVariants = {
-    hidden: { opacity: 0, y: 25 },
+  const slideUp = {
+    hidden: { y: 20, opacity: 0 },
     visible: {
-      opacity: 1,
       y: 0,
+      opacity: 1,
       transition: {
+        ease: "easeOut",
+        duration: 0.75,
+      },
+    },
+  };
+  const slideUpDelayedChildren = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delayChildren: 0.1,
+        staggerChildren: 0.2,
         ease: "easeOut",
         duration: 0.75,
       },
@@ -41,7 +54,7 @@ export default () => {
       ref={ref6}
       animate={controls}
       initial="hidden"
-      variants={igVariants}
+      variants={slideUpDelayedChildren}
     >
       <h2
         css={css`
@@ -63,7 +76,7 @@ export default () => {
         `}
       >
         {posts.map((post) => (
-          <InstaCard key={post.id} post={post} />
+          <InstaCard variants={slideUp} key={post.id} post={post} />
         ))}
       </div>
     </motion.div>
