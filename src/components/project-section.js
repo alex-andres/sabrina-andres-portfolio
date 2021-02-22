@@ -32,7 +32,7 @@ export default () => {
     },
   };
   const controls = useAnimation();
-  const [ref5, inView5] = useInView({ threshold: 0.2, triggerOnce: true});
+  const [ref5, inView5] = useInView({ threshold: 0.2, triggerOnce: truea});
   useEffect(() => {
     if (inView5) {
       controls.start("visible");

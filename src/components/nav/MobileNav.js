@@ -30,7 +30,7 @@ const MobileNav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
   @media screen and (min-width: 769px) {
     display: none;
   }
