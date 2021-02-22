@@ -114,7 +114,7 @@ const ContactForm = ({ className }) => {
               />
             </div>
             {errors.phone && <span>Phone is Required</span>}
-            <div className="input-wrapper">
+            <div className="input-wrapper message-input-wrapper">
               <label className="label" htmlFor="Message">
                 Message:
               </label>
@@ -161,6 +161,7 @@ const ContactContainer = styled(motion.div)`
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
         .label {
           width: 30%;
         }
@@ -181,7 +182,9 @@ const ContactContainer = styled(motion.div)`
           min-height: 180px;
         }
       }
-      
+      .message-input-wrapper{
+        align-items: flex-start;
+      }
     }
     .button-container{
       margin-top: 1rem;

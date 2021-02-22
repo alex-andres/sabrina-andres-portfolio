@@ -32,13 +32,11 @@ export default () => {
     },
   };
   const controls = useAnimation();
-  const [ref5, inView5] = useInView({ threshold: 0.2 });
+  const [ref5, inView5] = useInView({ threshold: 0.2, triggerOnce: true});
   useEffect(() => {
     if (inView5) {
       controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
+    } 
   }, [controls, inView5]);
   return (
     <ProjectContainer
