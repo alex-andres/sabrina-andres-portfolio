@@ -10,24 +10,24 @@ import LoadAnimation from "../components/LoadAnimation";
 import { VisitedContext } from "../contexts/VisitedContext";
 
 export default () => {
-  const [visited] = useContext(VisitedContext);
+  // const [visited] = useContext(VisitedContext);
 
-  if (visited === true) {
-    return (
-      <>
-        <SEO
-          title="Art Advisory in Los Angeles & Zurich - SAAA"
-          description="Sabrina Andres offers exceptional art advisory services in Los Angeles with a focus on contemporary art, ranging from early career to blue chip artists."
-        />
-        <Hero />
-        <TeaserSection1 />
-        <ServicesSection />
-        <ProjectSection />
-        <TeaserSection2 />
-        <InstagramSection />
-      </>
-    );
-  } else {
+  // if (visited === true) {
+  //   return (
+  //     <>
+  //       <SEO
+  //         title="Art Advisory in Los Angeles & Zurich - SAAA"
+  //         description="Sabrina Andres offers exceptional art advisory services in Los Angeles with a focus on contemporary art, ranging from early career to blue chip artists."
+  //       />
+  //       <Hero />
+  //       <TeaserSection1 />
+  //       <ServicesSection />
+  //       <ProjectSection />
+  //       <TeaserSection2 />
+  //       <InstagramSection />
+  //     </>
+  //   );
+  // } else {
     return (
       <>
         <SEO
@@ -43,5 +43,5 @@ export default () => {
         <InstagramSection />
       </>
     );
-  }
+  // }
 };
