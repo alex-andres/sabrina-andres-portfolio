@@ -2,7 +2,7 @@ import React from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import ContactForm from "../components/ContactForm";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import SEO from "../components/SEO";
 
 export default () => {
@@ -65,29 +65,29 @@ export default () => {
       grid-area: form;
     }
   `;
-  const slideUp = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
-  const slideUpDelay = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: .2,
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
+  // const slideUp = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const slideUpDelay = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       delay: .2,
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
   return (
     <ContactTextContainer>
       <SEO
@@ -98,17 +98,19 @@ export default () => {
         className="contact-info"
 
       >
-        <motion.div 
+        <div 
         className="heading" 
-        initial="hidden"
-        animate="visible"
-        variants={slideUp}>
+        // initial="hidden"
+        // animate="visible"
+        // variants={slideUp}
+        >
           <h1>Contact</h1>
-        </motion.div>
-        <motion.div className="contact-body"    
-        initial="hidden"
-        animate="visible"
-        variants={slideUpDelay}>
+        </div>
+        <div className="contact-body"    
+        // initial="hidden"
+        // animate="visible"
+        // variants={slideUpDelay}
+        >
           <p className="contact-text">
             If you have any inquiries or comments, please contact me via email
             or phone, or send me a message using the contact form.
@@ -164,7 +166,7 @@ export default () => {
               </svg>
             </a>
           </p>
-        </motion.div>
+        </div>
       </div>
       <ContactForm className="form" />
     </ContactTextContainer>

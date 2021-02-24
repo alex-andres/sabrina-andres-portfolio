@@ -5,47 +5,47 @@ import { Helmet } from "react-helmet";
 import ArticlePreview from "../components/article-preview";
 import { css } from "@emotion/core";
 import Button from "../components/Button";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 class BlogIndex extends React.Component {
   render() {
     const posts = this.props.data.allContentfulBlogPost.edges;
-    const slideUp = {
-      hidden: { y: 20, opacity: 0 },
-      visible: {
-        y: 0,
-        opacity: 1,
-        transition: {
-          ease: "easeOut",
-          duration: 0.75,
-        },
-      },
-    };
-    const slideUpDelayedChildren = {
-      hidden: { y: 20, opacity: 0 },
-      visible: {
-        y: 0,
-        opacity: 1,
-        transition: {
-          delayChildren: 0.1,
-          staggerChildren: 0.2,
-          ease: "easeOut",
-          duration: 0.75,
-        },
-      },
-    };
-    const slideUpDelay = {
-      hidden: { y: 20, opacity: 0 },
-      visible: {
-        y: 0,
-        opacity: 1,
-        transition: {
-          delay: .8,
-          ease: "easeOut",
-          duration: 0.75,
-        },
-      },
-    };
+    // const slideUp = {
+    //   hidden: { y: 20, opacity: 0 },
+    //   visible: {
+    //     y: 0,
+    //     opacity: 1,
+    //     transition: {
+    //       ease: "easeOut",
+    //       duration: 0.75,
+    //     },
+    //   },
+    // };
+    // const slideUpDelayedChildren = {
+    //   hidden: { y: 20, opacity: 0 },
+    //   visible: {
+    //     y: 0,
+    //     opacity: 1,
+    //     transition: {
+    //       delayChildren: 0.1,
+    //       staggerChildren: 0.2,
+    //       ease: "easeOut",
+    //       duration: 0.75,
+    //     },
+    //   },
+    // };
+    // const slideUpDelay = {
+    //   hidden: { y: 20, opacity: 0 },
+    //   visible: {
+    //     y: 0,
+    //     opacity: 1,
+    //     transition: {
+    //       delay: .8,
+    //       ease: "easeOut",
+    //       duration: 0.75,
+    //     },
+    //   },
+    // };
 
     return (
       <>
@@ -61,16 +61,14 @@ class BlogIndex extends React.Component {
             margin: 9rem auto;
           `}
         >
-          <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={slideUp}
+          <h1
+          
             css={css`
               margin-bottom: 1.5rem;
             `}
           >
             Blog
-          </motion.h1>
+          </h1>
           <div
             css={css`
               display: grid;
@@ -96,10 +94,8 @@ class BlogIndex extends React.Component {
                       margin-bottom: 3rem;
                     `}
                   >
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={slideUpDelayedChildren}
+                    <div
+                      
                       css={css`
                         display: flex;
                         justify-self: center;
@@ -114,27 +110,25 @@ class BlogIndex extends React.Component {
                         }
                       `}
                     >
-                      <motion.h1 variants={slideUp}
+                      <h1
                         css={css`
                           margin-bottom: 1.5rem;
                         `}
                       >
                         {node.title}
-                      </motion.h1>
-                      <motion.p variants={slideUp}>{node.publishDate}</motion.p>
-                      <motion.p variants={slideUp}>{node.description.description}</motion.p>
-                      <motion.div variants={slideUp}><Button to={node.slug}> Read More </Button></motion.div>
-                    </motion.div>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={slideUpDelay}
+                      </h1>
+                      <p>{node.publishDate}</p>
+                      <p>{node.description.description}</p>
+                      <div><Button to={node.slug}> Read More </Button></div>
+                    </div>
+                    <div
+                      
                     >
                       <Img
                         alt={node.heroImage.description}
                         fluid={node.heroImage.fluid}
                       />
-                    </motion.div>
+                    </div>
                   </div>
                 );
               } else {

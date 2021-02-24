@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
+// import { motion, useAnimation } from "framer-motion";
 const TeaserSmall2 = ({ className }) => {
   const data = useStaticQuery(
     graphql`
@@ -20,49 +20,49 @@ const TeaserSmall2 = ({ className }) => {
   );
   const imageData = data.image.childImageSharp.fluid;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 1,
-        staggerChildren: 0.5,
-      },
-    },
-  };
-  const textVariants = {
-    hidden: {
-      y: 20,
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.75,
-        ease: "easeOut",
-      },
-    },
-  };
-  const controls = useAnimation();
-  const [ref3, inView3] = useInView({
-    triggerOnce: true,
-    rootMargin: "-100px 0px",
-  });
-  useEffect(() => {
-    if (inView3) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [controls, inView3]);
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 1,
+  //       staggerChildren: 0.5,
+  //     },
+  //   },
+  // };
+  // const textVariants = {
+  //   hidden: {
+  //     y: 20,
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 0.75,
+  //       ease: "easeOut",
+  //     },
+  //   },
+  // };
+  // const controls = useAnimation();
+  // const [ref3, inView3] = useInView({
+  //   triggerOnce: true,
+  //   rootMargin: "-100px 0px",
+  // });
+  // useEffect(() => {
+  //   if (inView3) {
+  //     controls.start("visible");
+  //   } else {
+  //     controls.start("hidden");
+  //   }
+  // }, [controls, inView3]);
 
   return (
-    <motion.div
-      ref={ref3}
-      animate={controls}
-      initial="hidden"
-      variants={containerVariants}
+    <div
+      // ref={ref3}
+      // animate={controls}
+      // initial="hidden"
+      // variants={containerVariants}
       css={css`
         display: grid;
         margin-top: 2rem;
@@ -93,8 +93,8 @@ Oil on canvas with glazed stoneware frame
 Courtesy of the artist and Bradley Ertaskiran
 Private Collection, Los Angeles, CA, US"
       />
-      <motion.div
-        variants={textVariants}
+      <div
+        // variants={textVariants}
         className="text-container"
         css={css`
           display: flex;
@@ -125,8 +125,8 @@ Private Collection, Los Angeles, CA, US"
           creative action. She strives to offer her clients a highly flexible
           means of advising.
         </p>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

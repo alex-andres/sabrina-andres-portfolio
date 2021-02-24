@@ -12,7 +12,7 @@ const LogoLink = () => {
       title="Home"
       to="/"
       onClick={closeMenu}
-      className={visited ? "visited" : ""}
+      // className={visited ? "visited" : ""}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ const StyledLogo = styled(Link)`
   & + [aria-expanded="true"] {
     display: none;
   }
-  opacity: 0;
+  ${'' /* opacity: 0;
   animation-name: slidedown;
   animation-duration: 0.75s;
   animation-delay: 7.85s;
@@ -71,5 +71,5 @@ const StyledLogo = styled(Link)`
       opacity: 1;
       transform: translateY(0);
     }
-  }
+  } */}
 `;

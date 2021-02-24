@@ -1,60 +1,60 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { css } from "@emotion/core";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
+// import { motion, useAnimation } from "framer-motion";
 import SEO from "./SEO";
 import Img from "gatsby-image";
 
 const ServicesLayout = ({ content }) => {
 
-  const slideUp = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
-  const slideUpDelay = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: .2,
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
-  const slideUpDelay2 = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: .4,
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: "-100px 0px",
-  });
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [controls, inView]);
+  // const slideUp = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const slideUpDelay = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       delay: .2,
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const slideUpDelay2 = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       delay: .4,
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const controls = useAnimation();
+  // const [ref, inView] = useInView({
+  //   triggerOnce: true,
+  //   rootMargin: "-100px 0px",
+  // });
+  // useEffect(() => {
+  //   if (inView) {
+  //     controls.start("visible");
+  //   } else {
+  //     controls.start("hidden");
+  //   }
+  // }, [controls, inView]);
   return (
     <>
       <div
@@ -80,30 +80,28 @@ const ServicesLayout = ({ content }) => {
           title="Art Acquisition, Sales & Curation in Los Angeles & Zurich"
           description="Sabrina offers a wide range of services including: Acquisitions and Sales, Art Collection Management, Curating and Research, Coordination of Art Handling"
         />
-        <motion.div
+        <div
           className="heading"
           css={css`
             grid-area: heading;
           `}
         >
-          <motion.h1 initial="hidden"
-          animate="visible"
-          variants={slideUp}>{content.heading}</motion.h1>
-          <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={slideUpDelay}
+          <h1>{content.heading}</h1>
+          <div
+          // initial="hidden"
+          // animate="visible"
+          // variants={slideUpDelay}
             css={css`
               margin: 1rem 0 3rem;
             `}
           >
             {documentToReactComponents(content.description)}
-          </motion.div>
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={slideUpDelay2}
+          </div>
+        </div>
+        <div
+          // initial="hidden"
+          // animate="visible"
+          // variants={slideUpDelay2}
           className="main"
           css={css`
             grid-area: main;
@@ -117,13 +115,13 @@ const ServicesLayout = ({ content }) => {
           `}
         >
           {documentToReactComponents(content.services)}
-        </motion.div>
+        </div>
       </div>
-      <motion.div
-        variants={slideUp}
-        animate={controls}
-        initial="hidden"
-        ref={ref}
+      <div
+        // variants={slideUp}
+        // animate={controls}
+        // initial="hidden"
+        // ref={ref}
       >
         <Img
           css={css`
@@ -136,7 +134,7 @@ const ServicesLayout = ({ content }) => {
           alt={content.image.description}
           title={content.image.description}
         />
-      </motion.div>
+      </div>
     </>
   );
 };

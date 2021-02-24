@@ -1,36 +1,36 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
+// import { motion, useAnimation } from "framer-motion";
 import SignUpForm from "./SignUpForm";
 import InstagramLink from "./InstagramLink";
 
 const Footer = () => {
-  const controls = useAnimation();
-  const [ref7, inView7] = useInView({ threshold: 0.1 });
+  // const controls = useAnimation();
+  // const [ref7, inView7] = useInView({ threshold: 0.1 });
 
-  useEffect(() => {
-    if (inView7) {
-      controls.start("visible");
-    }
-  }, [controls, inView7]);
-  const animationVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 1.75,
-        staggerChildren: 0.5,
-      },
-    },
-  };
+  // useEffect(() => {
+  //   if (inView7) {
+  //     controls.start("visible");
+  //   }
+  // }, [controls, inView7]);
+  // const animationVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 1.75,
+  //       staggerChildren: 0.5,
+  //     },
+  //   },
+  // };
   return (
     <StyledFooter
-      ref={ref7}
-      animate={controls}
-      initial="hidden"
-      variants={animationVariants}
+      // ref={ref7}
+      // animate={controls}
+      // initial="hidden"
+      // variants={animationVariants}
     >
       <Link className="branding-link" to="/">
         <h1>Sabrina Andres Art Advisory</h1>
@@ -79,7 +79,7 @@ const Footer = () => {
 
 export default Footer;
 
-const StyledFooter = styled(motion.footer)`
+const StyledFooter = styled.footer`
   background-color: var(--darkGray);
   display: flex;
   flex-direction: column;

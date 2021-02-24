@@ -2,7 +2,6 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
-import { motion } from "framer-motion";
 
 const ProjectPreview = ({ project, variants }) => {
   return (
@@ -27,7 +26,7 @@ const ProjectPreview = ({ project, variants }) => {
 
 export default ProjectPreview;
 
-const PreviewContainer = styled(motion.div)`
+const PreviewContainer = styled.div`
  
   .background-image{
     background-size: cover;
@@ -54,7 +53,7 @@ const PreviewContainer = styled(motion.div)`
       justify-content: center;
       align-items: center;
       text-align: center;
-      z-index: 5;
+      z-index: 2;
       width: 100%;
       height: 100%;
       h2 {
@@ -66,11 +65,11 @@ const PreviewContainer = styled(motion.div)`
         h2 {
           color: rgba(255, 255, 255, 1);
           opacity: 0;
-          transition: opacity 0.4s ease-in;
+          transition: opacity 1s ease-in;
         }
         background-color: rgba(0, 0, 0, .5);
         opacity: 0;
-        transition: opacity 0.4s ease-in;
+        transition: opacity 1s ease-in;
         }
       }  
       &:hover {
@@ -82,15 +81,15 @@ const PreviewContainer = styled(motion.div)`
           display: flex;
           justify-content: center;
           align-items: center;
-          z-index: 1;
+          z-index: 2;
           background-color: rgba(0, 0, 0, .5);
           opacity: 1;
-          transition: opacity 0.4s ease-in;
+          transition: opacity 1s ease-in;
 
           h2 {
             opacity: 1;
             color: rgba(255, 255, 255, 1);
-            transition: opacity 0.4s ease-in;
+            transition: opacity 1s ease-in;
             text-align: center;
             margin: 0;
             }

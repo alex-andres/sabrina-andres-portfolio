@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
 import Img from "gatsby-image";
-import { VisitedContext } from "../contexts/VisitedContext";
+// import { VisitedContext } from "../contexts/VisitedContext";
 
 const Hero = () => {
-  const [visited, setVisited] = useContext(VisitedContext);
-  const toggle = React.useCallback(() => {
-    if (!visited) {
-      localStorage.setItem("visited", "true");
-      setVisited(true);
-    }
-  }, [visited, setVisited]);
+  // const [visited, setVisited] = useContext(VisitedContext);
+  // const toggle = React.useCallback(() => {
+  //   if (!visited) {
+  //     localStorage.setItem("visited", "true");
+  //     setVisited(true);
+  //   }
+  // }, [visited, setVisited]);
   const data = useStaticQuery(
     graphql`
       query {
@@ -25,13 +25,13 @@ const Hero = () => {
       }
     `
   );
-  const onAnimationEnd = () => {
-    toggle();
-  };
+  // const onAnimationEnd = () => {
+  //   toggle();
+  // };
 
   return (
     <HeroContainer className="hero-container">
-      <div className={visited ? "image-wrapper visited" : "image-wrapper"}>
+      <div className="image-wrapper">
         <Img
           fluid={data.image.childImageSharp.fluid}
           alt="Connor Addison's The Eventual End Painting Mounted, installation setting"
@@ -44,8 +44,8 @@ Private Collection, Nevada, US"
         />
       </div>
       <div
-        className={visited ? "claim-cta-wrapper visited" : "claim-cta-wrapper"}
-        onAnimationEnd={onAnimationEnd}
+        className="claim-cta-wrapper"
+        // onAnimationEnd={onAnimationEnd}
       >
         <h1 className="hero-h1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360.25 123.91">
@@ -88,7 +88,7 @@ const HeroContainer = styled.div`
     grid-area: slider;
     width: 100%;
     height: 100%;
-    animation-name: rightToLeft;
+    ${'' /* animation-name: rightToLeft;
     animation-duration: 1.5s;
     animation-delay: 9.5s;
     animation-fill-mode: forwards;
@@ -105,7 +105,7 @@ const HeroContainer = styled.div`
         opacity: 1;
         ttransform: translateX(0);
       }
-    }
+    } */}
   }
   .claim-cta-wrapper {
     grid-area: claim;
@@ -114,9 +114,9 @@ const HeroContainer = styled.div`
     justify-content: center;
     align-items: center;
     margin: 2rem auto 3rem;
-    opacity: 0;
+    ${'' /* opacity: 0; */}
     width: calc(100% - 30px * 2);
-    animation-name: leftToRight;
+    ${'' /* animation-name: leftToRight;
     animation-duration: 1.5s;
     animation-delay: 9.5s;
     animation-fill-mode: forwards;
@@ -132,7 +132,7 @@ const HeroContainer = styled.div`
         opacity: 1;
         ttransform: translateX(0);
       }
-    }
+    } */}
     @media screen and (max-width: 768px) {
       margin: 6rem auto 3rem;
       justify-content: flex-start;

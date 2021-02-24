@@ -1,55 +1,55 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
+// import { motion, useAnimation } from "framer-motion";
 import { css } from "@emotion/core";
 
 const ServicesSection = () => {
-  const container = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delayChildren: 0.1,
-        staggerChildren: 0.5,
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
+  // const container = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       delayChildren: 0.1,
+  //       staggerChildren: 0.5,
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
 
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: "-100px 0px",
-  });
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
+  // const item = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const controls = useAnimation();
+  // const [ref, inView] = useInView({
+  //   triggerOnce: true,
+  //   rootMargin: "-100px 0px",
+  // });
+  // useEffect(() => {
+  //   if (inView) {
+  //     controls.start("visible");
+  //   }
+  // }, [controls, inView]);
 
   return (
     <Services>
-      <motion.div
-        ref={ref}
-        animate={controls}
-        initial="hidden"
-        variants={container}
+      <div
+        // ref={ref}
+        // animate={controls}
+        // initial="hidden"
+        // variants={container}
       >
-        <motion.h2 className="h2" variants={item}>
+        <h2 className="h2">
           Services offered by{" "}
           <span
             css={css`
@@ -82,34 +82,34 @@ const ServicesSection = () => {
               />
             </svg>
           </span>
-        </motion.h2>
-        <motion.ul className="ul">
-          <motion.li className="li" variants={item}>
+        </h2>
+        <ul className="ul">
+          <li className="li">
             Collection Management
-          </motion.li>
-          <motion.li className="li" variants={item}>
+          </li>
+          <li className="li">
             Coordination of loan terms
-          </motion.li>
-          <motion.li className="li" variants={item}>
+          </li>
+          <li className="li">
             Gallery and studio visits with client
-          </motion.li>
-          <motion.li className="li" variants={item}>
+          </li>
+          <li className="li">
             Curating of art projects internationally
-          </motion.li>
-          <motion.li className="li" variants={item}>
+          </li>
+          <li className="li">
             Market and Art Historical Research
-          </motion.li>
-          <motion.li className="li" variants={item}>
+          </li>
+          <li className="li">
             Conduct acquisitions and sales for client
-          </motion.li>
-          <motion.li className="li" variants={item}>
+          </li>
+          <li className="li">
             Represent client during transactions
-          </motion.li>
-          <motion.li className="li" variants={item}>
+          </li>
+          <li className="li">
             Framing, transportation and installation of artwork
-          </motion.li>
-        </motion.ul>
-      </motion.div>
+          </li>
+        </ul>
+      </div>
     </Services>
   );
 };

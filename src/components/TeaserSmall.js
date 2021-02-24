@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { css } from "@emotion/core";
 import { graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
+// import { motion, useAnimation } from "framer-motion";
 const TeaserSmall = ({ className }) => {
   const data = useStaticQuery(
     graphql`
@@ -20,51 +20,51 @@ const TeaserSmall = ({ className }) => {
   );
   const imageData = data.image.childImageSharp.fluid;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 1,
-        staggerChildren: 0.5,
-      },
-    },
-  };
-  const textVariants = {
-    hidden: {
-      y: 20,
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.75,
-        ease: "easeOut",
-      },
-    },
-  };
-  const controls = useAnimation();
-  const [ref3, inView3] = useInView({
-    triggerOnce: true,
-    rootMargin: "-100px 0px",
-  });
-  useEffect(() => {
-    if (inView3) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [controls, inView3]);
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 1,
+  //       staggerChildren: 0.5,
+  //     },
+  //   },
+  // };
+  // const textVariants = {
+  //   hidden: {
+  //     y: 20,
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 0.75,
+  //       ease: "easeOut",
+  //     },
+  //   },
+  // };
+  // const controls = useAnimation();
+  // const [ref3, inView3] = useInView({
+  //   triggerOnce: true,
+  //   rootMargin: "-100px 0px",
+  // });
+  // useEffect(() => {
+  //   if (inView3) {
+  //     controls.start("visible");
+  //   } else {
+  //     controls.start("hidden");
+  //   }
+  // }, [controls, inView3]);
 
   return (
-    <motion.div
-      ref={ref3}
-      animate={controls}
-      initial="hidden"
-      variants={containerVariants}
+    <div
+      // ref={ref3}
+      // animate={controls}
+      // initial="hidden"
+      // variants={containerVariants}
       css={css`
-        margin-top: 3rem;
+        ${'' /* margin-top: 3rem; */}
         display: grid;
         margin-bottom: 7rem;
         grid-temlate-columns: 1fr;
@@ -93,8 +93,8 @@ Oil on canvas
 Courtesy of the artist and Galerie Francesca Pia
 Private Collection, Copenhagen, DK"
       />
-      <motion.div
-        variants={textVariants}
+      <div
+        // variants={textVariants}
         className="text-container"
         css={css`
           display: flex;
@@ -124,8 +124,8 @@ Private Collection, Copenhagen, DK"
           by prioritizing her client’s needs through her refreshingly
           approachable communication skills and her emphasis on accountability.
         </p>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

@@ -2,45 +2,45 @@ import React from "react";
 import styled from "@emotion/styled";
 import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import SEO from "./SEO";
 
 const AboutLayout = ({ content }) => {
-  const slideUp = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
-  const slideUpDelay = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: .2,
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
-  const slideUpDelay2 = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: .4,
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
+  // const slideUp = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const slideUpDelay = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       delay: .2,
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const slideUpDelay2 = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       delay: .4,
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
 
   return (
     <ContainerDiv>
@@ -48,30 +48,30 @@ const AboutLayout = ({ content }) => {
         title="About Sabrina Andres, Los Angeles & Zurich based Art Advisor"
         description="Sabrina has a background in Curatorial Studies and an international network of collectors, galleries and artists to provide access to a wide range of artworks."
       />
-      <motion.div
+      <div
         className="heading"
-        initial="hidden"
-        animate="visible"
-        variants={slideUp}
+        // initial="hidden"
+        // animate="visible"
+        // variants={slideUp}
       >
         <h1>{content.heading}</h1>
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         className="main"
-        initial="hidden"
-        animate="visible"
-        variants={slideUpDelay2}
+        // initial="hidden"
+        // animate="visible"
+        // variants={slideUpDelay2}
       >
         {documentToReactComponents(content.body)}
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         className="image-container"
-        initial="hidden"
-        animate="visible"
-        variants={slideUpDelay}
+        // initial="hidden"
+        // animate="visible"
+        // variants={slideUpDelay}
       >
         <Img className="image" fluid={content.image} alt={content.alt} />
-      </motion.div>
+      </div>
     </ContainerDiv>
   );
 };

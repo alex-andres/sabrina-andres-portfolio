@@ -25,23 +25,21 @@ const ContactForm = ({ className }) => {
   });
   const onSubmit = (data) => netlify.handleSubmit(null, data);
   const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-  const slideUpDelay2 = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: .4,
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  }
+  // const slideUpDelay2 = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       delay: .4,
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // }
   return (
     <ContactContainer
-      initial="hidden"
-      animate="visible"
-      variants={slideUpDelay2}
+
       className={className}
     >
       <NetlifyFormProvider className="netlify-form-provider" {...netlify}>

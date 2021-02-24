@@ -2,33 +2,33 @@ import React from "react";
 import { css } from "@emotion/core";
 import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 const TwoColumnLayout = ({ content }) => {
-  const imageVariants = {
-    hidden: {
-      x: 800,
-    },
-    visible: {
-      x: 0,
-      transition: {
-        duration: 1.5,
-        ease: "easeInOut",
-      },
-    },
-  };
-  const textVariants = {
-    hidden: {
-      x: -800,
-    },
-    visible: {
-      x: 0,
-      transition: {
-        duration: 1.5,
-        ease: "easeInOut",
-      },
-    },
-  };
+  // const imageVariants = {
+  //   hidden: {
+  //     x: 800,
+  //   },
+  //   visible: {
+  //     x: 0,
+  //     transition: {
+  //       duration: 1.5,
+  //       ease: "easeInOut",
+  //     },
+  //   },
+  // };
+  // const textVariants = {
+  //   hidden: {
+  //     x: -800,
+  //   },
+  //   visible: {
+  //     x: 0,
+  //     transition: {
+  //       duration: 1.5,
+  //       ease: "easeInOut",
+  //     },
+  //   },
+  // };
 
   return (
     <div
@@ -52,36 +52,30 @@ const TwoColumnLayout = ({ content }) => {
         }
       `}
     >
-      <motion.div
+      <div
         className="heading"
         css={css`
           grid-area: heading;
         `}
-        initial="hidden"
-        animate="visible"
-        variants={textVariants}
+        // initial="hidden"
+        // animate="visible"
+        // variants={textVariants}
       >
         <h1>{content.heading}</h1>
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         className="main"
         css={css`
           grid-area: main;
           margin-bottom: 3rem;
         `}
-        initial="hidden"
-        animate="visible"
-        variants={imageVariants}
       >
         {documentToReactComponents(content.body)}
-      </motion.div>
-      <motion.div
+      </div>
+      <div
         css={css`
           grid-area: img;
         `}
-        initial="hidden"
-        animate="visible"
-        variants={imageVariants}
       >
         <Img
           css={css`
@@ -90,7 +84,7 @@ const TwoColumnLayout = ({ content }) => {
           fluid={content.image}
           alt={content.alt}
         />
-      </motion.div>
+      </div>
     </div>
   );
 };

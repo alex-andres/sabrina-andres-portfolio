@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { SRLWrapper } from "simple-react-lightbox";
 import GalleryGrid from "../components/GalleryGrid";
 import SEO from "../components/SEO";
@@ -19,41 +19,41 @@ const options = {
   },
 };
 
-const slideUp = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      ease: "easeOut",
-      duration: 0.75,
-    },
-  },
-};
-const slideUpDelay = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: .2,
-      ease: "easeOut",
-      duration: 0.75,
-    },
-  },
-};
-const slideUpDelay2 = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: .4,
-      ease: "easeOut",
-      duration: 0.75,
-    },
-  },
-};
+// const slideUp = {
+//   hidden: { y: 20, opacity: 0 },
+//   visible: {
+//     y: 0,
+//     opacity: 1,
+//     transition: {
+//       ease: "easeOut",
+//       duration: 0.75,
+//     },
+//   },
+// };
+// const slideUpDelay = {
+//   hidden: { y: 20, opacity: 0 },
+//   visible: {
+//     y: 0,
+//     opacity: 1,
+//     transition: {
+//       delay: .2,
+//       ease: "easeOut",
+//       duration: 0.75,
+//     },
+//   },
+// };
+// const slideUpDelay2 = {
+//   hidden: { y: 20, opacity: 0 },
+//   visible: {
+//     y: 0,
+//     opacity: 1,
+//     transition: {
+//       delay: .4,
+//       ease: "easeOut",
+//       duration: 0.75,
+//     },
+//   },
+// };
 
 const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
   if (project.gallery) {
@@ -87,16 +87,16 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
               }
             `}
           >
-            <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={slideUp}
+            <h1
+            // initial="hidden"
+            // animate="visible"
+            // variants={slideUp}
               css={css`
                 margin: 2rem 0;
               `}
             >
               {project.title}
-            </motion.h1>
+            </h1>
             <div>
               {documentToReactComponents(project.content.json, options)}
               <Img
@@ -162,35 +162,35 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
               }
             `}
           >
-            <motion.h1
-              initial="hidden"
-            animate="visible"
-            variants={slideUp}
+            <h1
+            //   initial="hidden"
+            // animate="visible"
+            // variants={slideUp}
               css={css`
                 margin-bottom: 2rem;
               `}
             >
               {project.title}
-            </motion.h1>
+            </h1>
             <div>
-              <motion.div
-                initial="hidden"
-            animate="visible"
-            variants={slideUpDelay}
+              <div
+            //     initial="hidden"
+            // animate="visible"
+            // variants={slideUpDelay}
               >
               {documentToReactComponents(project.content.json, options)}
-              </motion.div>
-              <motion.div
-              initial="hidden"
-            animate="visible"
-            variants={slideUpDelay2}
+              </div>
+              <div
+            //   initial="hidden"
+            // animate="visible"
+            // variants={slideUpDelay2}
             >
                 <Img
                   fluid={project.image.fluid}
                   alt={project.image.description}
                   key={project.image.id}
                 />
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

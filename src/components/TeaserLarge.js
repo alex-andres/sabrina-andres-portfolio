@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import styled from "@emotion/styled";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import BackgroundImage from "gatsby-background-image";
-import { motion, useAnimation } from "framer-motion";
-import { VisitedContext } from "../contexts/VisitedContext";
+// import { motion, useAnimation } from "framer-motion";
+// import { VisitedContext } from "../contexts/VisitedContext";
 
 const TeaserLarge = ({
   className,
@@ -12,53 +12,71 @@ const TeaserLarge = ({
   claimBody,
   backgroundTitle,
 }) => {
-  const [visited] = useContext(VisitedContext);
-  const slideUp = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
+  // const [visited] = useContext(VisitedContext);
+  // const slideUp = {
+  //   hidden: { y: 20,  opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const slideUpLeft = {
+  //   hidden: { y: 20, x: -.5, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     x: -.5,
+  //     opacity: 1,
+  //     transition: {
+  //       ease: "easeOut",
+  //       duration: 0.75,
+  //     },
+  //   },
+  // };
+  // const animationParent = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       ease: "easeOut",
+  //       duration: 0.1,
+  //       staggerChildren: .2
+  //     },
+  //   },
+  // };
 
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.3,
-  });
-  useEffect(() => {
-    if (inView && visited) {
-      controls.start("visible");
-    }
-  }, [controls, inView, visited]);
-  const [ref2, inView2] = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
-  useEffect(() => {
-    if (inView2 && visited) {
-      controls.start("visible");
-    }
-  }, [controls, inView2, visited]);
-  const [ref3, inView3] = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
-  useEffect(() => {
-    if (inView3 && visited) {
-      controls.start("visible");
-    }
-  }, [controls, inView3, visited]);
+  // const controls = useAnimation();
+  // const controls2 = useAnimation();
+  // const [ref, inView] = useInView({
+  //   threshold: 0.3,
+  // });
+  // useEffect(() => {
+  //   if (inView && visited) {
+  //     controls.start("visible");
+  //   }else {
+  //     controls.start("hidden");
+  //   }
+  // }, [controls, inView, visited]);
+  // const [ref2, inView2] = useInView({
+
+  //   threshold: 0.1,
+  // });
+  // useEffect(() => {
+  //   if (inView2 && visited) {
+  //     controls2.start("visible");
+  //   }else {
+  //     controls.start("hidden");
+  //   }
+  // }, [controls2, inView2, visited]);
   return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={slideUp}
+    <div
+      // ref={ref}
+      // animate={controls}
+      // initial="hidden"
+      // variants={slideUp}
     >
       <StyledBackgroundImage
         Tag="section"
@@ -70,14 +88,18 @@ const TeaserLarge = ({
       >
         <div
           className="text-container"
+          // animate={controls2}
+          // initial="hidden" 
+          // variants={animationParent}
+          // ref={ref2}
         >
-          <motion.h2 ref={ref2} animate={controls}
-      initial="hidden" variants={slideUp}>{claimHeading}</motion.h2>
-          <motion.p ref={ref3} animate={controls}
-      initial="hidden" variants={slideUp}>{claimBody}</motion.p>
+        {/* variants={slideUpLeft}
+variants={slideUpLeft} */}
+          <h2>{claimHeading}</h2>
+          <p>{claimBody}</p>
         </div>
       </StyledBackgroundImage>
-    </motion.div>
+    </div>
   );
 };
 
