@@ -4,6 +4,7 @@ const VisitedContext = React.createContext();
 
 const VisitedProvider = ({ children }) => {
   const [visited, setVisited] = useState(false);
+  
 
   return (
     <VisitedContext.Provider value={[visited, setVisited]}>

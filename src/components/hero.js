@@ -5,13 +5,13 @@ import Img from "gatsby-image";
 import { VisitedContext } from "../contexts/VisitedContext";
 
 const Hero = () => {
-  const [visited, setVisited] = useContext(VisitedContext);
-  const toggle = React.useCallback(() => {
-    if (!visited) {
-      localStorage.setItem("visited", "true");
-      setVisited(true);
-    }
-  }, [visited, setVisited]);
+  const [visited] = useContext(VisitedContext);
+  // const toggle = React.useCallback(() => {
+  //   if (!visited) {
+  //     localStorage.setItem("visited", "true");
+  //     setVisited(true);
+  //   }
+  // }, [visited, setVisited]);
   const data = useStaticQuery(
     graphql`
       query {
@@ -25,9 +25,9 @@ const Hero = () => {
       }
     `
   );
-  const onAnimationEnd = () => {
-    toggle();
-  };
+  // const onAnimationEnd = () => {
+  //   toggle();
+  // };
 
   return (
     <HeroContainer className="hero-container">
@@ -45,7 +45,6 @@ Private Collection, Nevada, US"
       </div>
       <div
         className={visited ? "claim-cta-wrapper visited" : "claim-cta-wrapper"}
-        onAnimationEnd={onAnimationEnd}
       >
         <h1 className="hero-h1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360.25 123.91">

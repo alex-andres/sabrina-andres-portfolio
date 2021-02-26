@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
 const LoadAnimation = () => {
+  const [classList, setClassList] = useState('');
+  
   const sPathVariants = {
     hidden: {
       pathLength: 0,
@@ -37,8 +39,14 @@ const LoadAnimation = () => {
     },
   };
 
+  const changeDisplay = () =>{
+    setTimeout(()=>{setClassList('animationComplete');
+    
+  }, 6000);
+  }
+
   return (
-    <StyledLoad className="loader">
+    <StyledLoad className={`loader ${classList}`} onAnimationEnd={changeDisplay}>
       <div>
         <AnimatedSVG
           xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +142,6 @@ const StyledLoad = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
-  z-index: 1001;
   background: rgb(255, 255, 255);
   overflow: hidden;
   display: flex;
@@ -156,6 +163,9 @@ const StyledLoad = styled.div`
     @media screen and (min-width: 768px) {
       width: 50%;
     }
+  }
+  &.animationComplete{
+    display: none;
   }
 `;
 
