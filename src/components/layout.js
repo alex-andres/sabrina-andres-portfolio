@@ -37,7 +37,6 @@ const Layout = ({ children }) => {
       </main>
       <Footer />
     </>
-    // </GlobalState.Provider>
   );
 };
 

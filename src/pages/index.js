@@ -11,12 +11,8 @@ import LoadAnimation from "../components/LoadAnimation";
 import { VisitedContext } from "../contexts/VisitedContext";
 
 export default () => {
-  const [visited, setVisited] = useContext(VisitedContext);
-  useEffect(() => {
-    return globalHistory.listen(({ action }) => {
-      if (action === 'PUSH') setVisited(true)
-    })
-  }, [setVisited])
+  const [visited] = useContext(VisitedContext);
+
   if (visited === true) {
     return (
       <>

@@ -47,14 +47,9 @@ const LoadAnimation = () => {
     },
   };
 
-  const changeDisplay = () =>{
-    setTimeout(()=>{setClassList('animationComplete');
-    
-  }, 6000);
-  }
 
   return (
-    <StyledLoad className={`loader ${classList}`} onAnimationEnd={changeDisplay}>
+    <StyledLoad className="loader">
       <div>
         <AnimatedSVG
           xmlns="http://www.w3.org/2000/svg"
