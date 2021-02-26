@@ -127,6 +127,7 @@ const AnimatedLi = styled.li`
     }
   }
   &.visited {
+    animation-delay: 0;
     ${createDelayChain()}
   }
 `;

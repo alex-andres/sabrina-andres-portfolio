@@ -9,7 +9,7 @@ import Navbar from "./nav/";
 import { VisitedContext } from "../contexts/VisitedContext";
 
 const Layout = ({ children }) => {
-  const [setVisited] = useContext(VisitedContext);
+  const [visited, setVisited] = useContext(VisitedContext);
   const { title, description } = useSiteMetadata();
   // // const toggle = React.useCallback(() => {
   // //   setVisited(visited === true);
@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
       </Helmet>
       <GlobalStyles />
       <MenuProvider>
-        <Navbar visited={visited} />
+        <Navbar />
       </MenuProvider>
       <main>
         <SimpleReactLightbox>{children}</SimpleReactLightbox>
