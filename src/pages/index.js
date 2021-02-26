@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import {globalHistory} from "@reach/router";
 import Hero from "../components/hero";
 import ServicesSection from "../components/ServicesSection";
 import TeaserSection1 from "../components/TeaserSection1";
@@ -10,8 +11,12 @@ import LoadAnimation from "../components/LoadAnimation";
 import { VisitedContext } from "../contexts/VisitedContext";
 
 export default () => {
-  const [visited] = useContext(VisitedContext);
-
+  const [visited, setVisited] = useContext(VisitedContext);
+  useEffect(() => {
+    return globalHistory.listen(({ action }) => {
+      if (action === 'PUSH') setVisited(true)
+    })
+  }, [setVisited])
   if (visited === true) {
     return (
       <>

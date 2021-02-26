@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 import { VisitedContext } from "../contexts/VisitedContext";
 
 const Hero = () => {
-  const [visited, setVisited] = useContext(VisitedContext);
+  const [visited] = useContext(VisitedContext);
   // const toggle = React.useCallback(() => {
   //   if (!visited) {
   //     localStorage.setItem("visited", "true");

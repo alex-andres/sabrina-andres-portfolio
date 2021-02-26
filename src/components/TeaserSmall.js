@@ -64,7 +64,7 @@ const TeaserSmall = ({ className }) => {
       initial="hidden"
       variants={containerVariants}
       css={css`
-        margin-top: 3rem;
+        ${'' /* margin-top: 3rem; */}
         display: grid;
         margin-bottom: 7rem;
         grid-temlate-columns: 1fr;
