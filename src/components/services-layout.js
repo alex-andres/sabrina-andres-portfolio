@@ -114,8 +114,20 @@ const ServicesLayout = ({ content }) => {
             p{
               margin-bottom: 1rem;
             }
+            .servicesHeading{
+              @media screen and (min-width: 768px) {
+                display: none;
+              }
+              strong{
+                font-weight: 600;
+              }
+            }
+            ul{
+              padding-inline-start: 2.6rem;
+            }
           `}
         >
+          <p className="servicesHeading"><strong>Services Include:</strong></p>
           {documentToReactComponents(content.services)}
         </motion.div>
       </div>

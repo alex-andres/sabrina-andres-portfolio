@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
       </Helmet>
       <GlobalStyles />
       <MenuProvider>
-        <Navbar />
+        <Navbar visited={visited} />
       </MenuProvider>
       <main>
         <SimpleReactLightbox>{children}</SimpleReactLightbox>

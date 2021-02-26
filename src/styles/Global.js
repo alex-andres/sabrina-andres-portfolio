@@ -113,7 +113,12 @@ const GlobalStyles = () => {
       img{
         max-width: 100%;
       }
-
+      p{
+        margin-bottom: 1rem;
+        &:last-of-type{
+          margin-bottom: none;
+        }
+      }
     `}
     />
   );

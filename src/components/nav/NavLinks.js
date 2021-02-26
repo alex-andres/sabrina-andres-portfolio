@@ -7,9 +7,6 @@ import { VisitedContext } from "../../contexts/VisitedContext";
 
 const NavLinks = () => {
   const [visited] = useContext(VisitedContext);
-  // if (localStorage.getItem("visited") === "true") {
-  //   setVisited(true);
-  // }
   const { closeMenu } = useMenuContext();
   const pageLinks = [
     "home",
@@ -130,7 +127,6 @@ const AnimatedLi = styled.li`
     }
   }
   &.visited {
-    animation-delay: 0;
     ${createDelayChain()}
   }
 `;
