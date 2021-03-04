@@ -47,7 +47,6 @@ export default () => {
     >
       <h2>Interested in seeing some of Sabrina's curatorial projects?</h2>
       <div className="grid-container">
-        {console.log(projects)}
         {projects.map((project) => (
           <ProjectPreview variants={slideUp}  key={project.slug} project={project} />
         ))}
@@ -58,7 +57,7 @@ export default () => {
 
 const ProjectContainer = styled(motion.div)`
   width: 90vw;
-  margin: 7rem auto;
+  margin: 7rem auto 0;
   h2 {
     @media screen and (min-width: 768px) {
       width: 65%;

@@ -26,7 +26,6 @@ const Layout = ({ children }) => {
         <html lang="en" />
         <title>{title}</title>
         <description>{description}</description>
-        <link rel="preconnect" href="https://use.typekit.net/qmg7rbf.css" />
       </Helmet>
       <GlobalStyles />
       <MenuProvider>

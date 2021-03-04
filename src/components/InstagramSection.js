@@ -10,7 +10,7 @@ export default () => {
 
   const controls = useAnimation();
   const [ref6, inView6] = useInView({
-    triggerOnce: true,
+    
     rootMargin: "-100px 0px",
   });
   useEffect(() => {

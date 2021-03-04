@@ -46,7 +46,7 @@ const TeaserSmall = ({ className }) => {
   };
   const controls = useAnimation();
   const [ref3, inView3] = useInView({
-    triggerOnce: true,
+    
     rootMargin: "-100px 0px",
   });
   useEffect(() => {

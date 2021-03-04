@@ -107,15 +107,6 @@ module.exports = {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,
     },
-
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        typekit: {
-          id: process.env.TYPEKIT_ID,
-        },
-      },
-    },
     {
       resolve: "gatsby-plugin-webpack-bundle-analyzer",
       options: {

@@ -29,7 +29,7 @@ class SignUpForm extends React.Component {
         <div className="sign-up-input first-name-input">
           <label htmlFor="firstName">First Name</label>
           <input
-            name="firstName"
+            id="firstName"
             type="text"
             onChange={this.handleFirstNameChange}
           />
@@ -37,7 +37,7 @@ class SignUpForm extends React.Component {
         <div className="sign-up-input last-name-input">
           <label htmlFor="lastName">Last Name</label>
           <input
-            name="lastName"
+            id="lastName"
             type="text"
             onChange={this.handleLastNameChange}
           />
@@ -46,7 +46,7 @@ class SignUpForm extends React.Component {
           <label htmlFor="email" className="sign-up-heading">
             Email
           </label>
-          <input name="email" type="email" onChange={this.handleEmailChange} />
+          <input id="email" type="email" onChange={this.handleEmailChange} />
         </div>
         <Button className="sign-up-button">Sign Up</Button>
       </StyledForm>

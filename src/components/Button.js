@@ -6,7 +6,6 @@ const Button = styled(Link)`
   color: white;
   padding: 1rem 1.5rem;
   font-size: 1.8rem;
-  font-weight: normal;
   line-height: 1.8em;
   text-decoration: none;
   font-family: Raleway;

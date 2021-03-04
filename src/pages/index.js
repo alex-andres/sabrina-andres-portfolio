@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import {globalHistory} from "@reach/router";
+import React, { useContext } from "react";
 import Hero from "../components/hero";
 import ServicesSection from "../components/ServicesSection";
 import TeaserSection1 from "../components/TeaserSection1";

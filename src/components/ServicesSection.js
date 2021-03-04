@@ -32,7 +32,7 @@ const ServicesSection = () => {
   };
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    
     rootMargin: "-100px 0px",
   });
   useEffect(() => {

@@ -19,7 +19,7 @@ const DesktopNavbar = () => {
         toggle={toggleMenu}
         duration={0}
         className="hamburger-react"
-        aria-label="hamburger menu"
+        label="hamburger menu"
       />
     </DesktopNav>
   );

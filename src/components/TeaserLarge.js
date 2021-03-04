@@ -27,7 +27,6 @@ const TeaserLarge = ({
 
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    triggerOnce: true,
     threshold: 0.3,
   });
   useEffect(() => {
@@ -36,7 +35,6 @@ const TeaserLarge = ({
     }
   }, [controls, inView, visited]);
   const [ref2, inView2] = useInView({
-    triggerOnce: true,
     threshold: 0.5,
   });
   useEffect(() => {
@@ -45,7 +43,6 @@ const TeaserLarge = ({
     }
   }, [controls, inView2, visited]);
   const [ref3, inView3] = useInView({
-    triggerOnce: true,
     threshold: 0.5,
   });
   useEffect(() => {
@@ -68,13 +65,23 @@ const TeaserLarge = ({
         style={{ backgroundPostion: "", backgroundSize: "" }}
         title={backgroundTitle}
       >
-        <div
-          className="text-container"
-        >
-          <motion.h2 ref={ref2} animate={controls}
-      initial="hidden" variants={slideUp}>{claimHeading}</motion.h2>
-          <motion.p ref={ref3} animate={controls}
-      initial="hidden" variants={slideUp}>{claimBody}</motion.p>
+        <div className="text-container">
+          <motion.h2
+            ref={ref2}
+            animate={controls}
+            initial="hidden"
+            variants={slideUp}
+          >
+            {claimHeading}
+          </motion.h2>
+          <motion.p
+            ref={ref3}
+            animate={controls}
+            initial="hidden"
+            variants={slideUp}
+          >
+            {claimBody}
+          </motion.p>
         </div>
       </StyledBackgroundImage>
     </motion.div>
@@ -114,7 +121,7 @@ const StyledBackgroundImage = styled(BackgroundImage)`
     left: 50%;
     transform: translateX(-50%);
     height: 100%;
-    width: 80%;
+    width: 75%;
     h2 {
       font-size: 2.6rem;
       margin-bottom: 2rem;
@@ -148,6 +155,9 @@ const StyledBackgroundImage = styled(BackgroundImage)`
       p {
         font-size: 2rem;
       }
+    }
+    @media screen and (min-width: 1520px) {
+      margin-top: 24%;
     }
   }
 `;

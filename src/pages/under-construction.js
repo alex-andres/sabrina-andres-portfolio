@@ -5,8 +5,6 @@ export default () => {
   return (
     <div
       css={css`
-        @import url("https://use.typekit.net/qmg7rbf.css");
-
         display: flex;
         height: 100vh;
         flex-direction: column;
@@ -77,7 +75,7 @@ export default () => {
       </div>
       <p
         css={css`
-          font-family: ltc-bodoni-175;
+          font-family: Bodoni;
           font-weight: 500;
           font-size: 2rem;
           @media screen and (min-width: 1024px) {

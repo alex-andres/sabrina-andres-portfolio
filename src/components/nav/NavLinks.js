@@ -7,7 +7,6 @@ import { VisitedContext } from "../../contexts/VisitedContext";
 
 const NavLinks = () => {
   const [visited] = useContext(VisitedContext);
-  console.log(visited);
   const { closeMenu } = useMenuContext();
   const pageLinks = [
     "home",
@@ -143,7 +142,6 @@ const NavLink = styled(Link)`
   transition: color 0.5s;
   @media screen and (min-width: 768px) {
     font-size: 1.8rem;
-    font-weight: 2rem;
     padding: 0.5rem;
   }
   &.current-page {
