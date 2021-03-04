@@ -62,7 +62,7 @@ export default () => {
           text-align: center;
         `}
       >
-        Follow <a href="https://www.instagram.com/sab_rina_n/">@sab_rina_n</a>{" "}
+        Follow <a href="https://www.instagram.com/sab_rina_n/" target="_blank" rel="noreferrer">@sab_rina_n</a>{" "}
         on Instagram
       </h2>
       <div
