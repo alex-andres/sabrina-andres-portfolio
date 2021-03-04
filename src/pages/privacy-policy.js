@@ -10,7 +10,7 @@ export default () => (
   >
     <SEO title="Privacy Policy for Sabrinaandres.com" />
     <h1>Privacy policy</h1>
-    <h4>Privacy Policy - Effective Date: April 18, 2020</h4>
+    <h4>Privacy Policy - Effective Date: {new Date().toDateString()}</h4>
     <p>
       Sabrina Andres Art Consulting ("we", "our") respect your privacy and are
       committed to using responsible practices in the collection, maintenance

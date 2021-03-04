@@ -2,7 +2,7 @@ import React from "react";
 
 const InstagramLink = ({ className }) => {
   return (
-    <a href="https://www.instagram.com/sab_rina_n/" className={className}>
+    <a href="https://www.instagram.com/sab_rina_n/" target="_blank" rel="noreferrer" className={className}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 503.84 503.84"

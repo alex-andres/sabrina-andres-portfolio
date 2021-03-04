@@ -4,7 +4,7 @@ import Button from "./SubmitButton";
 import styled from "@emotion/styled";
 
 class SignUpForm extends React.Component {
-  state = { email: "", firstName: "", lastName: "", result: null };
+  state = { email: "", firstName: "", lastName: "", result: null , sent: false};
   handleFirstNameChange = (e) => {
     this.setState({ firstName: e.target.value });
   };
@@ -21,8 +21,20 @@ class SignUpForm extends React.Component {
       LNAME: this.state.lastName,
     });
     this.setState({ result: result });
+    console.log('submitted email to list');
+    this.setState({ email: "", firstName: "", lastName: "", result: null, sent: true }
+
+    )
   };
   render() {
+    if(this.state.sent === true){
+      return (
+        <StyledForm className="sign-up-form" onSubmit={this.handleSubmit}>
+        <strong className="sign-up-heading">Thank you for Signing Up</strong>
+        </StyledForm>
+      )
+    }
+    else{
     return (
       <StyledForm className="sign-up-form" onSubmit={this.handleSubmit}>
         <strong className="sign-up-heading">Sign up for Email Updates</strong>
@@ -32,6 +44,7 @@ class SignUpForm extends React.Component {
             id="firstName"
             type="text"
             onChange={this.handleFirstNameChange}
+            value={this.state.firstName}
           />
         </div>
         <div className="sign-up-input last-name-input">
@@ -40,17 +53,19 @@ class SignUpForm extends React.Component {
             id="lastName"
             type="text"
             onChange={this.handleLastNameChange}
+            value={this.state.lastName}
           />
         </div>
         <div className="sign-up-input email-input">
           <label htmlFor="email" className="sign-up-heading">
             Email
           </label>
-          <input id="email" type="email" onChange={this.handleEmailChange} />
+          <input id="email" type="email" onChange={this.handleEmailChange} value={this.state.email}/>
         </div>
-        <Button className="sign-up-button">Sign Up</Button>
+        <Button  className="sign-up-button">Sign Up</Button>
       </StyledForm>
     );
+    }
   }
 }
 
@@ -79,6 +94,7 @@ const StyledForm = styled.form`
     }
     input {
       width: 100%;
+      color: var(--black);
     }
   }
   .first-name-input {

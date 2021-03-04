@@ -63,7 +63,7 @@ const Footer = () => {
         <InstagramLink className="instagram-link-small" />
       </div>
 
-      <small className="copyright">© 2020 Sabrina Andres Art Advisory </small>
+      <small className="copyright">© {new Date().getFullYear()} Sabrina Andres Art Advisory </small>
       <small className="credits">
         Crafted with Love by{" "}
         <a
