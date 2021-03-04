@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { useForm } from "react-hook-form";
 import SubmitButton from "./SubmitButton";
 import Input from "./Input";
-// import addToMailchimp from "gatsby-plugin-mailchimp";
+
 import {
   useNetlifyForm,
   NetlifyFormProvider,
@@ -51,8 +51,7 @@ const ContactForm = ({ className }) => {
           {netlify.success && <p>Thanks for contacting us!</p>}
           {netlify.error && (
             <p>
-              Sorry, we could not reach servers. Because it only works on
-              Netlify, our GitHub demo does not provide a response.
+              Sorry, we could not reach servers.
             </p>
           )}
           <div className="flex-container">

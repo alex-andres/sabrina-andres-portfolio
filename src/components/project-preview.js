@@ -62,15 +62,12 @@ const PreviewContainer = styled(motion.div)`
       }
       background-color: rgba(0, 0, 0, 0.5);
       @media (hover: hover){
-        display: none;
         h2 {
-          color: rgba(255, 255, 255, 1);
-          opacity: 0;
-          transition: opacity 0.4s ease-in;
+          color: rgba(255, 255, 255, 0);
+          transition: color 0.4s ease-in;
         }
-        background-color: rgba(0, 0, 0, .5);
-        opacity: 0;
-        transition: opacity 0.4s ease-in;
+        background-color: rgba(0, 0, 0, 0);
+        transition: background-color 0.4s ease-in;
         }
       }  
       &:hover {
@@ -84,13 +81,11 @@ const PreviewContainer = styled(motion.div)`
           align-items: center;
           z-index: 1;
           background-color: rgba(0, 0, 0, .5);
-          opacity: 1;
-          transition: opacity 0.4s ease-in;
+          transition: background-color0.4s ease-in;
 
           h2 {
-            opacity: 1;
             color: rgba(255, 255, 255, 1);
-            transition: opacity 0.4s ease-in;
+            transition: color 0.4s ease-in;
             text-align: center;
             margin: 0;
             }

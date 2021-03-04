@@ -110,8 +110,8 @@ export default () => {
         animate="visible"
         variants={slideUpDelay}>
           <p className="contact-text">
-            If you have any inquiries or comments, please contact me via email
-            or phone, or send me a message using the contact form.
+            If you have any inquiries or comments, please contact SAAA via email
+            or phone, or send a message using the contact form.
           </p>
           <p>
             <strong>Email</strong>

@@ -91,7 +91,7 @@ const ServicesSection = () => {
             Coordination of loan terms
           </motion.li>
           <motion.li className="li" variants={item}>
-            Gallery and studio visits with client
+            Gallery and studio visits with the client
           </motion.li>
           <motion.li className="li" variants={item}>
             Curating of art projects internationally
@@ -100,7 +100,7 @@ const ServicesSection = () => {
             Market and Art Historical Research
           </motion.li>
           <motion.li className="li" variants={item}>
-            Conduct acquisitions and sales for client
+            Conduct acquisitions and sales for the client
           </motion.li>
           <motion.li className="li" variants={item}>
             Represent client during transactions
