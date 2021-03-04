@@ -128,7 +128,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
-        endpoint: `${process.env.MAIL_CHIMP_ENDPOINT}`,
+        endpoint: process.env.MAIL_CHIMP_ENDPOINT,
         timeout: 3500,
       },
     },
