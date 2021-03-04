@@ -60,7 +60,6 @@ module.exports = {
     "gatsby-plugin-advanced-sitemap",
     "gatsby-plugin-preload-fonts",
     "gatsby-plugin-sass",
-    "gatsby-plugin-csp",
     {
       resolve: `gatsby-plugin-loadable-components-ssr`,
       options: {
