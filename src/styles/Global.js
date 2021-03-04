@@ -22,66 +22,77 @@ const GlobalStyles = () => {
         src: url(${displayFont});
         font-weight: 500;
         font-style: normal;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFont});
         font-weight: normal;
         font-style: normal;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontItalic});
         font-weight: normal;
         font-style: italic;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontStaticItalic});
         font-weight: 400;
         font-style: italic;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontStaticRegular});
         font-weight: 400;
         font-style: normal;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontStaticLightItalic});
         font-weight: 300;
         font-style: italic;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontStaticLight});
         font-weight: 300;
         font-style: normal;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontStaticMediumItalic});
         font-weight: 500;
         font-style: italic;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontStaticMedium});
         font-weight: 500;
         font-style: normal;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontStaticSemiBoldItalic});
         font-weight: 600;
         font-style: italic;
+        font-display: swap
       }
       @font-face{
         font-family: Raleway;
         src: url(${textFontStaticSemiBold});
         font-weight: 600;
         font-style: normal;
+        font-display: swap
       }
       :root{
         --black: #1C1C1C;
