@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "@emotion/styled";
 import { useForm } from "react-hook-form";
 import SubmitButton from "./SubmitButton";
@@ -15,6 +15,11 @@ import { motion } from "framer-motion";
 
 const ContactForm = ({ className }) => {
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
   const netlify = useNetlifyForm({
     name: "react-hook-form",
     action: "/thanks",
@@ -26,7 +31,11 @@ const ContactForm = ({ className }) => {
   const onSubmit = (data) => {
     netlify.handleSubmit(null, data).then(()=>{
       if(netlify.success){
-        document.querySelector('#form-component').reset();
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPhone('');
+        setMessage('');
       }
     });
   };
@@ -70,6 +79,8 @@ const ContactForm = ({ className }) => {
                   required: "First Name is Required",
                   maxLength: 80,
                 })}
+                onChange={(e)=>setFirstName(e.target.value)}
+                value={firstName}
               />
             </div>
             {errors.firstNameMessage && <div className="errors-message">{errors.firstNameMessage.message}</div>}
@@ -86,6 +97,8 @@ const ContactForm = ({ className }) => {
                   required: "Last Name is Required",
                   maxLength: 100,
                 })}
+                onChange={(e)=>setLastName(e.target.value)}
+                value={lastName}
               />
             </div>
             {errors.lastNameMessage && <div className="errors-message">{errors.lastNameMessage.message}</div>}
@@ -105,6 +118,8 @@ const ContactForm = ({ className }) => {
                     message: "Invalid email address",
                   },
                 })}
+                onChange={(e)=>setEmail(e.target.value)}
+                value={email}
               />
             </div>
             {errors.email && <div className="errors-message">{errors.email.message}</div>}
@@ -117,6 +132,8 @@ const ContactForm = ({ className }) => {
                 type="tel"
                 name="phone"
                 ref={register({ required: "Phone is Required", maxLength: 12 })}
+                onChange={(e)=>setPhone(e.target.value)}
+                value={phone}
               />
             </div>
             {errors.phone && <div className="errors-message">Phone is Required</div>}
@@ -128,6 +145,8 @@ const ContactForm = ({ className }) => {
                 style={{ border: errors.Message && "red 2px solid" }}
                 name="Message"
                 ref={register({ required: "Message is Required" })}
+                onChange={(e)=>setMessage(e.target.value)}
+                value={message}
               />
             </div>
             {errors.Message && <div className="errors-message">{errors.Message.message}</div>}
