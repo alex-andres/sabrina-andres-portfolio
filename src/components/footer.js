@@ -37,14 +37,7 @@ const Footer = () => {
       </Link>
       <div className="contact-info-1">
         <address>Los Angeles, CA</address>
-        <a
-          href="tel:6263659609"
-          aria-label=" Call Sabrina Andres at 6 2 6. 3 6 5. 9 6 0 9."
-          title="Call Sabrina Andres"
-          className="phone"
-        >
-          (626) 365-9609
-        </a>
+        <InstagramLink className="instagram-link-medium" />
       </div>
       <div className="contact-info-2">
         <a
@@ -54,7 +47,6 @@ const Footer = () => {
         >
           sabrina@sabrinaandres.com
         </a>
-        <InstagramLink className="instagram-link-medium" />
       </div>
       <SignUpForm className="sign-up-form" />
       <div className="page-links">
@@ -168,17 +160,10 @@ const StyledFooter = styled(motion.footer)`
       width: 29.86rem;
       grid-area: contactInfo1;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       > * {
         display: inline-block;
       }
-    }
-    .contact-info-2 {
-      grid-area: contactInfo2;
-      display: flex;
-      width: 29.86rem;
-      justify-content: space-between;
-      align-items: center;
       .instagram-link-medium {
         display: inline-block;
         svg {
@@ -196,6 +181,14 @@ const StyledFooter = styled(motion.footer)`
           }
         }
       }
+    }
+    .contact-info-2 {
+      grid-area: contactInfo2;
+      display: flex;
+      width: 29.86rem;
+      justify-content: center;
+      align-items: center;
+      
     }
 
     .copyright {
@@ -238,6 +231,7 @@ const StyledFooter = styled(motion.footer)`
     .contact-info-1,
     .contact-info-2 {
       justify-self: start;
+      justify-content: start;
     }
     .branding-link,
     .page-links {
@@ -245,6 +239,7 @@ const StyledFooter = styled(motion.footer)`
     }
     .contact-info-1,
     .copyright {
+      justify-content: start;
       align-self: center;
     }
     .contact-info-2,
@@ -252,7 +247,7 @@ const StyledFooter = styled(motion.footer)`
       align-self: end;
     }
 
-    .contact-info-2 {
+    .contact-info-1 {
       .instagram-link-medium {
         display: none;
       }

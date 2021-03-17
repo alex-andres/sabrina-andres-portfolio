@@ -23,7 +23,13 @@ const ContactForm = ({ className }) => {
       console.log("Successfully sent form data to Netlify Server");
     },
   });
-  const onSubmit = (data) => netlify.handleSubmit(null, data);
+  const onSubmit = (data) => {
+    netlify.handleSubmit(null, data).then(()=>{
+      if(netlify.success){
+        document.querySelector('#form-component').reset();
+      }
+    });
+  };
   const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
   const slideUpDelay2 = {
     hidden: { y: 20, opacity: 0 },
@@ -31,12 +37,12 @@ const ContactForm = ({ className }) => {
       y: 0,
       opacity: 1,
       transition: {
-        delay: .4,
+        delay: 0.4,
         ease: "easeOut",
         duration: 0.75,
       },
     },
-  }
+  };
   return (
     <ContactContainer
       initial="hidden"
@@ -45,44 +51,44 @@ const ContactForm = ({ className }) => {
       className={className}
     >
       <NetlifyFormProvider className="netlify-form-provider" {...netlify}>
-        <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)}>
+        <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)} id="form-component">
           <Honeypot />
-          <Recaptcha siteKey={`${process.env.SITE_RECAPTCHA_KEY}`} invisible />
+          <Recaptcha siteKey={process.env.GATSBY_RECAPTCHA_KEY} invisible />
           {netlify.success && <p>Thanks for contacting us!</p>}
-          {netlify.error && (
-            <p>
-              Sorry, we could not reach servers.
-            </p>
-          )}
+          {netlify.error && <p>Sorry, we could not reach servers.</p>}
           <div className="flex-container">
             <div className="input-wrapper">
-              <label className="label" htmlFor="firstName">
+              <label className="label" htmlFor="firstNameMessage">
                 First Name:
               </label>
               <Input
-                style={{ border: errors.firstName && "red 2px solid" }}
+                style={{ border: errors.firstNameMessage && "red 2px solid" }}
                 type="text"
-                name="firstName"
+                name="firstNameMessage"
+                id="firstNameMessage"
                 ref={register({
                   required: "First Name is Required",
                   maxLength: 80,
                 })}
               />
             </div>
+            {errors.firstNameMessage && <div className="errors-message">{errors.firstNameMessage.message}</div>}
             <div className="input-wrapper">
-              <label className="label" htmlFor="lastName">
+              <label className="label" htmlFor="lastNameMessage">
                 Last Name:
               </label>
               <Input
-                style={{ border: errors.lastName && "red 2px solid" }}
+                style={{ border: errors.lastNameMessage && "red 2px solid" }}
                 type="text"
-                name="lastName"
+                name="lastNameMessage"
+                id="lastNameMessage"
                 ref={register({
                   required: "Last Name is Required",
                   maxLength: 100,
                 })}
               />
             </div>
+            {errors.lastNameMessage && <div className="errors-message">{errors.lastNameMessage.message}</div>}
             <div className="input-wrapper">
               <label className="label" htmlFor="email">
                 Email:
@@ -101,43 +107,34 @@ const ContactForm = ({ className }) => {
                 })}
               />
             </div>
-            {errors.email && <div>{errors.email.message}</div>}
+            {errors.email && <div className="errors-message">{errors.email.message}</div>}
             <div className="input-wrapper">
               <label className="label" htmlFor="phone">
                 Phone:
               </label>
               <Input
+              style={{ border: errors.phone && "red 2px solid" }}
                 type="tel"
                 name="phone"
                 ref={register({ required: "Phone is Required", maxLength: 12 })}
               />
             </div>
-            {errors.phone && <span>Phone is Required</span>}
+            {errors.phone && <div className="errors-message">Phone is Required</div>}
             <div className="input-wrapper message-input-wrapper">
               <label className="label" htmlFor="Message">
                 Message:
               </label>
               <textarea
+                style={{ border: errors.Message && "red 2px solid" }}
                 name="Message"
                 ref={register({ required: "Message is Required" })}
               />
             </div>
+            {errors.Message && <div className="errors-message">{errors.Message.message}</div>}
           </div>
 
           <div className="button-container">
-            <div className="mailing-list-section-wrapper">
-              {/* <div className="input-wrapper">
-                <label className="mailing-list-label" for="sign-up">
-                  Join SAAA mailing list?
-                </label>
-                <input
-                  type="checkbox"
-                  name="sign-up"
-                  ref={register({ required: "Select one option" })}
-                />
-              </div> */}
-              <SubmitButton type="submit">Send</SubmitButton>
-            </div>
+            <SubmitButton type="submit">Send</SubmitButton>
           </div>
         </NetlifyFormComponent>
       </NetlifyFormProvider>
@@ -149,24 +146,31 @@ export default ContactForm;
 
 const ContactContainer = styled(motion.div)`
     grid-area: form;
-    .flex-container {
+    [name="react-hook-form"]{
       display: flex;
       flex-direction: column;
-      * + * {
-        margin-top: 1rem;
-      } 
+      align-items: flex-end;
+    }
+    .flex-container {
+      width: 100%;
       .input-wrapper {
         width: 100%;
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
+        @media screen and (min-width: 768px){
+          justify-content: flex-end;
+        }
         align-items: center;
+        margin-bottom: 1rem;
         .label {
-          width: 30%;
+          min-width: 9.428rem;
+          flex-basis: 9.428rem;
+          margin-right: 2rem;
+          word-wrap: nowrap;
         }
         input,
         textarea {
-          width: 70%;
+          flex-basis: 80%;
           resize: vertical;
           background-color: var(--lightGray);
           border-radius: 5px;
@@ -181,6 +185,9 @@ const ContactContainer = styled(motion.div)`
           min-height: 180px;
         }
       }
+      .errors-message{
+        margin-left: 11.428rem;
+      }
       .message-input-wrapper{
         align-items: flex-start;
       }
@@ -192,7 +199,7 @@ const ContactContainer = styled(motion.div)`
       justify-content: flex-end;
       .mailing-list-section-wrapper{
         width: 70%;
-        display: flex; 
+        display: flex;
         justify-content: flex-end;
         align-items: center;
         .mailing-list-label{
