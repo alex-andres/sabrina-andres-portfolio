@@ -14,7 +14,7 @@ import {
 import { motion } from "framer-motion";
 
 const ContactForm = ({ className }) => {
-  const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
+  const { register, handleSubmit, reset, errors } = useForm({ mode: "onBlur" });
   const [messageSent, setMessageSent] = useState('initial');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -27,7 +27,7 @@ const ContactForm = ({ className }) => {
     honeypotName: "bot-field",
     onSuccess: (response, context) => {
       console.log('Successfully sent form data to Netlify Server')
-    context.formRef.current.reset()
+      context.formRef.current.reset()
     },
   });
   const onSubmit = (data) => {
@@ -156,23 +156,17 @@ const ContactForm = ({ className }) => {
             <div className="button-container">
               <SubmitButton type="submit">Send</SubmitButton>
             </div>
+            <button
+            type='reset'
+            onClick={() => reset()}
+          >
+            Reset
+          </button>
           </NetlifyFormComponent>
         </NetlifyFormProvider>
       </ContactContainer>
     );
-  } else if(messageSent === 'sent') {
-    return(
-      <div>
-        Thank you
-      </div>
-    )
-  } else if(messageSent === 'error') {
-    return(
-      <div>
-        Error
-      </div>
-    )
-  }
+  };
   
 };
 
