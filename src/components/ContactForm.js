@@ -514,7 +514,8 @@ import { motion } from "framer-motion";
 const ContactForm = ({ className }) => {
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
   const netlify = useNetlifyForm({
-    name: "react-hook-form",
+    name: "ReCAPTCHA",
+    enableRecaptcha: true,
     action: "/thanks",
     honeypotName: "bot-field",
     onSuccess: (response, context) => {
