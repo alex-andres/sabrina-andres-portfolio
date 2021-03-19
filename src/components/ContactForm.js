@@ -34,9 +34,7 @@ const ContactForm = ({ className }) => {
   const onSubmit = (data) => {
     netlify.handleSubmit(null, data).then(() => {
       if (netlify.success) {
-        setMessageSent(true);
-      } else if (netlify.error) {
-        setMessageSent("error");
+        reset();
       }
     });
   };
@@ -180,7 +178,7 @@ const ContactForm = ({ className }) => {
           </div>
 
           <div className="button-container">
-            <Recaptcha siteKey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
+            <Recaptcha siteKey={process.env.SITE_RECAPTCHA_KEY} />
             <SubmitButton type="submit">Send</SubmitButton>
           </div>
         </NetlifyFormComponent>
