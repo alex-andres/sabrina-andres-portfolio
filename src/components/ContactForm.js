@@ -512,10 +512,10 @@ import {
 import { motion } from "framer-motion";
 
 const ContactForm = ({ className }) => {
-  const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
+  const { register, handleSubmit, reset, errors } = useForm({ mode: "onBlur" });
   const netlify = useNetlifyForm({
     name: "ReCAPTCHA",
-    enableRecaptcha: "true",
+    enableRecaptcha: "true" ,
     action: "/thanks",
     honeypotName: "bot-field",
     onSuccess: (response, context) => {
