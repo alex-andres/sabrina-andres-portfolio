@@ -520,12 +520,13 @@ const ContactForm = ({ className }) => {
     honeypotName: "bot-field",
     onSuccess: (response, context) => {
       console.log("Successfully sent form data to Netlify Server");
+      document.querySelector('#form-component').reset();
     },
   });
   const onSubmit = (data) => {
     netlify.handleSubmit(null, data).then(()=>{
       if(netlify.success){
-        document.querySelector('#form-component').reset();
+        
       }
     });
   };
