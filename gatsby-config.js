@@ -60,7 +60,6 @@ module.exports = {
     "gatsby-plugin-advanced-sitemap",
     "gatsby-plugin-preload-fonts",
     "gatsby-plugin-sass",
-    "gatsby-plugin-recaptcha",
     "gatsby-plugin-loadable-components-ssr",
     {
       resolve: "gatsby-plugin-robots-txt",
