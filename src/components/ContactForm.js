@@ -286,6 +286,7 @@ const ContactForm = ({ className }) => {
     name: "ReCAPTCHA",
     action: "/thanks",
     honeypotName: "bot-field",
+    enableRecaptcha: true,
     onSuccess: (response, context) => {
       console.log('Successfully sent form data to Netlify Server')
       context.formRef.current.reset()
