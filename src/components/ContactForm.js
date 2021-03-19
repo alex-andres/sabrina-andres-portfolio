@@ -632,7 +632,7 @@ const ContactForm = ({ className }) => {
           </div>
 
           <div className="button-container">
-            <Recaptcha siteKey={process.env.SITE_RECAPTCHA_KEY} />
+            <Recaptcha siteKey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
             <SubmitButton type="submit">Send</SubmitButton>
           </div>
         </NetlifyFormComponent>
