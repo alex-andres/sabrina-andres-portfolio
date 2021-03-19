@@ -323,7 +323,7 @@ const ContactForm = ({ className }) => {
         <NetlifyFormProvider className="netlify-form-provider" {...netlify}>
           <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)} id="form-component">
             <Honeypot />
-            <Recaptcha siteKey={process.env.SITE_RECAPTCHA_KEY}/>
+            
             {netlify.success && <p>Thanks for contacting us!</p>}
             {netlify.error && <p>Sorry, we could not reach servers.</p>}
             <div className="flex-container">
@@ -414,14 +414,9 @@ const ContactForm = ({ className }) => {
             </div>
   
             <div className="button-container">
+              <Recaptcha siteKey={process.env.SITE_RECAPTCHA_KEY}/>
               <SubmitButton type="submit">Send</SubmitButton>
             </div>
-            <button
-            type='reset'
-            onClick={() => reset()}
-          >
-            Reset
-          </button>
           </NetlifyFormComponent>
         </NetlifyFormProvider>
       </ContactContainer>
