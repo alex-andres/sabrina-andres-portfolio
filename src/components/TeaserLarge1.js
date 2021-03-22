@@ -85,7 +85,7 @@ const TeaserLarge1 = ({ className }) => {
     <TeaserLarge
       backgroundImage={sources}
       claimHeading="Facilitating investment in passion"
-      claimBody="With a clearly defined, independent stance in the art field, Sabrina Andres Art Advisory creates tailored experiences for private collectors and corporations while adding tangible value to their collection."
+      claimBody="With a clearly defined and independent stance in the art field, Sabrina Andres Art Advisory creates tailored experiences for private collectors and corporations while adding tangible value to their collection."
       className={"teaserLarge1"}
       backgroundTitle={`Alex Becerra
 Faces Faces Expansion, 2020
