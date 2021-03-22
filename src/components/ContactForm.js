@@ -199,7 +199,20 @@ const ContactContainer = styled(motion.div)`
       margin-top: 1rem;
       width: 100%;
       display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      @media screen and (min-width:460px){
+      flex-direction: row;
+      align-items: center;
       justify-content: flex-end;
+      }
+      [style="width: 304px; height: 78px;"]{
+        max-width: 22.7rem;
+        @media screen and (min-width: 460px){
+          max-width: 23.7rem;
+          max-height: 5.6rem;
+        }
+      }
       .mailing-list-section-wrapper{
         width: 70%;
         display: flex;
@@ -211,6 +224,9 @@ const ContactContainer = styled(motion.div)`
         .input-wrapper{
           margin-bottom: 1rem;
         }
+      }
+      button{
+        z-index: 10;
       }
     }
   }

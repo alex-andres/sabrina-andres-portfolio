@@ -120,10 +120,7 @@ Private Collection, Los Angeles, CA, US"
             }
           `}
         >
-          Particularly during this unprecedented time and with limited in-person
-          interaction, Sabrina excels in quick adaptation, judgment, and
-          creative action. She strives to offer her clients a highly flexible
-          means of advising.
+          Sabrina's adaptability, clear judgement, and creativity have proven powerful during these current unprecedented times. With social interactions currently limited, Sabrina strives to offer her clients a highly flexible means of advising.
         </p>
       </motion.div>
     </motion.div>
