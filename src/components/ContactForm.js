@@ -61,7 +61,7 @@ const ContactForm = ({ className }) => {
           <div className="flex-container">
             <div className="input-wrapper">
               <label className="label" htmlFor="firstNameMessage">
-                First Name:
+                First Name
               </label>
               <Input
                 style={{ border: errors.firstNameMessage && "red 2px solid" }}
@@ -77,7 +77,7 @@ const ContactForm = ({ className }) => {
             {errors.firstNameMessage && <div className="errors-message">{errors.firstNameMessage.message}</div>}
             <div className="input-wrapper">
               <label className="label" htmlFor="lastNameMessage">
-                Last Name:
+                Last Name
               </label>
               <Input
                 style={{ border: errors.lastNameMessage && "red 2px solid" }}
@@ -93,7 +93,7 @@ const ContactForm = ({ className }) => {
             {errors.lastNameMessage && <div className="errors-message">{errors.lastNameMessage.message}</div>}
             <div className="input-wrapper">
               <label className="label" htmlFor="email">
-                Email:
+                Email
               </label>
               <Input
                 style={{ border: errors.email && "red 2px solid" }}
@@ -112,7 +112,7 @@ const ContactForm = ({ className }) => {
             {errors.email && <div className="errors-message">{errors.email.message}</div>}
             <div className="input-wrapper">
               <label className="label" htmlFor="phone">
-                Phone:
+                Phone
               </label>
               <Input
               style={{ border: errors.phone && "red 2px solid" }}
@@ -124,7 +124,7 @@ const ContactForm = ({ className }) => {
             {errors.phone && <div className="errors-message">Phone is Required</div>}
             <div className="input-wrapper message-input-wrapper">
               <label className="label" htmlFor="Message">
-                Message:
+                Message
               </label>
               <textarea
                 style={{ border: errors.Message && "red 2px solid" }}
@@ -159,21 +159,32 @@ const ContactContainer = styled(motion.div)`
       .input-wrapper {
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
+        @media screen and (min-width: 450px){
+          flex-direction: row;
+        }
         @media screen and (min-width: 768px){
           justify-content: flex-end;
         }
         align-items: center;
         margin-bottom: 1rem;
         .label {
-          min-width: 9.428rem;
-          flex-basis: 9.428rem;
-          margin-right: 2rem;
-          word-wrap: nowrap;
+          margin-bottom: .5rem;
+          @media screen and (min-width: 450px){
+            min-width: 9.428rem;
+            flex-basis: 9.428rem;
+            margin-right: 2rem;
+            word-wrap: nowrap;
+          }
+          
         }
         input,
         textarea {
+          width: 100%;
+          @media screen and (min-width: 450px){
           flex-basis: 80%;
+          }
           resize: vertical;
           background-color: var(--lightGray);
           border-radius: 5px;
@@ -192,7 +203,9 @@ const ContactContainer = styled(motion.div)`
         margin-left: 11.428rem;
       }
       .message-input-wrapper{
-        align-items: flex-start;
+        @media screen and (min-width: 450px){
+          align-items: flex-start;
+        }
       }
     }
     .button-container{
@@ -208,11 +221,16 @@ const ContactContainer = styled(motion.div)`
       }
       [style="width: 304px; height: 78px;"]{
         max-width: 22.7rem;
+        overflow: hidden;
         @media screen and (min-width: 460px){
           max-width: 23.7rem;
-          max-height: 5.6rem;
+          max-height: 5.8rem;
         }
       }
+        .rc-anchor-pt{
+          display: none;
+
+        }
       .mailing-list-section-wrapper{
         width: 70%;
         display: flex;
