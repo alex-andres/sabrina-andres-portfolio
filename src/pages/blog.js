@@ -121,7 +121,7 @@ class BlogIndex extends React.Component {
                       >
                         {node.title}
                       </motion.h1>
-                      <motion.p variants={slideUp}>{node.publishDate}</motion.p>
+                      {/* <motion.p variants={slideUp}>{node.publishDate}</motion.p> */}
                       <motion.p variants={slideUp}>{node.description.description}</motion.p>
                       <motion.div variants={slideUp}><Button to={node.slug}> Read More </Button></motion.div>
                     </motion.div>

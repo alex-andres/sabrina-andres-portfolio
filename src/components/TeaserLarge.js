@@ -103,7 +103,7 @@ const StyledBackgroundImage = styled(BackgroundImage)`
   @media screen and (min-width: 768px) {
     padding-bottom: 91.5%;
   }
-  @media screen and (min-width: 2138px) {
+  @media screen and (min-width: 1920px) {
     padding-bottom: 67.2%;
   }
 

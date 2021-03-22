@@ -53,13 +53,13 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
             `}
           >
             <h1 className="section-headline">{post.title}</h1>
-            <p
+            {/* <p
               style={{
                 display: "block",
               }}
             >
               {post.publishDate}
-            </p>
+            </p> */}
             {documentToReactComponents(post.body.json, options)}
             <div />
             <div

@@ -49,7 +49,7 @@ export default () => {
         animate="visible"
         variants={slideUp}
           css={css`
-            margin-bottom: 1.5rem;
+            margin-bottom: 3rem;
           `}
         >
           Projects
