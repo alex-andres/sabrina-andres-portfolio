@@ -220,7 +220,7 @@ const ContactContainer = styled(motion.div)`
       justify-content: flex-end;
       }
       [style="width: 304px; height: 78px;"]{
-        max-width: 22.7rem;
+        max-width: 30.2rem;
         overflow: hidden;
         @media screen and (min-width: 460px){
           max-width: 23.7rem;
