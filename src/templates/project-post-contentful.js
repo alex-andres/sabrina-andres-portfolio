@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { motion } from "framer-motion";
-import { SRLWrapper } from "simple-react-lightbox";
+// import { SRLWrapper } from "simple-react-lightbox";
 import GalleryGrid from "../components/GalleryGrid";
 import SEO from "../components/SEO";
 
@@ -103,6 +103,7 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
                 fluid={project.image.fluid}
                 alt={project.image.description}
                 key={project.image.id}
+                title={project.image.description}
               />
             </div>
             <h2
@@ -112,7 +113,7 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
             >
               Gallery
             </h2>
-            <SRLWrapper>
+            {/* <SRLWrapper> */}
               <div
                 css={css`
                   display: grid;
@@ -126,7 +127,7 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
                   <GalleryGrid image={image} key={image.id} />
                 ))}
               </div>
-            </SRLWrapper>
+            {/* </SRLWrapper> */}
           </div>
         </div>
       </>
@@ -189,6 +190,7 @@ const ProjectTemplate = ({ data: { contentfulProject: project } }) => {
                   fluid={project.image.fluid}
                   alt={project.image.description}
                   key={project.image.id}
+                  title={project.image.description}
                 />
               </motion.div>
             </div>

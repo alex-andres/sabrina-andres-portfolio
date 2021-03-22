@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
-import { SRLWrapper } from "simple-react-lightbox";
+// import { SRLWrapper } from "simple-react-lightbox";
 import { css } from "@emotion/core";
 import GalleryGrid from "../components/GalleryGrid";
 import SEO from "../components/SEO";
@@ -74,7 +74,7 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
               >
                 Gallery
               </h2>
-              <SRLWrapper>
+              {/* <SRLWrapper> */}
                 <div
                   css={css`
                     display: grid;
@@ -88,7 +88,7 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
                     <GalleryGrid image={image} key={image.id} />
                   ))}
                 </div>
-              </SRLWrapper>
+              {/* </SRLWrapper> */}
             </div>
           </div>
         </div>

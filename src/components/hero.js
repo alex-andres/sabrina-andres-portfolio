@@ -40,7 +40,7 @@ The Eventual End (Salk Institute), 2020
 Oil on linen
 194 x 194 cm (76 1/3 x 76 1/3 in)
 Courtesy of the artist
-Private Collection, Nevada, US"
+Available for sale, contact SAAA for details"
         />
       </div>
       <div
@@ -51,7 +51,7 @@ Private Collection, Nevada, US"
             <text
               transform="translate(0 93.67)"
               fontSize="110"
-              fontFamily="LTCBodoni175Pro,'LTC Bodoni 175 Pro'"
+              fontFamily="Bodoni,'Bodoni'"
             >
               Sabrina Andres Art Advisory
             </text>

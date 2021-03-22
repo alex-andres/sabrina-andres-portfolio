@@ -3,7 +3,7 @@ import GlobalStyles from "../styles/Global";
 import Helmet from "react-helmet";
 import useSiteMetadata from "../hooks/use-sitemetadata";
 import Footer from "./footer";
-import SimpleReactLightbox from "simple-react-lightbox";
+// import SimpleReactLightbox from "simple-react-lightbox";
 import { MenuProvider } from "../state/Menu";
 import Navbar from "./nav/";
 import { VisitedContext } from "../contexts/VisitedContext";
@@ -32,7 +32,9 @@ const Layout = ({ children }) => {
         <Navbar />
       </MenuProvider>
       <main>
-        <SimpleReactLightbox>{children}</SimpleReactLightbox>
+        {/* <SimpleReactLightbox> */}
+        {children}
+        {/* </SimpleReactLightbox> */}
       </main>
       <Footer />
     </>
