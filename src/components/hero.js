@@ -50,8 +50,6 @@ Available for sale, contact SAAA for details"
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360.25 123.91">
             <text
               transform="translate(0 93.67)"
-              fontSize="110"
-              fontFamily="Bodoni,'Bodoni'"
             >
               Sabrina Andres Art Advisory
             </text>
@@ -155,6 +153,8 @@ const HeroContainer = styled.div`
       top: 0;
       text{
         width: 100%;
+        font-size: 10.6rem;
+        font-family: Bodoni;
       }
     }
   }
