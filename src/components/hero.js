@@ -153,6 +153,9 @@ const HeroContainer = styled.div`
       width: 100%;
       left: 0;
       top: 0;
+      text{
+        width: 100%;
+      }
     }
   }
   .hero-sub-heading {
