@@ -97,7 +97,7 @@ const ServicesLayout = ({ content }) => {
           animate="visible"
           variants={slideUpDelay}
             css={css`
-              margin-bottom: 3rem;
+              margin-bottom:   3rem;
             `}
           >
             {documentToReactComponents(content.description)}
