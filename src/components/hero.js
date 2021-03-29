@@ -173,7 +173,7 @@ const HeroContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
   @media screen and (min-width: 1024px) {
-    gap: 6rem;
+    ${'' /* gap: 6rem; */}
     grid-template-areas: "slider slider slider claim claim claim claim";
     grid-template-columns: repeat(7, 1fr);
     max-height: 100%;
@@ -231,6 +231,10 @@ const HeroContainer = styled.div`
       margin: 6rem auto 3rem;
       justify-content: flex-start;
     }
+    @media screen and (min-width: 1024px){
+      margin: 2rem 3vw 3rem;
+      width: calc(100% - 3vw * 2);
+    } 
     @media screen and (min-width: 1200px) {
       justify-content: center;
     }
@@ -242,6 +246,12 @@ const HeroContainer = styled.div`
     padding: 0;
     padding-bottom: 10%;
     margin-bottom: 2.2rem;
+    @media screen and (min-width: 400px){
+      margin-bottom: 1.5rem;
+    }
+    @media screen and (min-width: 1024px){
+      margin-bottom: .5rem;
+    }
     .visually-hidden {
       border: 0;
       padding: 0;

@@ -200,7 +200,7 @@ const GlobalStyles = () => {
       p{
         margin-bottom: 1rem;
         &:last-of-type{
-          margin-bottom: none;
+          margin-bottom: 0;
         }
       }
     `}

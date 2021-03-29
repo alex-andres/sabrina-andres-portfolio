@@ -10,7 +10,7 @@ const InstaCard = ({ post, variants }) => {
       variants={variants}
       css={css`
         width: 280px;
-        height: 280px;
+        height: 300px;
         @media screen and (min-width: 350px) {
           width: 300px;
           height: 300px;

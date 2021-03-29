@@ -66,7 +66,7 @@ const ProjectContainer = styled(motion.div)`
   .grid-container {
     margin-top: 3.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(28.8rem, 1fr));
     grid-gap: 2rem;
   }
 `;

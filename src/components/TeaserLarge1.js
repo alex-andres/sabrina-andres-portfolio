@@ -4,6 +4,7 @@ import TeaserLarge from "./TeaserLarge";
 
 const TeaserLarge1 = ({ className }) => {
   const {
+    smallMobileImage,
     mobileImage,
     tabletImage,
     eigtheenEighty,
@@ -12,6 +13,15 @@ const TeaserLarge1 = ({ className }) => {
   } = useStaticQuery(
     graphql`
       query {
+        smallMobileImage: file(
+          relativePath: { eq: "large-teaser-1/large-teaser-1-small-mobile.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1069) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
         mobileImage: file(
           relativePath: { eq: "large-teaser-1/large-teaser-1-mobile.jpg" }
         ) {
@@ -63,7 +73,11 @@ const TeaserLarge1 = ({ className }) => {
   );
 
   const sources = [
-    mobileImage.childImageSharp.fluid,
+    smallMobileImage.childImageSharp.fluid,
+    {
+      ...mobileImage.childImageSharp.fluid,
+      media: `(min-width: 350px)`,
+    },
     {
       ...tabletImage.childImageSharp.fluid,
       media: `(min-width: 500px)`,

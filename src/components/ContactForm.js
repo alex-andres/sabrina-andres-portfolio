@@ -219,18 +219,6 @@ const ContactContainer = styled(motion.div)`
       align-items: center;
       justify-content: flex-end;
       }
-      [style="width: 304px; height: 78px;"]{
-        max-width: 30.2rem;
-        overflow: hidden;
-        @media screen and (min-width: 460px){
-          max-width: 23.7rem;
-          max-height: 5.8rem;
-        }
-      }
-        .rc-anchor-pt{
-          display: none;
-
-        }
       .mailing-list-section-wrapper{
         width: 70%;
         display: flex;
@@ -244,7 +232,7 @@ const ContactContainer = styled(motion.div)`
         }
       }
       button{
-        z-index: 10;
+        z-index: 2;
       }
     }
   }

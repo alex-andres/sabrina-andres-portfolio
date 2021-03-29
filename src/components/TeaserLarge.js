@@ -91,12 +91,15 @@ const TeaserLarge = ({
 const StyledBackgroundImage = styled(BackgroundImage)`
   background-size: cover;
   background-position: top center;
-  padding-bottom: 198%;
+  padding-bottom: 239%;
   min-width: 100%;
   height: 0;
   position: relative;
   display: flex;
   justify-content: center;
+  @media screen and (min-width: 350px){
+    padding-bottom: 198%;
+  }
   @media screen and (min-width: 500px) {
     padding-bottom: 160.8%;
   }

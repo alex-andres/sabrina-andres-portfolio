@@ -101,7 +101,7 @@ Private Collection, Copenhagen, DK"
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          margin: 4rem auto 6rem;
+          margin: 4rem auto;
           width: calc(100% - 40px * 2);
           grid-area: text;
           @media screen and (min-width: 768px) {

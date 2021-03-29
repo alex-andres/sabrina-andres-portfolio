@@ -4,6 +4,7 @@ import TeaserLarge from "./TeaserLarge";
 
 const TeaserLarge2 = ({ className }) => {
   const {
+    smallMobileImage,
     mobileImage,
     tabletImage,
     eigtheenEighty,
@@ -12,6 +13,15 @@ const TeaserLarge2 = ({ className }) => {
   } = useStaticQuery(
     graphql`
       query {
+        smallMobileImage: file(
+          relativePath: { eq: "large-teaser-2/large-teaser-2-small-mobile.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1069) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
         mobileImage: file(
           relativePath: { eq: "large-teaser-2/large-teaser-2-mobile.jpg" }
         ) {
@@ -63,7 +73,11 @@ const TeaserLarge2 = ({ className }) => {
   );
 
   const sources = [
-    mobileImage.childImageSharp.fluid,
+    smallMobileImage.childImageSharp.fluid,
+    {
+      ...mobileImage.childImageSharp.fluid,
+      media: `(min-width: 350px)`,
+    },
     {
       ...tabletImage.childImageSharp.fluid,
       media: `(min-width: 500px)`,
@@ -88,7 +102,7 @@ const TeaserLarge2 = ({ className }) => {
       claimBody={
         "Sabrina leverages her international network which enables constant discovery of new markets, and provides her clients with the freshest insights in the artworld. "
       }
-      className={"teaserLarge1"}
+      className={"teaserLarge2"}
       backgroundTitle={`Ser Serpas
 Untitled, 2019
 Acrylic on paper
