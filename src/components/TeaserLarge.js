@@ -98,6 +98,9 @@ const StyledBackgroundImage = styled(BackgroundImage)`
   display: flex;
   justify-content: center;
   @media screen and (min-width: 350px){
+    padding-bottom: 215%;
+  }
+  @media screen and (min-width: 410px){
     padding-bottom: 198%;
   }
   @media screen and (min-width: 500px) {
@@ -118,7 +121,10 @@ const StyledBackgroundImage = styled(BackgroundImage)`
     min-height: 100%;
   }
   .text-container {
-    margin: 10% auto 0;
+    margin: 15% auto 0;
+    @media screen and (min-width: 410px){
+      margin: 10% auto 0;
+  }
     position: absolute;
     top: 0;
     left: 50%;

@@ -52,13 +52,13 @@ const DesktopNav = styled.nav`
       height: 8rem;
       box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
     `}
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 769px) {
     justify-content: space-between;
     padding: 0 30px;
     height: 7rem;
   }
   .nav-links {
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 769px) {
       display: none;
     }
   }
@@ -68,7 +68,7 @@ const DesktopNav = styled.nav`
     & > div > div {
       background: var(--text) !important;
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 769px) {
       display: block;
     }
   }

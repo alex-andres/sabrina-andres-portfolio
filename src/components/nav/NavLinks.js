@@ -69,7 +69,7 @@ const NavLinksWrapper = styled.ul`
     border: none;
     cursor: pointer;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
@@ -85,7 +85,7 @@ const AnimatedLi = styled.li`
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
   opacity: 0;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     animation-name: slideDown;
   }
   &:nth-of-type(1) {
@@ -140,7 +140,7 @@ const NavLink = styled(Link)`
   font-weight: 300;
   margin: 0 0.5rem;
   transition: color 0.5s;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     font-size: 1.8rem;
     padding: 0.5rem;
   }
@@ -165,7 +165,7 @@ const NavLink = styled(Link)`
     }
   }
   .home-link {
-    @media screen and (min-wdith: 768px) {
+    @media screen and (min-wdith: 769px) {
       display: none;
     }
   }

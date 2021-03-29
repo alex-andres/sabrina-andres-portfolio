@@ -6,6 +6,7 @@ const TeaserLarge1 = ({ className }) => {
   const {
     smallMobileImage,
     mobileImage,
+    largeMobileImage,
     tabletImage,
     eigtheenEighty,
     twentyOneThirtyEight,
@@ -24,6 +25,15 @@ const TeaserLarge1 = ({ className }) => {
         }
         mobileImage: file(
           relativePath: { eq: "large-teaser-1/large-teaser-1-mobile.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1069) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+        largeMobileImage: file(
+          relativePath: { eq: "large-teaser-1/large-teaser-1-large-mobile.jpeg" }
         ) {
           childImageSharp {
             fluid(quality: 90, maxWidth: 1069) {
@@ -77,6 +87,10 @@ const TeaserLarge1 = ({ className }) => {
     {
       ...mobileImage.childImageSharp.fluid,
       media: `(min-width: 350px)`,
+    },
+    {
+      ...largeMobileImage.childImageSharp.fluid,
+      media: `(min-width: 410px)`,
     },
     {
       ...tabletImage.childImageSharp.fluid,

@@ -65,7 +65,10 @@ const ServicesLayout = ({ content }) => {
           display: grid;
           grid-template-areas: "heading" "main";
           grid-template-columns: 1fr;
-          column-gap: 30px;
+          grid-gap: 30px;
+          h1{
+            margin-bottom: 3rem;
+          }
           @media screen and (min-width: 768px) {
             grid-template-columns: 1fr 1fr;
             grid-template-areas: "heading main";
@@ -94,7 +97,7 @@ const ServicesLayout = ({ content }) => {
           animate="visible"
           variants={slideUpDelay}
             css={css`
-              margin: 1rem 0 3rem;
+              margin-bottom: 3rem;
             `}
           >
             {documentToReactComponents(content.description)}
