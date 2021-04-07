@@ -137,7 +137,7 @@ const NavLink = styled(Link)`
   font-weight: normal;
   line-height: 3.2rem;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0 0.5rem;
   transition: color 0.5s;
   @media screen and (min-width: 769px) {

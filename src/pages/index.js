@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Hero from "../components/hero";
+import Hero from "../components/Hero";
 import ServicesSection from "../components/ServicesSection";
 import TeaserSection1 from "../components/TeaserSection1";
-import ProjectSection from "../components/project-section";
+import ProjectSection from "../components/ProjectSection";
 import TeaserSection2 from "../components/TeaserSection2";
 import InstagramSection from "../components/InstagramSection";
 import SEO from "../components/SEO";
