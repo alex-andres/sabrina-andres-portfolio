@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
-import Hero from "../components/hero";
-import ServicesSection from "../components/ServicesSection";
-import TeaserSection1 from "../components/TeaserSection1";
-import ProjectSection from "../components/project-section";
-import TeaserSection2 from "../components/TeaserSection2";
-import InstagramSection from "../components/InstagramSection";
 import SEO from "../components/SEO";
 import LoadAnimation from "../components/LoadAnimation";
 import { VisitedContext } from "../contexts/VisitedContext";
+import Loadable from "@loadable/component";
+const HeroLoadable = Loadable(()=> import('../components/Hero'))
+const TeaserSection1Loadable = Loadable(()=> import('../components/TeaserSection1'));
+const ServicesSectionLoadable = Loadable(()=> import('../components/ServicesSection'));
+const ProjectSectionLoadable = Loadable(()=> import('../components/ProjectSection'));
+const TeaserSection2Loadable = Loadable(()=> import('../components/TeaserSection2'));
+const InstagramSectionLoadable = Loadable(()=> import('../components/InstagramSection'));
 
 export default () => {
   const [visited] = useContext(VisitedContext);
+  ;
+
 
   if (visited === true) {
     return (
@@ -19,12 +22,12 @@ export default () => {
           title="Art Advisory in Los Angeles & Zurich - SAAA"
           description="Sabrina Andres offers exceptional art advisory services in Los Angeles with a focus on contemporary art, ranging from early career to blue chip artists."
         />
-        <Hero />
-        <TeaserSection1 />
-        <ServicesSection />
-        <ProjectSection />
-        <TeaserSection2 />
-        <InstagramSection />
+        <HeroLoadable />
+        <TeaserSection1Loadable />
+        <ServicesSectionLoadable />
+        <ProjectSectionLoadable />
+        <TeaserSection2Loadable />
+        <InstagramSectionLoadable />
       </>
     );
   } else {
@@ -35,12 +38,12 @@ export default () => {
           description="Sabrina Andres offers exceptional art advisory services in Los Angeles with a focus on contemporary art, ranging from early career to blue chip artists."
         />
         <LoadAnimation />
-        <Hero />
-        <TeaserSection1 />
-        <ServicesSection />
-        <ProjectSection />
-        <TeaserSection2 />
-        <InstagramSection />
+        <HeroLoadable />
+        <TeaserSection1Loadable />
+        <ServicesSectionLoadable />
+        <ProjectSectionLoadable />
+        <TeaserSection2Loadable />
+        <InstagramSectionLoadable />
       </>
     );
   }
