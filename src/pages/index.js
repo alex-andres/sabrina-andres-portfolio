@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Hero from "../components/Hero";
+import Hero from "../components/HeroSection";
 import ServicesSection from "../components/ServicesSection";
 import TeaserSection1 from "../components/TeaserSection1";
 import ProjectSection from "../components/ProjectSection";
