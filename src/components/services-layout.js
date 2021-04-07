@@ -112,7 +112,7 @@ const ServicesLayout = ({ content }) => {
             grid-area: main;
             margin-bottom: 3rem;
             @media screen and (min-width: 768px) {
-              margin-top: 7.2rem;
+              margin-top: 9.3rem;
             }
             p{
               margin-bottom: 1rem;
