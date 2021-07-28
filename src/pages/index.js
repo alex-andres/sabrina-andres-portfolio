@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
-import Hero from "../components/HeroSection";
-import ServicesSection from "../components/ServicesSection";
-import TeaserSection1 from "../components/TeaserSection1";
-import ProjectSection from "../components/ProjectSection";
-import TeaserSection2 from "../components/TeaserSection2";
-import InstagramSection from "../components/InstagramSection";
-import SEO from "../components/SEO";
-import LoadAnimation from "../components/LoadAnimation";
+import loadable from '@loadable/component';
 import { VisitedContext } from "../contexts/VisitedContext";
+
+const SEO = loadable(() => import('../components/SEO'));
+const Hero = loadable(() => import('../components/HeroSection'));
+const ServicesSection = loadable(() => import('../components/ServicesSection'));
+const TeaserSection1 = loadable(() => import('../components/TeaserSection1'));
+const ProjectSection = loadable(() => import('../components/ProjectSection'));
+const TeaserSection2 = loadable(() => import('../components/TeaserSection2'));
+const InstagramSection = loadable(() => import('../components/InstagramSection'));
+const LoadAnimation = loadable(() => import('../components/LoadAnimation'));
+
 
 export default () => {
   const [visited] = useContext(VisitedContext);
