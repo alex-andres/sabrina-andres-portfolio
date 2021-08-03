@@ -62,7 +62,7 @@ module.exports = {
     "gatsby-plugin-sass",
     "gatsby-plugin-recaptcha",
     "gatsby-plugin-loadable-components-ssr",
-    "gatsby-plugin-webpack-bundle-analyser-v2",
+    // "gatsby-plugin-webpack-bundle-analyser-v2",
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
