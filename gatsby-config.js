@@ -62,6 +62,7 @@ module.exports = {
     "gatsby-plugin-sass",
     "gatsby-plugin-recaptcha",
     "gatsby-plugin-loadable-components-ssr",
+    "gatsby-plugin-webpack-bundle-analyser-v2",
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
@@ -109,15 +110,7 @@ module.exports = {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,
     },
-    {
-      resolve: "gatsby-plugin-webpack-bundle-analyzer",
-      options: {
-        production: true,
-        disable: !process.env.ANALYZE_BUNDLE_SIZE,
-        generateStatsFile: true,
-        analyzerMode: "static",
-      },
-    },
+
     {
       resolve: `gatsby-source-instagram`,
       options: {

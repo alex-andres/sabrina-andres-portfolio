@@ -73,6 +73,7 @@
   "devDependencies": {
     "contentful-import": "^7.9.28",
     "cross-env": "^6.0.3",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.24",
     "netlify-cli": "^2.69.6",
     "prettier": "^1.19.1"
   },
