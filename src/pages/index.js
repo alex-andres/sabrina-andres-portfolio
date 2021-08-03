@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import loadable from '@loadable/component';
 import { VisitedContext } from "../contexts/VisitedContext";
 
+import Hero from "../components/HeroSection";
 const SEO = loadable(() => import('../components/SEO'));
-const Hero = loadable(() => import('../components/HeroSection'));
 const ServicesSection = loadable(() => import('../components/ServicesSection'));
 const TeaserSection1 = loadable(() => import('../components/TeaserSection1'));
 const ProjectSection = loadable(() => import('../components/ProjectSection'));
