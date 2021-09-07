@@ -8,7 +8,7 @@ export default ({ article }) => (
     <div>
       <Image alt={article.description} fluid={article.heroImage.fluid} />
       <h2>{article.title}</h2>
-      <p>{article.publishDate}</p>
+      {/* <p>{article.publishDate}</p> */}
       <p>{article.description.description}</p>
     </div>
   </Link>

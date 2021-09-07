@@ -1,6 +1,7 @@
 import React from "react";
 import Img from "gatsby-image";
 import styled from "@emotion/styled";
+import Lightbox from './Lightbox';
 
 class GalleryGrid extends React.Component {
   constructor(props) {
@@ -27,7 +28,9 @@ class GalleryGrid extends React.Component {
     const { description, fluid } = this.props.image;
     return (
       <div style={{ gridRowEnd: `span ${this.state.spans}` }}>
-        <Image ref={this.cellRef} fluid={fluid} alt={description} />
+        <Lightbox>
+          <Image ref={this.cellRef} fluid={fluid} alt={description} />
+        </Lightbox>
       </div>
     );
   }
@@ -36,5 +39,6 @@ class GalleryGrid extends React.Component {
 export default GalleryGrid;
 
 const Image = styled(Img)`
-  width: 250px;
+  min-width: 250px;
+  width: 100%;
 `;

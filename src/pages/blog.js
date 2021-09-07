@@ -94,6 +94,7 @@ class BlogIndex extends React.Component {
                       display: grid;
                       grid-template-columns: 3fr 2fr;
                       margin-bottom: 3rem;
+                      gap: 2rem;
                     `}
                   >
                     <motion.div
@@ -123,7 +124,9 @@ class BlogIndex extends React.Component {
                       </motion.h1>
                       {/* <motion.p variants={slideUp}>{node.publishDate}</motion.p> */}
                       <motion.p variants={slideUp}>{node.description.description}</motion.p>
-                      <motion.div variants={slideUp}><Button to={node.slug}> Read More </Button></motion.div>
+                      <motion.div css={css`
+                        margin-top: 2.5rem;
+                      `} variants={slideUp}><Button to={node.slug}> Read More </Button></motion.div>
                     </motion.div>
                     <motion.div
                       initial="hidden"

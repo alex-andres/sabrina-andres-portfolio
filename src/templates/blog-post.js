@@ -4,7 +4,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
 // import { SRLWrapper } from "simple-react-lightbox";
 import { css } from "@emotion/core";
-import GalleryGrid from "../components/GalleryGrid";
+// import GalleryGrid from "../components/GalleryGrid";
+import Gallery from '@browniebroke/gatsby-image-gallery'
 import SEO from "../components/SEO";
 
 const options = {
@@ -50,6 +51,29 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
               img {
                 width: 100%;
               }
+              h1{
+                margin-bottom: 4rem;
+              }
+              .body-container{
+                p{
+                  margin: 2rem 0;
+                }
+                img + p{
+                  margin: 0rem 0 2rem;
+                  i{
+                    font-size: 1.4rem;
+                    
+                  }
+                }
+                blockquote{
+                  p{
+                    margin: 0;
+                    margin-top: 0;
+                    margin-bottom: 1.5rem;
+                  }
+                }
+                margin-bottom: 5rem;
+              }
             `}
           >
             <h1 className="section-headline">{post.title}</h1>
@@ -60,7 +84,7 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
             >
               {post.publishDate}
             </p> */}
-            {documentToReactComponents(post.body.json, options)}
+            <div className="body-container">{documentToReactComponents(post.body.json, options)}</div>
             <div />
             <div
               css={css`
@@ -75,7 +99,7 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
                 Gallery
               </h2>
               {/* <SRLWrapper> */}
-                <div
+                {/* <div
                   css={css`
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(31%, 1fr));
@@ -83,11 +107,12 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
                     grid-auto-rows: 10.2px;
                     justify-items: center;
                   `}
-                >
-                  {post.gallery.map((image) => (
+                > */}
+                  {/* {post.gallery.map((image) => (
                     <GalleryGrid image={image} key={image.id} />
-                  ))}
-                </div>
+                  ))} */}
+                  <Gallery images={post.gallery} />
+                {/* </div> */}
               {/* </SRLWrapper> */}
             </div>
           </div>
@@ -119,7 +144,10 @@ export const pageQuery = graphql`
         json
       }
       gallery {
-        fluid(background: "rgb:000000") {
+        thumb: fluid(maxWidth: 270, maxHeight: 270) {
+          ...GatsbyContentfulFluid
+        }
+        full: fluid(maxWidth: 1024) {
           ...GatsbyContentfulFluid
         }
         description
