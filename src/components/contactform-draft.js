@@ -3,12 +3,35 @@ import styled from "@emotion/styled";
 import { useForm } from "react-hook-form";
 import SubmitButton from "./SubmitButton";
 import Input from "./Input";
+
+import {
+  useNetlifyForm,
+  NetlifyFormProvider,
+  NetlifyFormComponent,
+  Honeypot,
+  Recaptcha,
+} from "react-netlify-forms";
 import { motion } from "framer-motion";
-import ReCAPTCHA from 'react-google-recaptcha'
 
 const ContactForm = ({ className }) => {
-  const { register, errors } = useForm({ mode: "onBlur" });
-
+  const { register, handleSubmit, reset, errors } = useForm({ mode: "onBlur" });
+  const netlify = useNetlifyForm({
+    name: "ReCAPTCHA",
+    enableRecaptcha: "true" ,
+    action: "/thanks",
+    honeypotName: "bot-field",
+    onSuccess: (response, context) => {
+      console.log("Successfully sent form data to Netlify Server");
+      document.querySelector('#form-component').reset();
+    },
+  });
+  const onSubmit = (data) => {
+    netlify.handleSubmit(null, data).then(()=>{
+      if(netlify.success){
+        
+      }
+    });
+  };
   const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
   const slideUpDelay2 = {
     hidden: { y: 20, opacity: 0 },
@@ -29,8 +52,13 @@ const ContactForm = ({ className }) => {
       variants={slideUpDelay2}
       className={className}
     >
-          <form className="flex-container" name="ReCAPTCHA" method="POST" data-netlify="true" data-netlify-recaptcha="true" action="/thank-you">
-          <input type="hidden" name="form-name" value="Contact Form" />
+      <NetlifyFormProvider className="netlify-form-provider" {...netlify}>
+        <NetlifyFormComponent onSubmit={handleSubmit(onSubmit)} id="form-component">
+          <Honeypot />
+          
+          {netlify.success && <p>Thanks for contacting us!</p>}
+          {netlify.error && <p>Sorry, we could not reach servers.</p>}
+          <div className="flex-container">
             <div className="input-wrapper">
               <label className="label" htmlFor="firstNameMessage">
                 First Name
@@ -104,12 +132,15 @@ const ContactForm = ({ className }) => {
                 ref={register({ required: "Message is Required" })}
               />
             </div>
+            {errors.Message && <div className="errors-message">{errors.Message.message}</div>}
+          </div>
+
           <div className="button-container">
-            <ReCAPTCHA sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
+            <Recaptcha siteKey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
             <SubmitButton type="submit">Send</SubmitButton>
           </div>
-          </form>
-
+        </NetlifyFormComponent>
+      </NetlifyFormProvider>
     </ContactContainer>
   );
 };
