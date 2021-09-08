@@ -29,7 +29,7 @@ const ContactForm = ({ className }) => {
       variants={slideUpDelay2}
       className={className}
     >
-          <form className="flex-container" name="ReCAPTCHA" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+          <form className="flex-container" name="Contact Form" method="POST" data-netlify-recaptcha="true" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
           <input type="hidden" name="bot-field" />
             <div className="input-wrapper">
               <label className="label" htmlFor="firstNameMessage">
@@ -105,6 +105,7 @@ const ContactForm = ({ className }) => {
               />
             </div>
           <div className="button-container">
+            <ReCAPTCHA sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
             <SubmitButton type="submit">Send</SubmitButton>
           </div>
           </form>
