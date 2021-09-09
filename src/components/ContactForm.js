@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "@emotion/styled";
 import { useForm } from "react-hook-form";
 import SubmitButton from "./SubmitButton";
 import Input from "./Input";
 import { motion } from "framer-motion";
-import ReCAPTCHA from 'react-google-recaptcha'
+import { useLocation } from "@reach/router";
+// import ReCAPTCHA from 'react-google-recaptcha'
+import axios from "axios";
+import * as qs from "query-string";
 
 const ContactForm = ({ className }) => {
+  const { pathname } = useLocation();
   const { register, errors } = useForm({ mode: "onBlur" });
-
+  const [feedbackMsg, setFeedbackMsg] = useState(null);
+  const domRef = useRef(null);
   const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
   const slideUpDelay2 = {
     hidden: { y: 20, opacity: 0 },
@@ -22,6 +27,26 @@ const ContactForm = ({ className }) => {
       },
     },
   };
+  const handleSubmit = event =>{
+    event.preventDefault();
+    const formData = {};
+    Object.keys(domRef).map(key=> (formData[key] = domRef[key].value))
+    const axiosOptions = {
+      url: pathname,
+      method: "post",
+      headers: { "Content-Type": "application/x-www-form-urlencoded"},
+      data: qs.stringify(formData),
+    }
+    axios(axiosOptions)
+    .then(response => {
+      setFeedbackMsg("Form submitted successfully!")
+      domRef.current.reset()
+    })
+    .catch(err =>
+      setFeedbackMsg("Form could not be submitted.")
+    )
+  }
+
   return (
     <ContactContainer
       initial="hidden"
@@ -29,87 +54,106 @@ const ContactForm = ({ className }) => {
       variants={slideUpDelay2}
       className={className}
     >
-          <form className="flex-container" name="Contact Form" method="POST" data-netlify-recaptcha="true" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/">
-          <input type="hidden" name="bot-field" />
-            <div className="input-wrapper">
-              <label className="label" htmlFor="firstNameMessage">
-                First Name
-              </label>
-              <Input
-                style={{ border: errors.firstNameMessage && "red 2px solid" }}
-                type="text"
-                name="firstNameMessage"
-                id="firstNameMessage"
-                ref={register({
-                  required: "First Name is Required",
-                  maxLength: 80,
-                })}
-              />
-            </div>
-            {errors.firstNameMessage && <div className="errors-message">{errors.firstNameMessage.message}</div>}
-            <div className="input-wrapper">
-              <label className="label" htmlFor="lastNameMessage">
-                Last Name
-              </label>
-              <Input
-                style={{ border: errors.lastNameMessage && "red 2px solid" }}
-                type="text"
-                name="lastNameMessage"
-                id="lastNameMessage"
-                ref={register({
-                  required: "Last Name is Required",
-                  maxLength: 100,
-                })}
-              />
-            </div>
-            {errors.lastNameMessage && <div className="errors-message">{errors.lastNameMessage.message}</div>}
-            <div className="input-wrapper">
-              <label className="label" htmlFor="email">
-                Email
-              </label>
-              <Input
-                style={{ border: errors.email && "red 2px solid" }}
-                type="email"
-                name="email"
-                id="email"
-                ref={register({
-                  required: "Email is required",
-                  pattern: {
-                    value: EMAIL_REGEX,
-                    message: "Invalid email address",
-                  },
-                })}
-              />
-            </div>
-            {errors.email && <div className="errors-message">{errors.email.message}</div>}
-            <div className="input-wrapper">
-              <label className="label" htmlFor="phone">
-                Phone
-              </label>
-              <Input
-              style={{ border: errors.phone && "red 2px solid" }}
-                type="tel"
-                name="phone"
-                ref={register({ required: "Phone is Required", maxLength: 12 })}
-              />
-            </div>
-            {errors.phone && <div className="errors-message">Phone is Required</div>}
-            <div className="input-wrapper message-input-wrapper">
-              <label className="label" htmlFor="Message">
-                Message
-              </label>
-              <textarea
-                style={{ border: errors.Message && "red 2px solid" }}
-                name="Message"
-                ref={register({ required: "Message is Required" })}
-              />
-            </div>
-          <div className="button-container">
-            <ReCAPTCHA sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
-            <SubmitButton type="submit">Send</SubmitButton>
+      {feedbackMsg && <p>{feedbackMsg}</p>}
+      <form
+        ref={domRef}
+        className="flex-container"
+        name="Contact Form"
+        method="POST"
+        data-netlify-recaptcha="true"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        onSubmit={event=> handleSubmit(event)}
+      >
+        <input type="hidden" name="bot-field" />
+        <div className="input-wrapper">
+          <label className="label" htmlFor="firstNameMessage">
+            First Name
+          </label>
+          <Input
+            style={{ border: errors.firstNameMessage && "red 2px solid" }}
+            type="text"
+            name="firstNameMessage"
+            id="firstNameMessage"
+            ref={register({
+              required: "First Name is Required",
+              maxLength: 80,
+            })}
+          />
+        </div>
+        {errors.firstNameMessage && (
+          <div className="errors-message">
+            {errors.firstNameMessage.message}
           </div>
-          </form>
-
+        )}
+        <div className="input-wrapper">
+          <label className="label" htmlFor="lastNameMessage">
+            Last Name
+          </label>
+          <Input
+            style={{ border: errors.lastNameMessage && "red 2px solid" }}
+            type="text"
+            name="lastNameMessage"
+            id="lastNameMessage"
+            ref={register({
+              required: "Last Name is Required",
+              maxLength: 100,
+            })}
+          />
+        </div>
+        {errors.lastNameMessage && (
+          <div className="errors-message">{errors.lastNameMessage.message}</div>
+        )}
+        <div className="input-wrapper">
+          <label className="label" htmlFor="email">
+            Email
+          </label>
+          <Input
+            style={{ border: errors.email && "red 2px solid" }}
+            type="email"
+            name="email"
+            id="email"
+            ref={register({
+              required: "Email is required",
+              pattern: {
+                value: EMAIL_REGEX,
+                message: "Invalid email address",
+              },
+            })}
+          />
+        </div>
+        {errors.email && (
+          <div className="errors-message">{errors.email.message}</div>
+        )}
+        <div className="input-wrapper">
+          <label className="label" htmlFor="phone">
+            Phone
+          </label>
+          <Input
+            style={{ border: errors.phone && "red 2px solid" }}
+            type="tel"
+            name="phone"
+            ref={register({ required: "Phone is Required", maxLength: 12 })}
+          />
+        </div>
+        {errors.phone && (
+          <div className="errors-message">Phone is Required</div>
+        )}
+        <div className="input-wrapper message-input-wrapper">
+          <label className="label" htmlFor="Message">
+            Message
+          </label>
+          <textarea
+            style={{ border: errors.Message && "red 2px solid" }}
+            name="Message"
+            ref={register({ required: "Message is Required" })}
+          />
+        </div>
+        <div className="button-container">
+          {/* <ReCAPTCHA sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} /> */}
+          <SubmitButton type="submit">Send</SubmitButton>
+        </div>
+      </form>
     </ContactContainer>
   );
 };
