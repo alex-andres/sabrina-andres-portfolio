@@ -15,7 +15,7 @@ const Hero = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        image: file(relativePath: { eq: "connor-addison.jpg" }) {
+        image: file(relativePath: { eq: "andre-butzer.jpg" }) {
           childImageSharp {
             fluid(quality: 90, maxWidth: 1920) {
               ...GatsbyImageSharpFluid_withWebp
@@ -34,13 +34,14 @@ const Hero = () => {
       <div className={visited ? "image-wrapper visited" : "image-wrapper"}>
         <Img
           fluid={data.image.childImageSharp.fluid}
-          alt="Connor Addison's The Eventual End Painting Mounted, installation setting"
-          title="Connor Addison
-The Eventual End (Salk Institute), 2020
-Oil on linen
-194 x 194 cm (76 1/3 x 76 1/3 in)
-Courtesy of the artist
-Available for sale, contact SAAA for details"
+          alt="André Butzer's Untitled Painting Mounted, installation setting"
+          title="André Butzer
+Untitled, 2021
+Acrylic on canvas
+80 × 63 cm (31.4 × 24.8 in)
+Courtesy of the artist and Galería Mascota
+Photo taken by Bruno Ruiz Nava
+Private collection, Oregon, US"
         />
       </div>
       <div

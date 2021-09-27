@@ -27,6 +27,7 @@ const ContactForm = ({ className }) => {
       },
     },
   };
+  console.log(pathname);
   const handleSubmit = event =>{
     event.preventDefault();
     const formData = {};
