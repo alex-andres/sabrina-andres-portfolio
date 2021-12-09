@@ -1,160 +1,122 @@
-import React, { useState, useRef } from "react";
+import React, {useState} from "react";
 import styled from "@emotion/styled";
-import { useForm } from "react-hook-form";
 import SubmitButton from "./SubmitButton";
-import Input from "./Input";
 import { motion } from "framer-motion";
-import { useLocation } from "@reach/router";
-// import ReCAPTCHA from 'react-google-recaptcha'
-import axios from "axios";
-import * as qs from "query-string";
+import {Formik, Form, Field} from 'formik';
+import * as Yup from "yup";
 
 const ContactForm = ({ className }) => {
-  const { pathname } = useLocation();
-  const { register, errors } = useForm({ mode: "onBlur" });
-  const [feedbackMsg, setFeedbackMsg] = useState(null);
-  const domRef = useRef(null);
-  const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-  const slideUpDelay2 = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: 0.4,
-        ease: "easeOut",
-        duration: 0.75,
-      },
-    },
-  };
-  console.log(pathname);
-  const handleSubmit = event =>{
-    event.preventDefault();
-    const formData = {};
-    Object.keys(domRef).map(key=> (formData[key] = domRef[key].value))
-    const axiosOptions = {
-      url: pathname,
-      method: "post",
-      headers: { "Content-Type": "application/x-www-form-urlencoded"},
-      data: qs.stringify(formData),
-    }
-    axios(axiosOptions)
-    .then(response => {
-      setFeedbackMsg("Form submitted successfully!")
-      domRef.current.reset()
-    })
-    .catch(err =>
-      setFeedbackMsg("Form could not be submitted.")
-    )
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
   }
 
+  const schema = Yup.object().shape({
+    firstName: Yup.string().required("First Name Required"),
+    lastName: Yup.string().required("Last Name Required"),
+    email: Yup.string().email("Invalid email").required("Email Required"),
+    message: Yup.string().required("Message is Required"),
+  });
+
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
+
   return (
-    <ContactContainer
-      initial="hidden"
-      animate="visible"
-      variants={slideUpDelay2}
-      className={className}
-    >
-      {feedbackMsg && <p>{feedbackMsg}</p>}
-      <form
-        ref={domRef}
-        className="flex-container"
-        name="Contact Form"
-        method="POST"
-        data-netlify-recaptcha="true"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        onSubmit={event=> handleSubmit(event)}
-      >
-        <input type="hidden" name="bot-field" />
-        <div className="input-wrapper">
-          <label className="label" htmlFor="firstNameMessage">
-            First Name
-          </label>
-          <Input
-            style={{ border: errors.firstNameMessage && "red 2px solid" }}
-            type="text"
-            name="firstNameMessage"
-            id="firstNameMessage"
-            ref={register({
-              required: "First Name is Required",
-              maxLength: 80,
-            })}
-          />
-        </div>
-        {errors.firstNameMessage && (
-          <div className="errors-message">
-            {errors.firstNameMessage.message}
-          </div>
-        )}
-        <div className="input-wrapper">
-          <label className="label" htmlFor="lastNameMessage">
-            Last Name
-          </label>
-          <Input
-            style={{ border: errors.lastNameMessage && "red 2px solid" }}
-            type="text"
-            name="lastNameMessage"
-            id="lastNameMessage"
-            ref={register({
-              required: "Last Name is Required",
-              maxLength: 100,
-            })}
-          />
-        </div>
-        {errors.lastNameMessage && (
-          <div className="errors-message">{errors.lastNameMessage.message}</div>
-        )}
-        <div className="input-wrapper">
-          <label className="label" htmlFor="email">
-            Email
-          </label>
-          <Input
-            style={{ border: errors.email && "red 2px solid" }}
-            type="email"
-            name="email"
-            id="email"
-            ref={register({
-              required: "Email is required",
-              pattern: {
-                value: EMAIL_REGEX,
-                message: "Invalid email address",
-              },
-            })}
-          />
-        </div>
-        {errors.email && (
-          <div className="errors-message">{errors.email.message}</div>
-        )}
-        <div className="input-wrapper">
-          <label className="label" htmlFor="phone">
-            Phone
-          </label>
-          <Input
-            style={{ border: errors.phone && "red 2px solid" }}
-            type="tel"
-            name="phone"
-            ref={register({ required: "Phone is Required", maxLength: 12 })}
-          />
-        </div>
-        {errors.phone && (
-          <div className="errors-message">Phone is Required</div>
-        )}
-        <div className="input-wrapper message-input-wrapper">
-          <label className="label" htmlFor="Message">
-            Message
-          </label>
-          <textarea
-            style={{ border: errors.Message && "red 2px solid" }}
-            name="Message"
-            ref={register({ required: "Message is Required" })}
-          />
-        </div>
-        <div className="button-container">
-          {/* <ReCAPTCHA sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} /> */}
-          <SubmitButton type="submit">Send</SubmitButton>
-        </div>
-      </form>
+    <ContactContainer>
+      <Formik
+    initialValues={{
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      message: '',
+    }}
+    validationSchema={schema}
+    onSubmit={(values, actions) => {
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({ "form-name": "contact-demo", ...values })
+        })
+        .then(() => {
+          setSent(true)
+          actions.resetForm()
+        })
+        .catch(() => {
+          setError(true)
+        })
+        .finally(() => {
+          actions.setSubmitting(false)
+          setTimeout(()=>{
+        setSent(false);
+      }, 4000)
+        if (error){
+          setTimeout(()=>{
+        setError(false);
+      }, 4000)
+        }
+        })
+
+      
+    }}
+
+  >
+  {({errors, touched}) => (
+    <Form className="flex-container" name="contact-form" data-netlify={true}>
+    <div className="input-wrapper">
+         <label className="label" htmlFor="firstame">First Name: </label>
+         <Field  style={{ border: (errors.firstName &&  touched.firstName) &&"red 2px solid" }} name="firstName" />
+       </div>
+       <div className="errors-message">
+       {errors.firstName && touched.firstName ? (
+          <div className="error-message">{errors.firstName}</div>
+        ) : null}
+       </div>
+       <div className="input-wrapper">
+         <label className="label" htmlFor="lastName">Last Name: </label>
+         <Field  style={{ border: (errors.lastName &&  touched.lastName) && "red 2px solid" }} name="lastName" />
+       </div>
+       <div className="errors-message">
+       {errors.lastName && touched.lastName ? (
+          <div className="error-message">{errors.lastName}</div>
+        ) : null}
+       </div>
+
+       <div className="input-wrapper">
+         <label className="label" htmlFor="email">Email: </label>
+         <Field  style={{ border: (errors.email &&  touched.email) && "red 2px solid" }} name="email" />
+       </div>
+       <div className="errors-message">
+       {errors.email && touched.email ? (
+                    <div className="error-message">{errors.email}</div>
+                  ) : null}
+       </div>
+
+       <div className="input-wrapper">
+         <label className="label" htmlFor="phone">Phone: </label>
+         <Field name="phone" />
+       </div>
+
+       <div className="input-wrapper">
+         <label className="label" htmlFor="message">Message: </label>
+         <Field  style={{ border: (errors.message &&  touched.message) && "red 2px solid" }} name="message" component="textarea"/>
+       </div>
+       <div className="errors-message">
+       {errors.message && touched.message ? (
+          <div className="error-message">{errors.message}</div>
+        ) : null}
+       </div>
+    <div className="button-container">
+      {sent && <p>Thanks for Contacting SAAA!</p>}
+      {error && <p>There was an error submitting your message.</p>}
+      <SubmitButton type="submit" disabled={sent}>Send</SubmitButton>
+    </div>
+    </Form>
+  )}
+  </Formik>
+      
     </ContactContainer>
   );
 };
@@ -181,10 +143,10 @@ const ContactContainer = styled(motion.div)`
         @media screen and (min-width: 768px){
           justify-content: flex-end;
         }
-        align-items: center;
+        align-items: flex-start;
         margin-bottom: 1rem;
         .label {
-          margin-bottom: .5rem;
+          margin: .5rem 0;
           @media screen and (min-width: 450px){
             min-width: 9.428rem;
             flex-basis: 9.428rem;
@@ -206,6 +168,15 @@ const ContactContainer = styled(motion.div)`
           padding: 8px;
           font-size: 18px;
           line-height: 22px;
+          font-family: Raleway;
+        }
+        input{
+          height: 45px;
+          background-color: var(--lightGray);
+          border-radius: 5px;
+          border: #eaeaea 1px solid;
+          padding: 8px;
+          font-size: 18px;
           font-family: Raleway;
         }
         textarea{
@@ -232,6 +203,9 @@ const ContactContainer = styled(motion.div)`
       flex-direction: row;
       align-items: center;
       justify-content: flex-end;
+      }
+      p{
+        margin-right: 3rem;
       }
       .mailing-list-section-wrapper{
         width: 70%;

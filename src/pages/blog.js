@@ -74,7 +74,7 @@ class BlogIndex extends React.Component {
           <div
             css={css`
               display: grid;
-              @media screen and (max-width: 600px) {
+              @media screen and (max-width: 767px) {
                 grid-template-columns: 1fr;
               }
               grid-template-columns: repeat(3, 1fr);
@@ -86,7 +86,7 @@ class BlogIndex extends React.Component {
                 return (
                   <div
                     css={css`
-                      @media screen and (max-width: 600px) {
+                      @media screen and (max-width: 767px) {
                         grid-column: span 1;
                         grid-template-columns: 1fr;
                       }
@@ -110,20 +110,22 @@ class BlogIndex extends React.Component {
                         * + *{
                           margin-top: 1rem;
                         }
-                        @media screen and (max-width: 600px) {
+                        @media screen and (max-width: 767px) {
                           grid-row-start: 2;
                         }
                       `}
                     >
-                      <motion.h1 variants={slideUp}
+                      <motion.h2 variants={slideUp}
                         css={css`
                           margin-bottom: 1.5rem;
                         `}
                       >
                         {node.title}
-                      </motion.h1>
+                      </motion.h2>
                       {/* <motion.p variants={slideUp}>{node.publishDate}</motion.p> */}
-                      <motion.p variants={slideUp}>{node.description.description}</motion.p>
+                      <motion.p css={css`
+                        margin-top: 0;
+                      `} variants={slideUp}>{node.description.description}</motion.p>
                       <motion.div css={css`
                         margin-top: 2.5rem;
                       `} variants={slideUp}><Button to={node.slug}> Read More </Button></motion.div>
@@ -142,7 +144,7 @@ class BlogIndex extends React.Component {
                 );
               } else {
                 return (
-                  <div key={node.slug}>
+                  <div  key={node.slug}>
                     <ArticlePreview article={node} />
                   </div>
                 );

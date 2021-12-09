@@ -39,28 +39,28 @@ class SignUpForm extends React.Component {
       <StyledForm className="sign-up-form" onSubmit={this.handleSubmit}>
         <strong className="sign-up-heading">Sign up for Email Updates</strong>
         <div className="sign-up-input first-name-input">
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="newsletterFirstName">First Name</label>
           <input
-            id="firstName"
+            id="newsletterFirstName"
             type="text"
             onChange={this.handleFirstNameChange}
             value={this.state.firstName}
           />
         </div>
         <div className="sign-up-input last-name-input">
-          <label htmlFor="lastName">Last Name</label>
+          <label htmlFor="newsletterLastName">Last Name</label>
           <input
-            id="lastName"
+            id="newsletterLastName"
             type="text"
             onChange={this.handleLastNameChange}
             value={this.state.lastName}
           />
         </div>
         <div className="sign-up-input email-input">
-          <label htmlFor="email" className="sign-up-heading">
+          <label htmlFor="newsletterEmail" className="sign-up-heading">
             Email
           </label>
-          <input id="email" type="email" onChange={this.handleEmailChange} value={this.state.email}/>
+          <input id="newsletterEmail" type="email" onChange={this.handleEmailChange} value={this.state.email}/>
         </div>
         <Button  className="sign-up-button">Sign Up</Button>
       </StyledForm>

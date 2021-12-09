@@ -163,18 +163,14 @@ const GlobalStyles = () => {
         @media(min-width: 768px){
         font-size: 4rem;
         }
-        @media(min-width: 1024px){
-          font-size: 5rem;
-        }
+
       }
       h3, h4, h5, h6{
         font-size: 2.5rem;
         @media(min-width: 768px){
         font-size: 3.5rem;
         }
-        @media(min-width: 1024px){
-          font-size: 4rem;
-        }
+
       }
       }
       + *{

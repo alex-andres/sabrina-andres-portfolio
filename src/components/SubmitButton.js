@@ -22,6 +22,9 @@ const Button = styled("button")`
   &:focus {
     outline: 1px black solid;
   }
+  &:disabled{
+    background-color: var(--midGray)
+  }
 `;
 
 export default Button;
