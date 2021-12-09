@@ -38,7 +38,7 @@ const ContactForm = ({ className }) => {
         fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({ "form-name": "contact-demo", ...values })
+          body: encode({ "form-name": "contact-form", ...values })
         })
         .then(() => {
           setSent(true)
